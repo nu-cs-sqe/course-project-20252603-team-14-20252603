@@ -9,8 +9,8 @@
 2. [done] All: Decided on JavaFX for our GUI
 3. [done] All: Understand Exploding Kittens rules 
 4. [done] All: Game setup phase: determine User Story, acceptance criteria, and use cases
-5. [not started] All: Producing project design
-6. [not started] All: Splitting the tasks and beginning the implementation by following TDD
+5. [done] All: Produce Game Setup Phase requirements + design
+6. [1% done] All: Split the tasks and begin Game Setup implementation by following TDD
 
 # Week X (XX/XX/2026-XX/XX/2026) TEMPLATE (You can change the format to whatever the team likes better)
 **Planning and Progress Tracking**:
