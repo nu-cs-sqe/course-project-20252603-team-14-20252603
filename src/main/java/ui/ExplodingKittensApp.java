@@ -9,7 +9,10 @@ public class ExplodingKittensApp extends Application {
 
     @Override
     public void start(Stage stage) {
-        stage.setScene(new Scene(new Label("It works"), 400, 300));
+        Scene scene = new Scene(new Label("It works"), 1000, 700);
+        stage.setScene(scene);
+        stage.setMinWidth(800);
+        stage.setMinHeight(500);
         stage.setTitle("Exploding Kittens");
         stage.show();
     }
