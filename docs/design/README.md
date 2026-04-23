@@ -1,1 +1,18 @@
-This folder should include the system design. It can be in the form of design diagrams or a textual description of what classes the system shall have and their relationships.
+**View Classes**
+- StartView.java
+- PlayerSetUpView.java
+- PlayerDecksView.java
+
+**Controller Classes**
+- StartController.java
+- PlayerSetUpController.java
+- PlayerDecksController.java
+
+**Model Classes**
+- Game.java
+- Player.java
+- Card.java (abstract)
+- DrawDeck.java
+- DiscardPile.java
+- DeckBuilder.java
+- TurnManager.java
