@@ -8,6 +8,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 public class PlayerDeckView {
+    private final PlayerDeckController controller;
 
     private VBox root;
     private VBox gameBoardSection;
@@ -16,53 +17,54 @@ public class PlayerDeckView {
     private VBox playerChoiceSection;
 
     public PlayerDeckView(PlayerDeckController controller) {
-        buildUI(controller);
+        this.controller = controller;
+        buildUI();
     }
 
     public Parent getRoot() {
         return root;
     }
 
-    private void buildUI(PlayerDeckController controller) {
+    private void buildUI() {
         root = new VBox();
 
-        buildGameBoardSection(controller);
-        buildPlayerChoiceSection(controller);
+        buildGameBoardSection();
+        buildPlayerChoiceSection();
 
         root.getChildren().addAll(gameBoardSection, playerChoiceSection);
     }
 
-    private void buildGameBoardSection(PlayerDeckController controller) {
+    private void buildGameBoardSection() {
         gameBoardSection = new VBox();
         gameBoardSection.getStyleClass().add("game-board-section");
         gameBoardSection.getChildren().add(new Label("gameBoardSection"));
 
-        buildPlayerHeaderSection(controller);
+        buildPlayerHeaderSection();
 
         gameBoardSection.getChildren().addAll(playerHeaderSection);
     }
 
-    private void buildPlayerHeaderSection(PlayerDeckController controller) {
+    private void buildPlayerHeaderSection() {
         playerHeaderSection = new VBox();
-        buildPlayerNamesBar(controller);
+        buildPlayerNamesBar();
         playerHeaderSection.getChildren().addAll(playerNamesBar);
     }
 
-    private void buildPlayerNamesBar(PlayerDeckController controller) {
+    private void buildPlayerNamesBar() {
         playerNamesBar = new HBox();
 
         for (String playerName : UIConstants.PLAYER_NAMES) {
-            Node nameTag = buildNameTag(controller, playerName);
+            Node nameTag = buildNameTag(playerName);
             playerNamesBar.getChildren().add(nameTag);
         }
     }
 
-    private Node buildNameTag(PlayerDeckController controller, String playerName) {
+    private Node buildNameTag(String playerName) {
         Button nameTag = new Button(playerName);
         return nameTag;
     }
 
-    private void buildPlayerChoiceSection(PlayerDeckController controller) {
+    private void buildPlayerChoiceSection() {
         playerChoiceSection = new VBox();
         playerChoiceSection.getStyleClass().add("player-choice-section");
         playerChoiceSection.getChildren().add(new Label("playerChoiceSection"));
