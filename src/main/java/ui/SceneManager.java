@@ -18,13 +18,13 @@ public class SceneManager {
     }
 
     private void setScene(Parent root) {
-        Scene scene = new Scene(root, 1000, 700);
+        Scene scene = new Scene(root, GameSettings.SCENE_WIDTH, GameSettings.SCENE_HEIGHT);
 
         stage.setScene(scene);
-        stage.setTitle("Exploding Kittens");
+        stage.setTitle(GameSettings.TITLE);
 
-        stage.setMinWidth(800);
-        stage.setMinHeight(500);
+        stage.setMinWidth(GameSettings.MIN_WINDOW_WIDTH);
+        stage.setMinHeight(GameSettings.MIN_WINDOW_HEIGHT);
 
         stage.show();
     }
