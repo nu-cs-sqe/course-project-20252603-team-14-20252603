@@ -32,3 +32,11 @@
 
     -fx-background-color: magenta-5;
 }
+
+.game-board-section {
+    -fx-background-color: lightblue;
+}
+
+.player-choice-section {
+    -fx-background-color: lightgreen;
+}
