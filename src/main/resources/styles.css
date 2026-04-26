@@ -33,8 +33,19 @@
     -fx-background-color: magenta-5;
 }
 
+.h3 {
+    -fx-font-family: "Koulen";
+    -fx-font-weight: normal;
+    -fx-font-size: 24px;
+}
+
 .game-board-section {
     -fx-background-color: lightblue;
+}
+
+.name-tag {
+    -fx-background-color: magenta-4;
+
 }
 
 .player-choice-section {

@@ -61,12 +61,13 @@ public class PlayerDeckView {
 
     private Node buildNameTag(String playerName) {
         Button nameTag = new Button(playerName);
+        nameTag.getStyleClass().addAll("name-tag", "h3");
         return nameTag;
     }
 
     private void buildPlayerChoiceSection() {
         playerChoiceSection = new VBox();
-        playerChoiceSection.getStyleClass().add("player-choice-section");
+        playerChoiceSection.getStyleClass().addAll("player-choice-section");
         playerChoiceSection.getChildren().add(new Label("playerChoiceSection"));
     }
 
