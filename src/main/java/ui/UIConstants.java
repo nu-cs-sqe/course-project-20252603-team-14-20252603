@@ -1,10 +1,12 @@
 package ui;
 
-public final class GameSettings {
+public final class UIConstants {
 
-    private GameSettings() {}
+    private UIConstants() {}
 
     public static final String TITLE = "Exploding Kittens";
+
+    public static final int INIT_NUM_CARDS_PER_HAND = 6;
 
     public static final int SCENE_WIDTH = 1000;
     public static final int SCENE_HEIGHT = 700;

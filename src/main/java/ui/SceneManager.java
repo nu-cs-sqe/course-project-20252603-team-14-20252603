@@ -20,16 +20,16 @@ public class SceneManager {
     }
 
     private void setScene(Parent root) {
-        Scene scene = new Scene(root, GameSettings.SCENE_WIDTH, GameSettings.SCENE_HEIGHT);
+        Scene scene = new Scene(root, UIConstants.SCENE_WIDTH, UIConstants.SCENE_HEIGHT);
 
         String cssFileString = loadGlobalFiles();
         scene.getStylesheets().add(cssFileString);
 
         stage.setScene(scene);
-        stage.setTitle(GameSettings.TITLE);
+        stage.setTitle(UIConstants.TITLE);
 
-        stage.setMinWidth(GameSettings.MIN_WINDOW_WIDTH);
-        stage.setMinHeight(GameSettings.MIN_WINDOW_HEIGHT);
+        stage.setMinWidth(UIConstants.MIN_WINDOW_WIDTH);
+        stage.setMinHeight(UIConstants.MIN_WINDOW_HEIGHT);
 
         stage.show();
     }
