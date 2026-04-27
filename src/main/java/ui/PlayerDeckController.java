@@ -4,8 +4,9 @@ public class PlayerDeckController {
 
     private final PlayerDeckView view;
 
-    public PlayerDeckController() {
-        this.view = new PlayerDeckView(this);
+    public PlayerDeckController(AssetManager assets) {
+
+        this.view = new PlayerDeckView(this, assets);
     }
 
     public PlayerDeckView getView() {

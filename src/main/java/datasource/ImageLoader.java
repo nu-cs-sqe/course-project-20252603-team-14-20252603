@@ -3,21 +3,21 @@ package datasource;
 import java.net.URL;
 import java.nio.file.Paths;
 
-public class StyleSheetLoader implements FileLoader {
+public class ImageLoader implements FileLoader {
 
-    private URL cssFile;
+    private URL imageFile;
 
     @Override
     public boolean open(String fileName) {
-        this.cssFile = createFilePointer(fileName);
+        this.imageFile = createFilePointer(fileName);
         return true;
     }
 
     private URL createFilePointer(String fileName) {
         URL file = getClass().getResource(fileName);
         checkFileExistence(file);
-        if (!fileName.endsWith(".css")) {
-            throw new IllegalArgumentException("The requested file is not a CSS file");
+        if (!fileName.endsWith(".png")) {
+            throw new IllegalArgumentException("The requested file is not a png");
         }
         return file;
     }
@@ -32,7 +32,7 @@ public class StyleSheetLoader implements FileLoader {
 
     @Override
     public URL getFileUrl() {
-        return this.cssFile;
+        return this.imageFile;
     }
 
 }

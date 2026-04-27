@@ -5,6 +5,8 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
@@ -12,11 +14,13 @@ import javafx.scene.text.Text;
 public class PlayerDeckView {
 
     private final PlayerDeckController controller;
+    private final AssetManager assets;
 
     private VBox root;
 
-    public PlayerDeckView(PlayerDeckController controller) {
+    public PlayerDeckView(PlayerDeckController controller, AssetManager assets) {
         this.controller = controller;
+        this.assets = assets;
         buildUI();
     }
 
@@ -39,8 +43,9 @@ public class PlayerDeckView {
         gameBoardSection.getChildren().add(new Label("gameBoardSection"));
 
         VBox playerHeaderSection = buildPlayerHeaderSection();
+        HBox cardPileSection = buildCardPileSection();
 
-        gameBoardSection.getChildren().addAll(playerHeaderSection);
+        gameBoardSection.getChildren().addAll(playerHeaderSection, cardPileSection);
 
         return gameBoardSection;
     }
@@ -89,6 +94,47 @@ public class PlayerDeckView {
         Text playerHeaderCaption = new Text(UIConstants.PLAYER_HEADER_CAPTION);
         playerHeaderCaption.getStyleClass().add("caption");
         return playerHeaderCaption;
+    }
+
+    private HBox buildCardPileSection() {
+        HBox cardPileSection = new HBox();
+
+        VBox drawPileSection = buildDrawPileSection();
+
+        cardPileSection.getChildren().addAll(drawPileSection);
+
+        return cardPileSection;
+    }
+
+    private VBox buildDrawPileSection() {
+        VBox drawPileSection = new VBox();
+
+        VBox drawPile = buildDrawPile();
+
+        drawPileSection.getChildren().addAll(drawPile);
+
+        return drawPileSection;
+    }
+
+    private VBox buildDrawPile() {
+        VBox drawPile = new VBox();
+
+        Image card_back_icon = assets.getImage("placeholder");
+        ImageView card_back_icon_view = new ImageView(card_back_icon);
+        card_back_icon_view.setFitWidth(UIConstants.CARD_BACK_ICON_WIDTH);
+        card_back_icon_view.setPreserveRatio(true);
+        card_back_icon_view.setStyle("-fx-border-color: blue;");
+
+        String[] title_words = UIConstants.TITLE.split(" ");
+        Text exploding_text = new Text(title_words[0]);
+        exploding_text.setFill(UIGradients.GRADIENT_1);
+        exploding_text.getStyleClass().add("h3");
+
+        drawPile.getStyleClass().add("draw-pile");
+
+        drawPile.getChildren().addAll(card_back_icon_view, exploding_text);
+
+        return drawPile;
     }
 
     private VBox buildPlayerChoiceSection() {

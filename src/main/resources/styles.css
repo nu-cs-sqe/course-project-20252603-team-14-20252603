@@ -60,6 +60,12 @@
     -fx-pref-width: 180px;
 }
 
+.draw-pile {
+    -fx-background-color: red-4;
+    -fx-pref-width: 152px;
+    -fx-pref-height: 200px;
+}
+
 .player-choice-section {
     -fx-background-color: lightgreen;
 }

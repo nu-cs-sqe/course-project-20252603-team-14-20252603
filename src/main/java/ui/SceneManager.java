@@ -2,9 +2,11 @@ package ui;
 
 import datasource.FileLoader;
 import datasource.FontLoader;
+import datasource.ImageLoader;
 import datasource.StyleSheetLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
@@ -13,21 +15,23 @@ import java.io.InputStream;
 public class SceneManager {
 
     private final Stage stage;
-    private String cssFileString;
+    private final AssetManager assets = new AssetManager();
 
     public SceneManager(Stage stage) {
         this.stage = stage;
     }
 
     public void showPlayerDeckView() {
-        PlayerDeckController controller = new PlayerDeckController();
+        loadGlobalFiles();
+        PlayerDeckController controller = new PlayerDeckController(assets);
         setScene(controller.getView().getRoot());
     }
 
     private void setScene(Parent root) {
         Scene scene = new Scene(root, UIConstants.SCENE_WIDTH, UIConstants.SCENE_HEIGHT);
-        loadGlobalFiles();
-        scene.getStylesheets().add(cssFileString);
+
+        String cssUrl = assets.getStylesheet();
+        scene.getStylesheets().add(cssUrl);
 
         stage.setScene(scene);
         stage.setTitle(UIConstants.TITLE);
@@ -40,6 +44,8 @@ public class SceneManager {
 
     private void loadGlobalFiles() {
         loadCSS();
+        loadImages();
+
         loadFont("/fonts/Koulen-Regular.ttf");
         loadFont("/fonts/NationalPark-VariableFont_wght.ttf");
     }
@@ -47,7 +53,16 @@ public class SceneManager {
     private void loadCSS() {
         FileLoader loader = new StyleSheetLoader();
         loader.open("/styles.css");
-        cssFileString = loader.getFileUrl().toExternalForm();
+        String cssUrl = loader.getFileUrl().toExternalForm();
+        assets.setStylesheet(cssUrl);
+    }
+
+    private void loadImages() {
+        FileLoader loader = new ImageLoader();
+
+        loader.open("/images/placeholder.png");
+        String imageUrl = loader.getFileUrl().toExternalForm();
+        assets.addImage("placeholder", imageUrl);
     }
 
     private void loadFont(String fileName) {
