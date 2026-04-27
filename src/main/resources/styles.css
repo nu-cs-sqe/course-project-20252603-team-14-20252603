@@ -72,7 +72,7 @@
     -fx-pref-width: 180px;
 }
 
-.draw-pile-section {
+.card-pile-section {
     -fx-spacing: 12px;
 }
 
@@ -85,6 +85,15 @@
 
 .kittens-text {
     -fx-fill: gray-0;
+}
+
+.empty-pile {
+    -fx-pref-width: 152px;
+    -fx-pref-height: 200px;
+    -fx-border-radius: 4;
+    -fx-border-color: yellow-0-tr-2;
+    -fx-border-width: 2;
+    -fx-border-style: dashed;
 }
 
 .player-choice-section {

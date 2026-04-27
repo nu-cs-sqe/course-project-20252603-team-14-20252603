@@ -56,7 +56,7 @@ public class PlayerDeckView {
         playerHeaderSection.setAlignment(Pos.CENTER);
 
         HBox playerNamesBar = buildPlayerNamesBar();
-        Text playerHeaderCaption = buildPlayerHeaderCaption();
+        Text playerHeaderCaption = buildCaption(UIConstants.PLAYER_HEADER_CAPTION);
         playerHeaderSection.getChildren().addAll(playerNamesBar, playerHeaderCaption);
 
         return playerHeaderSection;
@@ -91,18 +91,19 @@ public class PlayerDeckView {
         return nameText;
     }
 
-    private Text buildPlayerHeaderCaption() {
-        Text playerHeaderCaption = new Text(UIConstants.PLAYER_HEADER_CAPTION);
-        playerHeaderCaption.getStyleClass().add("caption");
+    private Text buildCaption(String text) {
+        Text caption = new Text(text);
+        caption.getStyleClass().add("caption");
 
-        return playerHeaderCaption;
+        return caption;
     }
 
     private HBox buildCardPileSection() {
         HBox cardPileSection = new HBox();
 
         VBox drawPileSection = buildDrawPileSection();
-        cardPileSection.getChildren().addAll(drawPileSection);
+        VBox discardPileSection = buildDiscardPileSection();
+        cardPileSection.getChildren().addAll(drawPileSection, discardPileSection);
 
         return cardPileSection;
     }
@@ -110,21 +111,14 @@ public class PlayerDeckView {
     private VBox buildDrawPileSection() {
         VBox drawPileSection = new VBox();
         drawPileSection.setAlignment(Pos.CENTER);
-        drawPileSection.getStyleClass().add("draw-pile-section");
+        drawPileSection.getStyleClass().add("card-pile-section");
 
         VBox drawPile = buildDrawPile();
-        Text drawPileCaption = buildDrawPileCaption();
+        Text drawPileCaption = buildCaption(UIConstants.DRAW_PILE_CAPTION);
 
         drawPileSection.getChildren().addAll(drawPile, drawPileCaption);
 
         return drawPileSection;
-    }
-
-    private Text buildDrawPileCaption() {
-        Text drawPileCaption = new Text(UIConstants.DRAW_PILE_CAPTION);
-        drawPileCaption.getStyleClass().add("caption");
-
-        return drawPileCaption;
     }
 
     private VBox buildDrawPile() {
@@ -180,6 +174,26 @@ public class PlayerDeckView {
         return kittensText;
     }
 
+    private VBox buildDiscardPileSection() {
+        VBox discardPileSection = new VBox();
+        discardPileSection.setAlignment(Pos.CENTER);
+        discardPileSection.getStyleClass().add("card-pile-section");
+
+        VBox discardPile = buildDiscardPile();
+        Text discardPileCaption = buildCaption(UIConstants.DISCARD_PILE_CAPTION);
+
+        discardPileSection.getChildren().addAll(discardPile, discardPileCaption);
+
+        return discardPileSection;
+    }
+
+    private VBox buildDiscardPile() {
+        VBox discardPile = new VBox();
+        discardPile.setAlignment(Pos.CENTER);
+        discardPile.getStyleClass().add("empty-pile");
+
+        return discardPile;
+    }
 
 
     private VBox buildPlayerChoiceSection() {
