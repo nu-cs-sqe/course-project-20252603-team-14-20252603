@@ -142,3 +142,15 @@
     -fx-border-color: linear-gradient(to bottom, yellow-1, yellow-4);
     -fx-border-width: 2;
 }
+
+.turn-control-section {
+    -fx-spacing: 8;
+}
+
+.start-game-button {
+    -fx-border-radius: 8;
+    -fx-background-color: linear-gradient(to bottom, yellow-1, yellow-4);
+    -fx-padding: 0px 16px;
+    -fx-text-fill: magenta-5;
+    -fx-effect: dropshadow(gaussian, magenta-4-tr, 2, 0, 0, 2);
+}

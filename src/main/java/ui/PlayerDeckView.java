@@ -202,8 +202,9 @@ public class PlayerDeckView {
         playerChoiceSection.getChildren().add(new Label("playerChoiceSection"));
 
         VBox playerHandSection = buildPlayerHandSection();
+        HBox turnControlSection = buildTurnControlSection();
 
-        playerChoiceSection.getChildren().addAll(playerHandSection);
+        playerChoiceSection.getChildren().addAll(playerHandSection, turnControlSection);
 
         return playerChoiceSection;
     }
@@ -254,6 +255,24 @@ public class PlayerDeckView {
         }
 
         return handCards;
+    }
+
+    private HBox buildTurnControlSection() {
+        HBox turnControlSection = new HBox();
+        turnControlSection.setAlignment(Pos.CENTER_RIGHT);
+        turnControlSection.getStyleClass().add("turn-control-section");
+
+        Button startGameButton = buildStartGameButton();
+
+        turnControlSection.getChildren().add(startGameButton);
+
+        return turnControlSection;
+    }
+
+    private Button buildStartGameButton() {
+        Button startGameButton = new Button(UIConstants.START_GAME_LABEL);
+        startGameButton.getStyleClass().addAll("start-game-button", "h5");
+        return startGameButton;
     }
 
 }
