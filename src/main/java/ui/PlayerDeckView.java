@@ -50,20 +50,13 @@ public class PlayerDeckView {
         VBox contentSection = new VBox();
         contentSection.getStyleClass().add("content-section");
 
-        Region spacer = buildSpacer();
-
         VBox gameBoardSection = buildGameBoardSection();
+        Region spacer = buildSpacer();
         VBox playerChoiceSection = buildPlayerChoiceSection();
 
         contentSection.getChildren().addAll(gameBoardSection, spacer, playerChoiceSection);
 
         return contentSection;
-    }
-
-    private Region buildSpacer() {
-        Region spacer = new Region();
-        VBox.setVgrow(spacer, Priority.ALWAYS);
-        return spacer;
     }
 
     private VBox buildGameBoardSection() {
@@ -225,6 +218,12 @@ public class PlayerDeckView {
         discardPile.getStyleClass().add("empty-pile");
 
         return discardPile;
+    }
+
+    private Region buildSpacer() {
+        Region spacer = new Region();
+        VBox.setVgrow(spacer, Priority.ALWAYS);
+        return spacer;
     }
 
     private VBox buildPlayerChoiceSection() {
