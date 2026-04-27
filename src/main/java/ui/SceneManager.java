@@ -6,7 +6,6 @@ import datasource.ImageLoader;
 import datasource.StyleSheetLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
@@ -59,7 +58,6 @@ public class SceneManager {
 
     private void loadImages() {
         FileLoader loader = new ImageLoader();
-
         loader.open("/images/placeholder.png");
         String imageUrl = loader.getFileUrl().toExternalForm();
         assets.addImage("placeholder", imageUrl);
