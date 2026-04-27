@@ -1,5 +1,6 @@
 package ui;
 
+import javafx.beans.property.ReadOnlyDoubleProperty;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
@@ -264,6 +265,9 @@ public class PlayerDeckView {
         handScrollPane.getStyleClass().add("scroll-pane");
 
         HBox handCards = buildHandCards();
+        ReadOnlyDoubleProperty handScrollPaneWidth = handScrollPane.widthProperty();
+        handCards.minWidthProperty().bind(handScrollPaneWidth);
+
         handScrollPane.setContent(handCards);
 
         return handScrollPane;
@@ -272,7 +276,6 @@ public class PlayerDeckView {
     private HBox buildHandCards() {
         HBox handCards = new HBox();
         handCards.setAlignment(Pos.CENTER);
-        handCards.setMinWidth(UIConstants.SCENE_WIDTH);
         handCards.getStyleClass().add("hand-cards");
 
         for (String cardName : UIConstants.INITIAL_PLAYER_HANDS.get("STEVE")) {
