@@ -34,9 +34,7 @@ public class SceneManager {
 
         stage.setScene(scene);
         stage.setTitle(UIConstants.TITLE);
-
-        stage.setMinWidth(UIConstants.MIN_WINDOW_WIDTH);
-        stage.setMinHeight(UIConstants.MIN_WINDOW_HEIGHT);
+        stage.setResizable(false);
 
         stage.show();
     }

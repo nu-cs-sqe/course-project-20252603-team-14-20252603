@@ -35,11 +35,8 @@ public final class UIConstants {
         return initialPlayerHands;
     }
 
-    public static final int SCENE_WIDTH = 1000;
-    public static final int SCENE_HEIGHT = 700;
-
-    public static final int MIN_WINDOW_WIDTH = 800;
-    public static final int MIN_WINDOW_HEIGHT = 500;
+    public static final int SCENE_WIDTH = 1280;
+    public static final int SCENE_HEIGHT = 832;
 
     public static final int CARD_BACK_ICON_WIDTH = 40;
     public static final int SMALL_ICON_SIZE = 16;

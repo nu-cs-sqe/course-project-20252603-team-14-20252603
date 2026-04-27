@@ -52,10 +52,9 @@ public class PlayerDeckView {
         contentSection.getStyleClass().add("content-section");
 
         VBox gameBoardSection = buildGameBoardSection();
-        Region spacer = buildSpacer();
         VBox playerChoiceSection = buildPlayerChoiceSection();
 
-        contentSection.getChildren().addAll(gameBoardSection, spacer, playerChoiceSection);
+        contentSection.getChildren().addAll(gameBoardSection, playerChoiceSection);
 
         return contentSection;
     }
@@ -65,10 +64,9 @@ public class PlayerDeckView {
         gameBoardSection.getStyleClass().add("game-board-section");
 
         VBox playerHeaderSection = buildPlayerHeaderSection();
-        Region spacer = buildSpacer();
         HBox cardPileSection = buildCardPilesSection();
 
-        gameBoardSection.getChildren().addAll(playerHeaderSection, spacer, cardPileSection);
+        gameBoardSection.getChildren().addAll(playerHeaderSection, cardPileSection);
 
         return gameBoardSection;
     }
@@ -221,12 +219,6 @@ public class PlayerDeckView {
         return discardPile;
     }
 
-    private Region buildSpacer() {
-        Region spacer = new Region();
-        VBox.setVgrow(spacer, Priority.ALWAYS);
-        return spacer;
-    }
-
     private VBox buildPlayerChoiceSection() {
         VBox playerChoiceSection = new VBox();
 
@@ -274,6 +266,7 @@ public class PlayerDeckView {
     private HBox buildHandCards() {
         HBox handCards = new HBox();
         handCards.setAlignment(Pos.CENTER);
+        handCards.setMinWidth(UIConstants.SCENE_WIDTH);
         handCards.getStyleClass().add("hand-cards");
 
         for (String cardName : UIConstants.INITIAL_PLAYER_HANDS.get("STEVE")) {

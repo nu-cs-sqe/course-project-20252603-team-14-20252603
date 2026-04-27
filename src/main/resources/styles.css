@@ -60,16 +60,17 @@
 .caption {
     -fx-font-family: "National Park";
     -fx-font-weight: normal;
-    -fx-font-size: 12px;
+    -fx-font-size: 16px;
     -fx-fill: yellow-0-tr-2;
 }
 
 .content-section {
     -fx-padding: 16px;
+    -fx-spacing: 24px;
 }
 
 .game-board-section {
-    -fx-spacing: 48px;
+    -fx-spacing: 64px;
 }
 
 .player-names-bar {
@@ -84,7 +85,7 @@
     -fx-background-radius: 8;
     -fx-border-radius: 8;
     -fx-padding: 0px 16px;
-    -fx-pref-width: 180px;
+    -fx-pref-width: 236px;
 }
 
 .card-piles-section {
@@ -97,8 +98,8 @@
 
 .card-back {
     -fx-background-color: red-4;
-    -fx-pref-width: 152px;
-    -fx-pref-height: 200px;
+    -fx-pref-width: 180px;
+    -fx-pref-height: 235px;
     -fx-background-radius: 4;
 }
 
@@ -107,8 +108,8 @@
 }
 
 .empty-pile {
-    -fx-pref-width: 152px;
-    -fx-pref-height: 200px;
+    -fx-pref-width: 180px;
+    -fx-pref-height: 235px;
     -fx-border-radius: 4;
     -fx-border-color: yellow-0-tr-2;
     -fx-border-width: 2;
