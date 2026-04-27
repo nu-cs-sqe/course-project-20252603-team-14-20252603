@@ -1,5 +1,6 @@
 package ui;
 
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
@@ -49,6 +50,9 @@ public class PlayerDeckView {
 
     private void buildPlayerHeaderSection() {
         playerHeaderSection = new VBox();
+        playerHeaderSection.setSpacing(12);
+        playerHeaderSection.setAlignment(Pos.CENTER);
+
         buildPlayerNamesBar();
         buildPlayerHeaderCaption();
         playerHeaderSection.getChildren().addAll(playerNamesBar, playerHeaderCaption);
