@@ -36,7 +36,19 @@
 .h3 {
     -fx-font-family: "Koulen";
     -fx-font-weight: normal;
+    -fx-font-size: 28px;
+}
+
+.h4 {
+    -fx-font-family: "Koulen";
+    -fx-font-weight: normal;
     -fx-font-size: 24px;
+}
+
+.h5 {
+    -fx-font-family: "Koulen";
+    -fx-font-weight: normal;
+    -fx-font-size: 21px;
 }
 
 .caption {
@@ -64,6 +76,11 @@
     -fx-background-color: red-4;
     -fx-pref-width: 152px;
     -fx-pref-height: 200px;
+    -fx-background-radius: 4;
+}
+
+.kittens-text {
+    -fx-fill: gray-0;
 }
 
 .player-choice-section {

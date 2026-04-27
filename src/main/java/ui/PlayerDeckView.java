@@ -86,7 +86,7 @@ public class PlayerDeckView {
     private Text buildNameTagText(String playerName) {
         Text nameText = new Text(playerName);
         nameText.setFill(UIGradients.GRADIENT_2);
-        nameText.getStyleClass().add("h3");
+        nameText.getStyleClass().add("h4");
         return nameText;
     }
 
@@ -118,23 +118,55 @@ public class PlayerDeckView {
 
     private VBox buildDrawPile() {
         VBox drawPile = new VBox();
+        drawPile.setAlignment(Pos.CENTER);
 
-        Image card_back_icon = assets.getImage("placeholder");
-        ImageView card_back_icon_view = new ImageView(card_back_icon);
-        card_back_icon_view.setFitWidth(UIConstants.CARD_BACK_ICON_WIDTH);
-        card_back_icon_view.setPreserveRatio(true);
-        card_back_icon_view.setStyle("-fx-border-color: blue;");
-
-        String[] title_words = UIConstants.TITLE.split(" ");
-        Text exploding_text = new Text(title_words[0]);
-        exploding_text.setFill(UIGradients.GRADIENT_1);
-        exploding_text.getStyleClass().add("h3");
+        ImageView cardBackIconView = buildCardBackIconView();
+        VBox explodingKittensText = buildExplodingKittensText();
 
         drawPile.getStyleClass().add("draw-pile");
 
-        drawPile.getChildren().addAll(card_back_icon_view, exploding_text);
+        drawPile.getChildren().addAll(cardBackIconView, explodingKittensText);
 
         return drawPile;
+    }
+
+    private ImageView buildCardBackIconView() {
+        Image card_back_icon = assets.getImage("placeholder");
+        ImageView card_back_icon_view = new ImageView(card_back_icon);
+
+        card_back_icon_view.setFitWidth(UIConstants.CARD_BACK_ICON_WIDTH);
+        card_back_icon_view.setPreserveRatio(true);
+
+        return card_back_icon_view;
+    }
+
+    private VBox buildExplodingKittensText() {
+        VBox explodingKittensText = new VBox();
+        explodingKittensText.setAlignment(Pos.CENTER);
+        explodingKittensText.setSpacing(-20);
+
+        String[] title_words = UIConstants.TITLE.split(" ");
+        Text explodingText = buildExplodingText(title_words[0]);
+        Text kittensText = buildKittensText(title_words[1]);
+
+        explodingKittensText.getChildren().addAll(explodingText, kittensText);
+
+        return explodingKittensText;
+    }
+
+    private Text buildExplodingText(String text) {
+        Text explodingText = new Text(text);
+        explodingText.setFill(UIGradients.GRADIENT_1);
+        explodingText.getStyleClass().add("h5");
+
+        return explodingText;
+    }
+
+    private Text buildKittensText(String text) {
+        Text kittensText = new Text(text);
+        kittensText.getStyleClass().addAll("kittens-text", "h3");
+
+        return kittensText;
     }
 
     private VBox buildPlayerChoiceSection() {
