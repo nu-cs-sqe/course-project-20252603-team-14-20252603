@@ -6,16 +6,17 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.LinearGradient;
 import javafx.scene.text.Text;
 
 public class PlayerDeckView {
+
     private final PlayerDeckController controller;
 
     private VBox root;
     private VBox gameBoardSection;
         private VBox playerHeaderSection;
             private HBox playerNamesBar;
+                private Text playerHeaderCaption;
     private VBox playerChoiceSection;
 
     public PlayerDeckView(PlayerDeckController controller) {
@@ -49,7 +50,8 @@ public class PlayerDeckView {
     private void buildPlayerHeaderSection() {
         playerHeaderSection = new VBox();
         buildPlayerNamesBar();
-        playerHeaderSection.getChildren().addAll(playerNamesBar);
+        buildPlayerHeaderCaption();
+        playerHeaderSection.getChildren().addAll(playerNamesBar, playerHeaderCaption);
     }
 
     private void buildPlayerNamesBar() {
@@ -76,6 +78,12 @@ public class PlayerDeckView {
         nameText.setFill(UIGradients.GRADIENT_2);
         nameText.getStyleClass().add("h3");
         return nameText;
+    }
+
+    private void buildPlayerHeaderCaption() {
+        playerHeaderCaption = new Text(UIConstants.PLAYER_HEADER_CAPTION);
+        playerHeaderCaption.getStyleClass().add("caption");
+
     }
 
     private void buildPlayerChoiceSection() {

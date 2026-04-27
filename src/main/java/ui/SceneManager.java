@@ -40,7 +40,8 @@ public class SceneManager {
 
     private void loadGlobalFiles() {
         loadCSS();
-        loadFont();
+        loadFont("/fonts/Koulen-Regular.ttf");
+        loadFont("/fonts/NationalPark-VariableFont_wght.ttf");
     }
 
     private void loadCSS() {
@@ -49,10 +50,10 @@ public class SceneManager {
         cssFileString = loader.getFileUrl().toExternalForm();
     }
 
-    private void loadFont() {
+    private void loadFont(String fileName) {
         FileLoader loader = new FontLoader();
-        loader.open("/fonts/Koulen-Regular.ttf");
-        InputStream fontStream = getClass().getResourceAsStream("/fonts/Koulen-Regular.ttf");
+        loader.open(fileName);
+        InputStream fontStream = getClass().getResourceAsStream(fileName);
         Font.loadFont(fontStream, 12);
     }
 
