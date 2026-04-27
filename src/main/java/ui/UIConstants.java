@@ -1,7 +1,5 @@
 package ui;
 
-import javafx.scene.paint.LinearGradient;
-
 public final class UIConstants {
 
     private UIConstants() {}

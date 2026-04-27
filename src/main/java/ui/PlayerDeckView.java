@@ -63,8 +63,10 @@ public class PlayerDeckView {
 
     private Node buildNameTag(String playerName) {
         Button nameTag = new Button("");
+
         Text nameText = buildNameTagText(playerName);
         nameTag.setGraphic(nameText);
+
         nameTag.getStyleClass().add("name-tag");
         return nameTag;
     }

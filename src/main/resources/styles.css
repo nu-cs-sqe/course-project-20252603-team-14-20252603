@@ -1,6 +1,4 @@
 .root {
-    border-width-1: 2;
-    border-width-2: 4;
 
     gray-0: #EFEEF4;
     gray-2: #B7B4BE;
@@ -37,21 +35,33 @@
 }
 
 .h3 {
+
     -fx-font-family: "Koulen";
     -fx-font-weight: normal;
     -fx-font-size: 24px;
+
 }
 
 .game-board-section {
+
     -fx-background-color: lightblue;
+
 }
 
 .name-tag {
+
     -fx-background-color: magenta-4;
     -fx-border-color: linear-gradient(to bottom, yellow-1, yellow-4);
-    -fx-border-width: border-width-1
+    -fx-border-width: 2;
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
+    -fx-padding: 8px 16px;
+    -fx-pref-width: 180px;
+
 }
 
 .player-choice-section {
+
     -fx-background-color: lightgreen;
+
 }
