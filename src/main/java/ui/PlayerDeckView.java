@@ -40,7 +40,6 @@ public class PlayerDeckView {
     private VBox buildGameBoardSection() {
         VBox gameBoardSection = new VBox();
         gameBoardSection.getStyleClass().add("game-board-section");
-        gameBoardSection.getChildren().add(new Label("gameBoardSection"));
 
         VBox playerHeaderSection = buildPlayerHeaderSection();
         HBox cardPileSection = buildCardPilesSection();

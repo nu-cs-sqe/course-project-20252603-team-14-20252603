@@ -59,7 +59,7 @@
 }
 
 .game-board-section {
-    -fx-background-color: lightblue;
+    -fx-spacing: 48px;
 }
 
 .name-tag {
