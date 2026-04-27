@@ -72,6 +72,10 @@
     -fx-pref-width: 180px;
 }
 
+.card-piles-section {
+    -fx-spacing: 164px;
+}
+
 .card-pile-section {
     -fx-spacing: 12px;
 }

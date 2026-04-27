@@ -43,7 +43,7 @@ public class PlayerDeckView {
         gameBoardSection.getChildren().add(new Label("gameBoardSection"));
 
         VBox playerHeaderSection = buildPlayerHeaderSection();
-        HBox cardPileSection = buildCardPileSection();
+        HBox cardPileSection = buildCardPilesSection();
 
         gameBoardSection.getChildren().addAll(playerHeaderSection, cardPileSection);
 
@@ -98,8 +98,10 @@ public class PlayerDeckView {
         return caption;
     }
 
-    private HBox buildCardPileSection() {
+    private HBox buildCardPilesSection() {
         HBox cardPileSection = new HBox();
+        cardPileSection.setAlignment(Pos.CENTER);
+        cardPileSection.getStyleClass().add("card-piles-section");
 
         VBox drawPileSection = buildDrawPileSection();
         VBox discardPileSection = buildDiscardPileSection();
