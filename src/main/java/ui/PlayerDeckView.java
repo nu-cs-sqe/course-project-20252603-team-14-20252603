@@ -1,5 +1,6 @@
 package ui;
 
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -16,7 +17,7 @@ public class PlayerDeckView {
     private final PlayerDeckController controller;
     private final AssetManager assets;
 
-    private VBox root;
+    private StackPane root;
 
     public PlayerDeckView(PlayerDeckController controller, AssetManager assets) {
         this.controller = controller;
@@ -29,12 +30,40 @@ public class PlayerDeckView {
     }
 
     private void buildUI() {
-        root = new VBox();
+        root = new StackPane();
+
+        StackPane gameScreen = buildGameScreen();
+        root.getChildren().add(gameScreen);
+    }
+
+    private StackPane buildGameScreen() {
+        StackPane gameScreen = new StackPane();
+
+        VBox contentSection = buildContentSection();
+        StackPane overlayLayer = buildOverlayLayer();
+        gameScreen.getChildren().addAll(contentSection, overlayLayer);
+
+        return gameScreen;
+    }
+
+    private VBox buildContentSection() {
+        VBox contentSection = new VBox();
+        contentSection.getStyleClass().add("content-section");
+
+        Region spacer = buildSpacer();
 
         VBox gameBoardSection = buildGameBoardSection();
         VBox playerChoiceSection = buildPlayerChoiceSection();
 
-        root.getChildren().addAll(gameBoardSection, playerChoiceSection);
+        contentSection.getChildren().addAll(gameBoardSection, spacer, playerChoiceSection);
+
+        return contentSection;
+    }
+
+    private Region buildSpacer() {
+        Region spacer = new Region();
+        VBox.setVgrow(spacer, Priority.ALWAYS);
+        return spacer;
     }
 
     private VBox buildGameBoardSection() {
@@ -42,9 +71,10 @@ public class PlayerDeckView {
         gameBoardSection.getStyleClass().add("game-board-section");
 
         VBox playerHeaderSection = buildPlayerHeaderSection();
+        Region spacer = buildSpacer();
         HBox cardPileSection = buildCardPilesSection();
 
-        gameBoardSection.getChildren().addAll(playerHeaderSection, cardPileSection);
+        gameBoardSection.getChildren().addAll(playerHeaderSection, spacer, cardPileSection);
 
         return gameBoardSection;
     }
@@ -272,6 +302,40 @@ public class PlayerDeckView {
         Button startGameButton = new Button(UIConstants.START_GAME_LABEL);
         startGameButton.getStyleClass().addAll("start-game-button", "h5");
         return startGameButton;
+    }
+
+    private StackPane buildOverlayLayer() {
+        StackPane overlayLayer = new StackPane();
+
+        Button restartButton = buildRestartButton();
+        overlayLayer.getChildren().add(restartButton);
+
+        Insets insets = new Insets(8, 8, 0, 0);
+        StackPane.setMargin(restartButton, insets);
+        StackPane.setAlignment(restartButton, Pos.TOP_RIGHT);
+
+        return overlayLayer;
+    }
+
+    private Button buildRestartButton() {
+        Button restartButton = new Button();
+        restartButton.getStyleClass().add("icon-button");
+
+        ImageView restartIconView = buildIcon("placeholder");
+        restartButton.setGraphic(restartIconView);
+
+        return restartButton;
+    }
+
+    private ImageView buildIcon(String key) {
+        Image iconImage = assets.getImage(key);
+        ImageView iconView = new ImageView(iconImage);
+
+        iconView.setFitWidth(UIConstants.SMALL_ICON_SIZE);
+        iconView.setFitHeight(UIConstants.SMALL_ICON_SIZE);
+        iconView.setPreserveRatio(true);
+
+        return iconView;
     }
 
 }
