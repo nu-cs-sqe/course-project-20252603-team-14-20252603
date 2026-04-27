@@ -1,4 +1,7 @@
 .root {
+    border-width-1: 2;
+    border-width-2: 4;
+
     gray-0: #EFEEF4;
     gray-2: #B7B4BE;
     gray-4: #4E4E4E;
@@ -45,7 +48,8 @@
 
 .name-tag {
     -fx-background-color: magenta-4;
-
+    -fx-border-color: linear-gradient(to bottom, yellow-1, yellow-4);
+    -fx-border-width: border-width-1
 }
 
 .player-choice-section {

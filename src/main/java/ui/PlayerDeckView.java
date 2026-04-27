@@ -6,6 +6,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.LinearGradient;
+import javafx.scene.text.Text;
 
 public class PlayerDeckView {
     private final PlayerDeckController controller;
@@ -60,9 +62,18 @@ public class PlayerDeckView {
     }
 
     private Node buildNameTag(String playerName) {
-        Button nameTag = new Button(playerName);
-        nameTag.getStyleClass().addAll("name-tag", "h3");
+        Button nameTag = new Button("");
+        Text nameText = buildNameTagText(playerName);
+        nameTag.setGraphic(nameText);
+        nameTag.getStyleClass().add("name-tag");
         return nameTag;
+    }
+
+    private Text buildNameTagText(String playerName) {
+        Text nameText = new Text(playerName);
+        nameText.setFill(UIGradients.GRADIENT_2);
+        nameText.getStyleClass().add("h3");
+        return nameText;
     }
 
     private void buildPlayerChoiceSection() {
