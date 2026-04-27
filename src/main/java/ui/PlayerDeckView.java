@@ -230,9 +230,9 @@ public class PlayerDeckView {
         ScrollPane handScrollPane = new ScrollPane();
         handScrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
         handScrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+        handScrollPane.getStyleClass().add("scroll-pane");
 
         HBox handCards = buildHandCards();
-
         handScrollPane.setContent(handCards);
 
         return handScrollPane;
