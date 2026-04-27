@@ -51,6 +51,12 @@
     -fx-font-size: 21px;
 }
 
+.h6 {
+    -fx-font-family: "Koulen";
+    -fx-font-weight: normal;
+    -fx-font-size: 16px;
+}
+
 .caption {
     -fx-font-family: "National Park";
     -fx-font-weight: normal;
@@ -102,4 +108,11 @@
 
 .player-choice-section {
     -fx-background-color: lightgreen;
+}
+
+.hand-visibility-toggle {
+    -fx-text-fill: gray-0;
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-padding: 0;
 }

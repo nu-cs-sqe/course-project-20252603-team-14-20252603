@@ -196,12 +196,33 @@ public class PlayerDeckView {
         return discardPile;
     }
 
-
     private VBox buildPlayerChoiceSection() {
         VBox playerChoiceSection = new VBox();
         playerChoiceSection.getStyleClass().addAll("player-choice-section");
         playerChoiceSection.getChildren().add(new Label("playerChoiceSection"));
+
+        VBox playerHandSection = buildPlayerHandSection();
+
+        playerChoiceSection.getChildren().addAll(playerHandSection);
+
         return playerChoiceSection;
+    }
+
+    private VBox buildPlayerHandSection() {
+        VBox playerHandSection = new VBox();
+
+        Button handVisibilityToggle = buildHandVisibilityToggle();
+
+        playerHandSection.getChildren().addAll(handVisibilityToggle);
+
+        return playerHandSection;
+    }
+
+    private Button buildHandVisibilityToggle() {
+        Button handVisibilityToggle = new Button(UIConstants.SHOW_HAND_LABEL);
+        handVisibilityToggle.getStyleClass().addAll("hand-visibility-toggle", "h6");
+
+        return handVisibilityToggle;
     }
 
 }
