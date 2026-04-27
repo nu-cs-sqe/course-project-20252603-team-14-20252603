@@ -5,10 +5,10 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.scene.text.Text;
 
 public class PlayerDeckView {
@@ -114,7 +114,7 @@ public class PlayerDeckView {
         drawPileSection.setAlignment(Pos.CENTER);
         drawPileSection.getStyleClass().add("card-pile-section");
 
-        VBox drawPile = buildDrawPile();
+        VBox drawPile = buildCardBack();
         Text drawPileCaption = buildCaption(UIConstants.DRAW_PILE_CAPTION);
 
         drawPileSection.getChildren().addAll(drawPile, drawPileCaption);
@@ -122,14 +122,14 @@ public class PlayerDeckView {
         return drawPileSection;
     }
 
-    private VBox buildDrawPile() {
+    private VBox buildCardBack() {
         VBox drawPile = new VBox();
         drawPile.setAlignment(Pos.CENTER);
 
         ImageView cardBackIconView = buildCardBackIconView();
         VBox explodingKittensText = buildExplodingKittensText();
 
-        drawPile.getStyleClass().add("draw-pile");
+        drawPile.getStyleClass().add("card-back");
 
         drawPile.getChildren().addAll(cardBackIconView, explodingKittensText);
 
@@ -212,8 +212,9 @@ public class PlayerDeckView {
         VBox playerHandSection = new VBox();
 
         Button handVisibilityToggle = buildHandVisibilityToggle();
+        ScrollPane handScrollPane = buildHandScrollPane();
 
-        playerHandSection.getChildren().addAll(handVisibilityToggle);
+        playerHandSection.getChildren().addAll(handVisibilityToggle, handScrollPane);
 
         return playerHandSection;
     }
@@ -223,6 +224,34 @@ public class PlayerDeckView {
         handVisibilityToggle.getStyleClass().addAll("hand-visibility-toggle", "h6");
 
         return handVisibilityToggle;
+    }
+
+    private ScrollPane buildHandScrollPane() {
+        ScrollPane handScrollPane = new ScrollPane();
+        handScrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
+        handScrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+
+        HBox handCards = buildHandCards();
+
+        handScrollPane.setContent(handCards);
+
+        return handScrollPane;
+    }
+
+    private HBox buildHandCards() {
+        HBox handCards = new HBox();
+        handCards.setAlignment(Pos.CENTER);
+        handCards.setMinWidth(UIConstants.SCENE_WIDTH);
+        handCards.getStyleClass().add("hand-cards");
+
+        for (String cardName : UIConstants.INITIAL_PLAYER_HANDS.get("STEVE")) {
+            VBox cardBack = buildCardBack();
+            cardBack.getStyleClass().add("card-enabled");
+
+            handCards.getChildren().add(cardBack);
+        }
+
+        return handCards;
     }
 
 }

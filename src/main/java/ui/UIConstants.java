@@ -1,5 +1,8 @@
 package ui;
 
+import java.util.Arrays;
+import java.util.HashMap;
+
 public final class UIConstants {
 
     private UIConstants() {}
@@ -10,9 +13,25 @@ public final class UIConstants {
     public static final String DISCARD_PILE_CAPTION = "DISCARD";
     public static final String SHOW_HAND_LABEL = "REVEAL";
 
+    public static final int INIT_NUM_CARDS_PER_HAND = 6;
+
+    // PLAYER_NAMES, INITIAL_PLAYER_HANDS, getInitialHands are temporary and will be eventually fetched from model
     public static final String[] PLAYER_NAMES = {
-            "Steve", "Monkey", "Jenny", "Eli", "George Washington"
+            "STEVE", "MONKEY", "JENNY", "ELI", "GEORGE WASHINGTON"
     };
+    public static final HashMap<String, String[]> INITIAL_PLAYER_HANDS = getInitialHands(PLAYER_NAMES);
+    private static HashMap<String, String[]> getInitialHands(String[] playerNames) {
+        HashMap<String, String[]> initialPlayerHands = new HashMap<>();
+
+        for (String playerName : playerNames) {
+            String[] hand = new String[INIT_NUM_CARDS_PER_HAND];
+            Arrays.fill(hand, "DEFUSE");
+
+            initialPlayerHands.put(playerName, hand);
+        }
+
+        return initialPlayerHands;
+    }
 
     public static final int SCENE_WIDTH = 1000;
     public static final int SCENE_HEIGHT = 700;
