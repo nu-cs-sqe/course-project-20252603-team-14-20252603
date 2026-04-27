@@ -6,6 +6,7 @@ public final class UIConstants {
 
     public static final String TITLE = "Exploding Kittens";
     public static final String PLAYER_HEADER_CAPTION = "CLICK TO SEE EACH PLAYER'S CARDS";
+    public static final String DRAW_PILE_CAPTION = "CLICK TO DRAW";
 
     public static final String[] PLAYER_NAMES = {
             "Steve", "Monkey", "Jenny", "Eli", "George Washington"

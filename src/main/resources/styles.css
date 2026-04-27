@@ -72,6 +72,10 @@
     -fx-pref-width: 180px;
 }
 
+.draw-pile-section {
+    -fx-spacing: 12px;
+}
+
 .draw-pile {
     -fx-background-color: red-4;
     -fx-pref-width: 152px;

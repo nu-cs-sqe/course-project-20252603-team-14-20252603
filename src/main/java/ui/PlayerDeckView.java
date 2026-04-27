@@ -78,8 +78,8 @@ public class PlayerDeckView {
 
         Text nameText = buildNameTagText(playerName);
         nameTag.setGraphic(nameText);
-
         nameTag.getStyleClass().add("name-tag");
+
         return nameTag;
     }
 
@@ -87,12 +87,14 @@ public class PlayerDeckView {
         Text nameText = new Text(playerName);
         nameText.setFill(UIGradients.GRADIENT_2);
         nameText.getStyleClass().add("h4");
+
         return nameText;
     }
 
     private Text buildPlayerHeaderCaption() {
         Text playerHeaderCaption = new Text(UIConstants.PLAYER_HEADER_CAPTION);
         playerHeaderCaption.getStyleClass().add("caption");
+
         return playerHeaderCaption;
     }
 
@@ -100,7 +102,6 @@ public class PlayerDeckView {
         HBox cardPileSection = new HBox();
 
         VBox drawPileSection = buildDrawPileSection();
-
         cardPileSection.getChildren().addAll(drawPileSection);
 
         return cardPileSection;
@@ -108,12 +109,22 @@ public class PlayerDeckView {
 
     private VBox buildDrawPileSection() {
         VBox drawPileSection = new VBox();
+        drawPileSection.setAlignment(Pos.CENTER);
+        drawPileSection.getStyleClass().add("draw-pile-section");
 
         VBox drawPile = buildDrawPile();
+        Text drawPileCaption = buildDrawPileCaption();
 
-        drawPileSection.getChildren().addAll(drawPile);
+        drawPileSection.getChildren().addAll(drawPile, drawPileCaption);
 
         return drawPileSection;
+    }
+
+    private Text buildDrawPileCaption() {
+        Text drawPileCaption = new Text(UIConstants.DRAW_PILE_CAPTION);
+        drawPileCaption.getStyleClass().add("caption");
+
+        return drawPileCaption;
     }
 
     private VBox buildDrawPile() {
@@ -168,6 +179,8 @@ public class PlayerDeckView {
 
         return kittensText;
     }
+
+
 
     private VBox buildPlayerChoiceSection() {
         VBox playerChoiceSection = new VBox();
