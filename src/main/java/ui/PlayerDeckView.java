@@ -14,11 +14,6 @@ public class PlayerDeckView {
     private final PlayerDeckController controller;
 
     private VBox root;
-    private VBox gameBoardSection;
-        private VBox playerHeaderSection;
-            private HBox playerNamesBar;
-                private Text playerHeaderCaption;
-    private VBox playerChoiceSection;
 
     public PlayerDeckView(PlayerDeckController controller) {
         this.controller = controller;
@@ -32,42 +27,48 @@ public class PlayerDeckView {
     private void buildUI() {
         root = new VBox();
 
-        buildGameBoardSection();
-        buildPlayerChoiceSection();
+        VBox gameBoardSection = buildGameBoardSection();
+        VBox playerChoiceSection = buildPlayerChoiceSection();
 
         root.getChildren().addAll(gameBoardSection, playerChoiceSection);
     }
 
-    private void buildGameBoardSection() {
-        gameBoardSection = new VBox();
+    private VBox buildGameBoardSection() {
+        VBox gameBoardSection = new VBox();
         gameBoardSection.getStyleClass().add("game-board-section");
         gameBoardSection.getChildren().add(new Label("gameBoardSection"));
 
-        buildPlayerHeaderSection();
+        VBox playerHeaderSection = buildPlayerHeaderSection();
 
         gameBoardSection.getChildren().addAll(playerHeaderSection);
+
+        return gameBoardSection;
     }
 
-    private void buildPlayerHeaderSection() {
-        playerHeaderSection = new VBox();
+    private VBox buildPlayerHeaderSection() {
+        VBox playerHeaderSection = new VBox();
         playerHeaderSection.setSpacing(12);
         playerHeaderSection.setAlignment(Pos.CENTER);
 
-        buildPlayerNamesBar();
-        buildPlayerHeaderCaption();
+        HBox playerNamesBar = buildPlayerNamesBar();
+        Text playerHeaderCaption = buildPlayerHeaderCaption();
         playerHeaderSection.getChildren().addAll(playerNamesBar, playerHeaderCaption);
+
+        return playerHeaderSection;
     }
 
-    private void buildPlayerNamesBar() {
-        playerNamesBar = new HBox();
+    private HBox buildPlayerNamesBar() {
+        HBox playerNamesBar = new HBox();
 
         for (String playerName : UIConstants.PLAYER_NAMES) {
             Node nameTag = buildNameTag(playerName);
             playerNamesBar.getChildren().add(nameTag);
         }
+
+        return playerNamesBar;
     }
 
-    private Node buildNameTag(String playerName) {
+    private Button buildNameTag(String playerName) {
         Button nameTag = new Button("");
 
         Text nameText = buildNameTagText(playerName);
@@ -84,16 +85,17 @@ public class PlayerDeckView {
         return nameText;
     }
 
-    private void buildPlayerHeaderCaption() {
-        playerHeaderCaption = new Text(UIConstants.PLAYER_HEADER_CAPTION);
+    private Text buildPlayerHeaderCaption() {
+        Text playerHeaderCaption = new Text(UIConstants.PLAYER_HEADER_CAPTION);
         playerHeaderCaption.getStyleClass().add("caption");
-
+        return playerHeaderCaption;
     }
 
-    private void buildPlayerChoiceSection() {
-        playerChoiceSection = new VBox();
+    private VBox buildPlayerChoiceSection() {
+        VBox playerChoiceSection = new VBox();
         playerChoiceSection.getStyleClass().addAll("player-choice-section");
         playerChoiceSection.getChildren().add(new Label("playerChoiceSection"));
+        return playerChoiceSection;
     }
 
 }
