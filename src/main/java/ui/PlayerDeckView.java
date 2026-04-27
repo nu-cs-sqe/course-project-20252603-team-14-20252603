@@ -198,8 +198,6 @@ public class PlayerDeckView {
 
     private VBox buildPlayerChoiceSection() {
         VBox playerChoiceSection = new VBox();
-        playerChoiceSection.getStyleClass().addAll("player-choice-section");
-        playerChoiceSection.getChildren().add(new Label("playerChoiceSection"));
 
         VBox playerHandSection = buildPlayerHandSection();
         HBox turnControlSection = buildTurnControlSection();

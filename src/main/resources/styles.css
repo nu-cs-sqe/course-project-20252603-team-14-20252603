@@ -106,10 +106,6 @@
     -fx-border-style: dashed;
 }
 
-.player-choice-section {
-    -fx-background-color: lightgreen;
-}
-
 .player-hand-section {
     -fx-spacing: 12;
 }
