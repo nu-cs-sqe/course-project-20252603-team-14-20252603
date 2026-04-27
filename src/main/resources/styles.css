@@ -68,13 +68,18 @@
     -fx-spacing: 48px;
 }
 
+.player-names-bar {
+    -fx-padding: 4px;
+    -fx-spacing: 8px;
+}
+
 .name-tag {
     -fx-background-color: magenta-4;
     -fx-border-color: linear-gradient(to bottom, yellow-1, yellow-4);
     -fx-border-width: 2;
     -fx-background-radius: 8;
     -fx-border-radius: 8;
-    -fx-padding: 8px 16px;
+    -fx-padding: 0px 16px;
     -fx-pref-width: 180px;
 }
 

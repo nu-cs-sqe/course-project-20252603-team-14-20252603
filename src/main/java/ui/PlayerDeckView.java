@@ -63,6 +63,7 @@ public class PlayerDeckView {
 
     private HBox buildPlayerNamesBar() {
         HBox playerNamesBar = new HBox();
+        playerNamesBar.getStyleClass().add("player-names-bar");
 
         for (String playerName : UIConstants.PLAYER_NAMES) {
             Node nameTag = buildNameTag(playerName);
