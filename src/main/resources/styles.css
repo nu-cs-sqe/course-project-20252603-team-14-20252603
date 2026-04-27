@@ -110,6 +110,10 @@
     -fx-background-color: lightgreen;
 }
 
+.player-hand-section {
+    -fx-spacing: 12;
+}
+
 .hand-visibility-toggle {
     -fx-text-fill: gray-0;
     -fx-background-color: transparent;

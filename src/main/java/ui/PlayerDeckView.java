@@ -210,11 +210,13 @@ public class PlayerDeckView {
 
     private VBox buildPlayerHandSection() {
         VBox playerHandSection = new VBox();
+        playerHandSection.setAlignment(Pos.CENTER);
 
         Button handVisibilityToggle = buildHandVisibilityToggle();
         ScrollPane handScrollPane = buildHandScrollPane();
+        Text handCaption = buildCaption(UIConstants.HAND_CAPTION);
 
-        playerHandSection.getChildren().addAll(handVisibilityToggle, handScrollPane);
+        playerHandSection.getChildren().addAll(handVisibilityToggle, handScrollPane, handCaption);
 
         return playerHandSection;
     }

@@ -12,6 +12,7 @@ public final class UIConstants {
     public static final String DRAW_PILE_CAPTION = "CLICK TO DRAW";
     public static final String DISCARD_PILE_CAPTION = "DISCARD";
     public static final String SHOW_HAND_LABEL = "REVEAL";
+    public static final String HAND_CAPTION = "SCROLL TO SEE ALL CARDS";
 
     public static final int INIT_NUM_CARDS_PER_HAND = 6;
 
