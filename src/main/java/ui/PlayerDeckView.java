@@ -265,8 +265,6 @@ public class PlayerDeckView {
         handScrollPane.getStyleClass().add("scroll-pane");
 
         HBox handCards = buildHandCards();
-        ReadOnlyDoubleProperty handScrollPaneWidth = handScrollPane.widthProperty();
-        handCards.minWidthProperty().bind(handScrollPaneWidth);
 
         handScrollPane.setContent(handCards);
 
@@ -308,6 +306,7 @@ public class PlayerDeckView {
 
     private StackPane buildOverlayLayer() {
         StackPane overlayLayer = new StackPane();
+        overlayLayer.setPickOnBounds(false);
 
         Button restartButton = buildRestartButton();
         overlayLayer.getChildren().add(restartButton);
