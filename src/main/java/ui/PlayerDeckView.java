@@ -46,7 +46,6 @@ public class PlayerDeckView {
 
     public void bindHandVisibilityToggle(Runnable handler) {
         handVisibilityToggle.setOnMouseClicked(e -> {
-            e.consume();
             handler.run();
         });
     }
