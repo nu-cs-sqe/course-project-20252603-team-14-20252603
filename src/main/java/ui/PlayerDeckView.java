@@ -18,7 +18,6 @@ import java.util.function.Consumer;
 
 public class PlayerDeckView {
 
-    private final PlayerDeckController controller;
     private final AssetManager assets;
 
     private final List<Button> nameTags;
@@ -28,8 +27,7 @@ public class PlayerDeckView {
     private HBox handCardsContainer;
     private Button handVisibilityToggle;
 
-    public PlayerDeckView(PlayerDeckController controller, AssetManager assets) {
-        this.controller = controller;
+    public PlayerDeckView(AssetManager assets) {
         this.assets = assets;
 
         this.nameTags = new ArrayList<>();

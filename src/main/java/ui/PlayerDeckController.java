@@ -13,7 +13,7 @@ public class PlayerDeckController {
     private boolean isFaceUp;
 
     public PlayerDeckController(AssetManager assets) {
-        this.view = new PlayerDeckView(this, assets);
+        this.view = new PlayerDeckView(assets);
 
         initializeState();
         renderInitialState();
