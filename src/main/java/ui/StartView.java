@@ -22,10 +22,11 @@ public class StartView {
 
     public Parent getRoot() { return root; }
 
-    private void buildUI(){
-
+    private void buildUI() {
+        root = new StackPane();
+        StackPane startScreen = buildStartScreen();
+        root.getChildren().add(startScreen);
     }
-
 
     private StackPane buildStartScreen() {
         StackPane startScreen = new StackPane();
