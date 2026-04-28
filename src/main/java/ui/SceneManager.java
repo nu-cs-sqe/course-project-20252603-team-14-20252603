@@ -7,7 +7,6 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 import java.io.InputStream;
-import java.nio.charset.StandardCharsets;
 
 public class SceneManager {
 
