@@ -45,11 +45,6 @@ public class PlayerDeckView {
         handVisibilityToggle.setOnMouseClicked(e -> {
             handler.run();
         });
-
-    }
-
-    public void bindFaceDownHandCardsContainer(Runnable handler) {
-
     }
 
     private void buildUI() {
