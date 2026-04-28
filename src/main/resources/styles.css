@@ -166,3 +166,9 @@
     -fx-border-color: transparent;
     -fx-effect: none;
 }
+
+.restart-icon {
+    -fx-fill: yellow-1;
+    -fx-scale-x: 1.2;
+    -fx-scale-y: 1.2;
+}

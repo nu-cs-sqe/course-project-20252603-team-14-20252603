@@ -11,6 +11,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
+import javafx.scene.shape.SVGPath;
 import javafx.scene.text.Text;
 
 public class PlayerDeckView {
@@ -315,21 +316,18 @@ public class PlayerDeckView {
         Button restartButton = new Button();
         restartButton.getStyleClass().add("icon-button");
 
-        ImageView restartIconView = buildIcon("placeholder");
-        restartButton.setGraphic(restartIconView);
+        SVGPath restartIcon = buildIcon("restart");
+        restartButton.setGraphic(restartIcon);
 
         return restartButton;
     }
 
-    private ImageView buildIcon(String key) {
-        Image iconImage = assets.getImage(key);
-        ImageView iconView = new ImageView(iconImage);
+    private SVGPath buildIcon(String key) {
+        SVGPath icon = new SVGPath();
+        icon.setContent(assets.getSvg(key));
+        icon.getStyleClass().add(String.format("%s-icon", key));
 
-        iconView.setFitWidth(UIConstants.SMALL_ICON_SIZE);
-        iconView.setFitHeight(UIConstants.SMALL_ICON_SIZE);
-        iconView.setPreserveRatio(true);
-
-        return iconView;
+        return icon;
     }
 
 }

@@ -1,15 +1,13 @@
 package ui;
 
-import datasource.FileLoader;
-import datasource.FontLoader;
-import datasource.ImageLoader;
-import datasource.StyleSheetLoader;
+import datasource.*;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 
 public class SceneManager {
 
@@ -42,6 +40,7 @@ public class SceneManager {
     private void loadGlobalFiles() {
         loadCSS();
         loadImages();
+        loadIcons("/icons/restart.txt");
 
         loadFont("/fonts/Koulen-Regular.ttf");
         loadFont("/fonts/NationalPark-VariableFont_wght.ttf");
@@ -59,6 +58,13 @@ public class SceneManager {
         loader.open("/images/placeholder.png");
         String imageUrl = loader.getFileUrl().toExternalForm();
         assets.addImage("placeholder", imageUrl);
+    }
+
+    private void loadIcons(String fileName) {
+        IconLoader loader = new IconLoader();
+        loader.open(fileName);
+        String pathData = loader.getPathData();
+        assets.addSvg("restart", pathData);
     }
 
     private void loadFont(String fileName) {

@@ -8,6 +8,7 @@ import java.util.Map;
 public class AssetManager {
 
     private final Map<String, Image> images = new HashMap<>();
+    private final Map<String, String> svgPaths = new HashMap<>();
 
     private String cssUrl;
 
@@ -18,6 +19,14 @@ public class AssetManager {
 
     public Image getImage(String key) {
         return images.get(key);
+    }
+
+    public void addSvg(String key, String pathData) {
+        svgPaths.put(key, pathData);
+    }
+
+    public String getSvg(String key) {
+        return svgPaths.get(key);
     }
 
     public void setStylesheet(String url) {

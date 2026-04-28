@@ -25,7 +25,8 @@ public class StyleSheetLoader implements FileLoader {
     private void checkFileExistence(URL file) {
         try {
             Paths.get(file.toURI());
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             throw new NullPointerException("The requested file does not exist");
         }
     }
