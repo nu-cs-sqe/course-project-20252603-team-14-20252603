@@ -17,21 +17,28 @@ public class PlayerDeckController {
 
     private void initializeBindings() {
         view.bindNameTags(this::bindNameTag);
+        view.bindHandVisibilityToggle(this::onToggleHandVisibility);
     }
 
     private void bindNameTag(Button nameTag, int playerIndex) {
-        nameTag.setOnAction(e -> {
+        nameTag.setOnMouseClicked(e -> {
             currentPlayerIndex = playerIndex;
             updateViewToCurrentPlayer();
+            System.out.println("NAME TAG CLICKED");
         });
-    }
-
-    public PlayerDeckView getView() {
-        return view;
     }
 
     private void updateViewToCurrentPlayer() {
         String player = players[currentPlayerIndex];
         view.renderPlayerHand(player);
+    }
+
+    private void onToggleHandVisibility() {
+        view.toggleHandVisibility();
+        System.out.println("HAND VISIBILITY TOGGLE CLICKED");
+    }
+
+    public PlayerDeckView getView() {
+        return view;
     }
 }

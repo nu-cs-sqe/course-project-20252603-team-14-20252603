@@ -16,14 +16,21 @@ public class PlayerDeckView {
     private final PlayerDeckController controller;
     private final AssetManager assets;
 
+    private final Button[] nameTags;
+
     private StackPane root;
-    private HBox handCards;
+    private HBox handCardsContainer;
     private boolean isFaceUp = true;
-    private Button[] nameTags = new Button[UIConstants.PLAYER_NAMES.length];
+    private Button handVisibilityToggle;
+    private String currentPlayer;
 
     public PlayerDeckView(PlayerDeckController controller, AssetManager assets) {
         this.controller = controller;
         this.assets = assets;
+
+        this.nameTags = new Button[UIConstants.PLAYER_NAMES.length];
+        this.currentPlayer = UIConstants.PLAYER_NAMES[0];
+
         buildUI();
     }
 
@@ -35,6 +42,18 @@ public class PlayerDeckView {
         for (int i = 0; i < nameTags.length; i++) {
             handler.accept(nameTags[i], i);
         }
+    }
+
+    public void bindHandVisibilityToggle(Runnable handler) {
+        handVisibilityToggle.setOnMouseClicked(e -> {
+            e.consume();
+            handler.run();
+        });
+    }
+
+    public void toggleHandVisibility() {
+        isFaceUp = !isFaceUp;
+        renderPlayerHand(currentPlayer);
     }
 
     private void buildUI() {
@@ -242,7 +261,7 @@ public class PlayerDeckView {
         VBox playerHandSection = new VBox();
         playerHandSection.setAlignment(Pos.CENTER);
 
-        Button handVisibilityToggle = buildHandVisibilityToggle();
+        buildHandVisibilityToggle();
         ScrollPane handScrollPane = buildHandScrollPane();
         Text handCaption = buildCaption(UIConstants.HAND_CAPTION);
 
@@ -251,11 +270,9 @@ public class PlayerDeckView {
         return playerHandSection;
     }
 
-    private Button buildHandVisibilityToggle() {
-        Button handVisibilityToggle = new Button(UIConstants.SHOW_HAND_LABEL);
+    private void buildHandVisibilityToggle() {
+        handVisibilityToggle = new Button(UIConstants.SHOW_HAND_LABEL);
         handVisibilityToggle.getStyleClass().addAll("hand-visibility-toggle", "h6");
-
-        return handVisibilityToggle;
     }
 
     private ScrollPane buildHandScrollPane() {
@@ -265,16 +282,16 @@ public class PlayerDeckView {
         handScrollPane.getStyleClass().add("scroll-pane");
 
         buildHandCardsContainer();
-        handScrollPane.setContent(handCards);
+        handScrollPane.setContent(handCardsContainer);
 
         return handScrollPane;
     }
 
     private void buildHandCardsContainer() {
-        handCards = new HBox();
-        handCards.setAlignment(Pos.CENTER);
-        handCards.setMinWidth(UIConstants.SCENE_WIDTH);
-        handCards.getStyleClass().add("hand-cards-container");
+        handCardsContainer = new HBox();
+        handCardsContainer.setAlignment(Pos.CENTER);
+        handCardsContainer.setMinWidth(UIConstants.SCENE_WIDTH);
+        handCardsContainer.getStyleClass().add("hand-cards-container");
 
         buildPlayerHandCards(UIConstants.PLAYER_NAMES[0]);
     }
@@ -282,7 +299,7 @@ public class PlayerDeckView {
     private void buildPlayerHandCards(String player) {
         for (String cardName : UIConstants.INITIAL_PLAYER_HANDS.get(player)) {
             VBox handCard = buildHandCard(cardName);
-            handCards.getChildren().add(handCard);
+            handCardsContainer.getChildren().add(handCard);
         }
     }
 
@@ -359,8 +376,9 @@ public class PlayerDeckView {
     }
 
     public void renderPlayerHand(String player) {
-        handCards.getChildren().clear();
-        buildPlayerHandCards(player);
+        handCardsContainer.getChildren().clear();
+        this.currentPlayer = player;
+        buildPlayerHandCards(currentPlayer);
     }
 
 }
