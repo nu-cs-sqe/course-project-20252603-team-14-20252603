@@ -40,20 +40,20 @@ public class PlayerDeckView {
         return root;
     }
 
-    public void renderPlayerHandCards() {
-        handCardsContainer.getChildren().clear();
-        buildPlayerHandCards();
-    }
-
     public void renderPlayerNameTags() {
         for (int i = 0; i < nameTagButtons.size(); i++) {
             nameTagButtons.get(i).getStyleClass().setAll(
-                "button",
-                "name-tag",
-                "h4",
-                (i == model.getCurrentPlayerIndex()) ? "selected" : "enabled"
+                    "button",
+                    "name-tag",
+                    "h4",
+                    (i == model.getCurrentPlayerIndex()) ? "selected" : "enabled"
             );
         }
+    }
+
+    public void renderPlayerHandCards() {
+        handCardsContainer.getChildren().clear();
+        buildPlayerHandCards();
     }
 
     public void bindNameTags(Consumer<Integer> handler) {
