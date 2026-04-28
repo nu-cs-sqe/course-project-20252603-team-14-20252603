@@ -20,6 +20,7 @@ public class PlayerDeckController {
     private void initializeBindings() {
         view.bindNameTags(this::bindNameTag);
         view.bindHandVisibilityToggle(this::onToggleHandVisibility);
+        view.bindHandCardsContainer(this::onHandCardContainer);
     }
 
     private void bindNameTag(Button nameTag, int playerIndex) {
@@ -29,7 +30,7 @@ public class PlayerDeckController {
                 isFaceUp = false;
                 view.renderPlayerHand(players[currentPlayerIndex], isFaceUp);
 
-                System.out.println("NAME TAG CLICKED");
+                System.out.println("NAME TAG CHANGED");
             }
         });
     }
@@ -37,7 +38,13 @@ public class PlayerDeckController {
     private void onToggleHandVisibility() {
         isFaceUp = !isFaceUp;
         view.renderPlayerHand(players[currentPlayerIndex], isFaceUp);
-        System.out.println("HAND VISIBILITY TOGGLE CLICKED");
+        System.out.println("HAND VISIBILITY CHANGED");
+    }
+
+    private void onHandCardContainer() {
+        if (!isFaceUp) {
+            onToggleHandVisibility();
+        }
     }
 
     public PlayerDeckView getView() {

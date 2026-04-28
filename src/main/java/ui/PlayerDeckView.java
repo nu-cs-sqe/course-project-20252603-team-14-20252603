@@ -47,6 +47,12 @@ public class PlayerDeckView {
         });
     }
 
+    public void bindHandCardsContainer(Runnable handler) {
+        handCardsContainer.setOnMouseClicked(e -> {
+            handler.run();
+        });
+    }
+
     private void buildUI() {
         root = new StackPane();
 
