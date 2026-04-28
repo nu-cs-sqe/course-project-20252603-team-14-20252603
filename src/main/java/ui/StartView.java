@@ -29,5 +29,14 @@ public class StartView {
         return title;
     }
 
+    private ImageView buildExplosionImage() {
+        Image image = assets.getImage("explosion-cat");
+        ImageView imageView = new ImageView(image);
+
+        imageView.setFitWidth(500);
+        imageView.setPreserveRatio(true);
+
+        return imageView;
+    }
 
 }
