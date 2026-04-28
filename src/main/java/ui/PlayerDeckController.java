@@ -7,12 +7,14 @@ public class PlayerDeckController {
     private final PlayerDeckView view;
     private String[] players;
     private int currentPlayerIndex;
+    private boolean isFaceUp = false;
 
     public PlayerDeckController(AssetManager assets) {
         this.view = new PlayerDeckView(this, assets);
         this.players = UIConstants.PLAYER_NAMES;
         this.currentPlayerIndex = 0;
         initializeBindings();
+        view.renderPlayerHand(players[currentPlayerIndex], isFaceUp);
     }
 
     private void initializeBindings() {
@@ -24,20 +26,17 @@ public class PlayerDeckController {
         nameTag.setOnMouseClicked(e -> {
             if (currentPlayerIndex != playerIndex) {
                 currentPlayerIndex = playerIndex;
-                updateViewToCurrentPlayer();
-                view.toggleHandVisibility();
+                isFaceUp = false;
+                view.renderPlayerHand(players[currentPlayerIndex], isFaceUp);
+
                 System.out.println("NAME TAG CLICKED");
             }
         });
     }
 
-    private void updateViewToCurrentPlayer() {
-        String player = players[currentPlayerIndex];
-        view.renderPlayerHand(player);
-    }
-
     private void onToggleHandVisibility() {
-        view.toggleHandVisibility();
+        isFaceUp = !isFaceUp;
+        view.renderPlayerHand(players[currentPlayerIndex], isFaceUp);
         System.out.println("HAND VISIBILITY TOGGLE CLICKED");
     }
 

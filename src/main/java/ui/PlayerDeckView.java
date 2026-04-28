@@ -20,16 +20,13 @@ public class PlayerDeckView {
 
     private StackPane root;
     private HBox handCardsContainer;
-    private boolean isFaceUp = true;
     private Button handVisibilityToggle;
-    private String currentPlayer;
 
     public PlayerDeckView(PlayerDeckController controller, AssetManager assets) {
         this.controller = controller;
         this.assets = assets;
 
         this.nameTags = new Button[UIConstants.PLAYER_NAMES.length];
-        this.currentPlayer = UIConstants.PLAYER_NAMES[0];
 
         buildUI();
     }
@@ -48,11 +45,11 @@ public class PlayerDeckView {
         handVisibilityToggle.setOnMouseClicked(e -> {
             handler.run();
         });
+
     }
 
-    public void toggleHandVisibility() {
-        isFaceUp = !isFaceUp;
-        renderPlayerHand(currentPlayer);
+    public void bindFaceDownHandCardsContainer(Runnable handler) {
+
     }
 
     private void buildUI() {
@@ -291,18 +288,16 @@ public class PlayerDeckView {
         handCardsContainer.setAlignment(Pos.CENTER);
         handCardsContainer.setMinWidth(UIConstants.SCENE_WIDTH);
         handCardsContainer.getStyleClass().add("hand-cards-container");
-
-        buildPlayerHandCards(UIConstants.PLAYER_NAMES[0]);
     }
 
-    private void buildPlayerHandCards(String player) {
+    private void buildPlayerHandCards(String player, boolean isFaceUp) {
         for (String cardName : UIConstants.INITIAL_PLAYER_HANDS.get(player)) {
-            VBox handCard = buildHandCard(cardName);
+            VBox handCard = buildHandCard(cardName, isFaceUp);
             handCardsContainer.getChildren().add(handCard);
         }
     }
 
-    private VBox buildHandCard(String card) {
+    private VBox buildHandCard(String card, boolean isFaceUp) {
         VBox handCard;
 
         if (isFaceUp) {
@@ -374,10 +369,9 @@ public class PlayerDeckView {
         return icon;
     }
 
-    public void renderPlayerHand(String player) {
+    public void renderPlayerHand(String player, boolean isFaceUp) {
         handCardsContainer.getChildren().clear();
-        this.currentPlayer = player;
-        buildPlayerHandCards(currentPlayer);
+        buildPlayerHandCards(player, isFaceUp);
     }
 
 }
