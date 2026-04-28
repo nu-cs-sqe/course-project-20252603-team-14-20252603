@@ -136,7 +136,7 @@ public class PlayerDeckView {
         buildPlayerNameTags();
     }
 
-    public void buildPlayerNameTags() {
+    private void buildPlayerNameTags() {
         for (int i = 0; i < model.getPlayerNames().size(); i++) {
             Button nameTag = buildNameTag(model.getPlayerNames().get(i));
 
@@ -314,15 +314,15 @@ public class PlayerDeckView {
 
     private void buildPlayerHandCards() {
         for (String cardName : model.getCurrentPlayerHand()) {
-            VBox handCard = buildHandCard(cardName, model.getIsFaceUp());
+            VBox handCard = buildHandCard(cardName);
             handCardsContainer.getChildren().add(handCard);
         }
     }
 
-    private VBox buildHandCard(String cardName, boolean isFaceUp) {
+    private VBox buildHandCard(String cardName) {
         VBox handCard;
 
-        if (isFaceUp) {
+        if (model.getIsFaceUp()) {
             handCard = buildCardFront(cardName);
         }
         else {
