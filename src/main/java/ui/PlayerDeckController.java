@@ -22,8 +22,7 @@ public class PlayerDeckController {
 
     private void onNameTag(int playerIndex) {
         if (model.getCurrentPlayerIndex() != playerIndex) {
-            model.setCurrentPlayerIndex(playerIndex);
-            model.setIsFaceUp(false);
+            model.changeCurrentPlayerIndexAndFlipCardsDown(playerIndex);
 
             view.renderPlayerNameTags();
             view.renderPlayerHandCards();
@@ -32,7 +31,7 @@ public class PlayerDeckController {
     }
 
     private void onToggleHandVisibility() {
-        model.setIsFaceUp(!model.getIsFaceUp());
+        model.setIsFaceUpToOpposite();
 
         view.renderPlayerHandCards();
         System.out.println("HAND VISIBILITY CHANGED");

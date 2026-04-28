@@ -26,10 +26,6 @@ public class GameState {
         return currentPlayerIndex;
     }
 
-    public void setCurrentPlayerIndex(int index) {
-        currentPlayerIndex = index;
-    }
-
     public List<String> getCurrentPlayerHand() {
         return playerHands.get(getCurrentPlayerIndex());
     }
@@ -38,8 +34,13 @@ public class GameState {
         return isFaceUp;
     }
 
-    public void setIsFaceUp(boolean value) {
-        isFaceUp = value;
+    public void changeCurrentPlayerIndexAndFlipCardsDown(int playerIndex) {
+        currentPlayerIndex = playerIndex;
+        isFaceUp = false;
+    }
+
+    public void setIsFaceUpToOpposite() {
+        isFaceUp = !isFaceUp;
     }
 
     private static HashMap<Integer, List<String>> getInitialHands() {
