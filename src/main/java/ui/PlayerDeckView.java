@@ -1,5 +1,6 @@
 package ui;
 
+import domain.GameState;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
@@ -12,24 +13,25 @@ import javafx.scene.shape.SVGPath;
 import javafx.scene.text.Text;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.function.Consumer;
 
 public class PlayerDeckView {
 
     private final AssetManager assets;
+    private final GameState model;
 
-    private final List<Button> nameTags;
+    private final ArrayList<Button> nameTagButtons;
 
     private StackPane root;
     private HBox playerNamesContainer;
     private HBox handCardsContainer;
     private Button handVisibilityToggle;
 
-    public PlayerDeckView(AssetManager assets) {
+    public PlayerDeckView(GameState model, AssetManager assets) {
         this.assets = assets;
+        this.model = model;
 
-        this.nameTags = new ArrayList<>();
+        this.nameTagButtons = new ArrayList<>();
 
         buildUI();
     }
@@ -38,30 +40,26 @@ public class PlayerDeckView {
         return root;
     }
 
-    public void renderPlayerNameTags(String[] playerNames) {
-        playerNamesContainer.getChildren().clear();
-        nameTags.clear();
-
-        for (int i = 0; i < playerNames.length; i++) {
-            Button nameTag = buildNameTag(playerNames[i]);
-            nameTags.add(nameTag);
-            playerNamesContainer.getChildren().add(nameTag);
-        }
+    public void renderPlayerHandCards() {
+        handCardsContainer.getChildren().clear();
+        buildPlayerHandCards();
     }
 
-    public void renderPlayerHandCards(String[] cardNames, boolean isFaceUp) {
-        handCardsContainer.getChildren().clear();
-
-        for (String cardName : cardNames) {
-            VBox handCard = buildHandCard(cardName, isFaceUp);
-            handCardsContainer.getChildren().add(handCard);
+    public void renderPlayerNameTags() {
+        for (int i = 0; i < nameTagButtons.size(); i++) {
+            nameTagButtons.get(i).getStyleClass().setAll(
+                "button",
+                "name-tag",
+                "h4",
+                (i == model.getCurrentPlayerIndex()) ? "selected" : "enabled"
+            );
         }
     }
 
     public void bindNameTags(Consumer<Integer> handler) {
-        for (int i = 0; i < nameTags.size(); i++) {
+        for (int i = 0; i < nameTagButtons.size(); i++) {
             int index = i;
-            nameTags.get(i).setOnMouseClicked((e -> {
+            nameTagButtons.get(i).setOnMouseClicked((e -> {
                 handler.accept(index);
             }));
         }
@@ -135,24 +133,27 @@ public class PlayerDeckView {
     private void buildPlayerNamesContainer() {
         playerNamesContainer = new HBox();
         playerNamesContainer.getStyleClass().add("player-names-bar");
+        buildPlayerNameTags();
+    }
+
+    public void buildPlayerNameTags() {
+        for (int i = 0; i < model.getPlayerNames().size(); i++) {
+            Button nameTag = buildNameTag(model.getPlayerNames().get(i));
+
+            nameTag.getStyleClass().addAll(
+                    "name-tag",
+                    "h4",
+                    (i == model.getCurrentPlayerIndex()) ? "selected" : "enabled"
+            );
+
+            nameTagButtons.add(nameTag);
+            playerNamesContainer.getChildren().add(nameTag);
+        }
     }
 
     private Button buildNameTag(String playerName) {
-        Button nameTag = new Button("");
-
-        Text nameText = buildNameTagText(playerName);
-        nameTag.setGraphic(nameText);
-        nameTag.getStyleClass().add("name-tag");
-
+        Button nameTag = new Button(playerName);
         return nameTag;
-    }
-
-    private Text buildNameTagText(String playerName) {
-        Text nameText = new Text(playerName);
-        nameText.setFill(UIGradients.GRADIENT_2);
-        nameText.getStyleClass().add("h4");
-
-        return nameText;
     }
 
     private Text buildCaption(String text) {
@@ -307,6 +308,15 @@ public class PlayerDeckView {
         handCardsContainer.setAlignment(Pos.CENTER);
         handCardsContainer.setMinWidth(UIConstants.SCENE_WIDTH);
         handCardsContainer.getStyleClass().add("hand-cards-container");
+
+        buildPlayerHandCards();
+    }
+
+    private void buildPlayerHandCards() {
+        for (String cardName : model.getCurrentPlayerHand()) {
+            VBox handCard = buildHandCard(cardName, model.getIsFaceUp());
+            handCardsContainer.getChildren().add(handCard);
+        }
     }
 
     private VBox buildHandCard(String cardName, boolean isFaceUp) {

@@ -1,6 +1,7 @@
 package ui;
 
 import datasource.*;
+import domain.GameState;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.text.Font;
@@ -11,6 +12,7 @@ import java.io.InputStream;
 public class SceneManager {
 
     private final Stage stage;
+    private final GameState model = new GameState();
     private final AssetManager assets = new AssetManager();
 
     public SceneManager(Stage stage) {
@@ -19,7 +21,7 @@ public class SceneManager {
 
     public void showPlayerDeckView() {
         loadGlobalFiles();
-        PlayerDeckController controller = new PlayerDeckController(assets);
+        PlayerDeckController controller = new PlayerDeckController(model, assets);
         setScene(controller.getView().getRoot());
     }
 

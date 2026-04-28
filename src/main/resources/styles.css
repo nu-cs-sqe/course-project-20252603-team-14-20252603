@@ -73,19 +73,29 @@
     -fx-spacing: 64px;
 }
 
-.player-names-bar {
+.player-names-container {
     -fx-padding: 4px;
     -fx-spacing: 8px;
 }
 
 .name-tag {
     -fx-background-color: magenta-4;
-    -fx-border-color: linear-gradient(to bottom, yellow-1, yellow-4);
+    -fx-text-fill: yellow-0-tr-2;
     -fx-border-width: 2;
     -fx-background-radius: 8;
     -fx-border-radius: 8;
     -fx-padding: 0px 16px;
     -fx-pref-width: 236px;
+}
+
+.name-tag.enabled {
+    -fx-border-color: linear-gradient(to bottom, yellow-1, yellow-4);
+    -fx-text-fill: linear-gradient(to bottom, yellow-1, yellow-4);
+}
+
+.name-tag.selected {
+    -fx-border-color: linear-gradient(to bottom, yellow-3, orange-3, red-3);
+    -fx-text-fill: linear-gradient(to bottom, yellow-3, orange-3, red-3);
 }
 
 .card-piles-section {
