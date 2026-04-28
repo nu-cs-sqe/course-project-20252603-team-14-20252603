@@ -14,21 +14,25 @@ public class PlayerDeckController {
 
     public PlayerDeckController(AssetManager assets) {
         this.view = new PlayerDeckView(this, assets);
+
+        initializeState();
+        renderInitialState();
+        bindUI();
+    }
+
+    private void initializeState() {
         this.playerNames = GameConstants.PLAYER_NAMES;
         this.playerHands = GameConstants.INITIAL_PLAYER_HANDS;
         this.currentPlayerIndex = GameConstants.STARTING_PLAYER_INDEX;
         this.isFaceUp = false;
-
-        initializeRender();
-        initializeBindings();
     }
 
-    private void initializeRender() {
+    private void renderInitialState() {
         view.renderPlayerNameTags(playerNames);
         view.renderPlayerHandCards(getCurrentPlayerCards(), isFaceUp);
     }
 
-    private void initializeBindings() {
+    private void bindUI() {
         view.bindNameTags(this::onNameTag);
         view.bindHandVisibilityToggle(this::onToggleHandVisibility);
         view.bindHandCardsContainer(this::onHandCardContainer);
