@@ -17,12 +17,33 @@ public class StartView {
     public StartView(StartController controller, AssetManager assets){
         this.controller = controller;
         this.assets = assets;
-
+        buildUI();
     }
 
     public Parent getRoot() { return root; }
 
+    private void buildUI(){
 
+    }
+
+
+    private StackPane buildStartScreen() {
+        StackPane startScreen = new StackPane();
+        root.getStyleClass().add("start-screen");
+
+        VBox content = new VBox();
+        content.setAlignment(Pos.CENTER);
+        content.setSpacing(30);
+
+        Text title = buildTitle();
+        ImageView explosionCat = buildExplosionImage();
+        Button playButton = buildPlayButton();
+
+        content.getChildren().addAll(title,explosionCat,playButton);
+        startScreen.getChildren().add(content);
+        return startScreen;
+
+    }
     private Text buildTitle() {
         Text title = new Text("EXPLODING WILDKITTENS");
         title.getStyleClass().add("title-text");
