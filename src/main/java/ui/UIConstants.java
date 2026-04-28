@@ -2,6 +2,7 @@ package ui;
 
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Map;
 
 public final class UIConstants {
 
@@ -23,14 +24,23 @@ public final class UIConstants {
     };
     public static final HashMap<String, String[]> INITIAL_PLAYER_HANDS = getInitialHands(PLAYER_NAMES);
     private static HashMap<String, String[]> getInitialHands(String[] playerNames) {
-        HashMap<String, String[]> initialPlayerHands = new HashMap<>();
-
-        for (String playerName : playerNames) {
-            String[] hand = new String[INIT_NUM_CARDS_PER_HAND];
-            Arrays.fill(hand, "DEFUSE");
-
-            initialPlayerHands.put(playerName, hand);
-        }
+        HashMap<String, String[]> initialPlayerHands = new HashMap<>(Map.of(
+                "STEVE", new String[]{
+                        "DEFUSE", "DEFUSE", "DEFUSE", "DEFUSE", "DEFUSE", "DEFUSE"
+                },
+                "MONKEY", new String[]{
+                        "ATTACK", "DEFUSE", "DEFUSE", "DEFUSE", "DEFUSE", "DEFUSE"
+                },
+                "JENNY", new String[]{
+                        "DEFUSE", "DEFUSE", "DEFUSE", "DEFUSE", "DEFUSE", "DEFUSE"
+                },
+                "ELI", new String[]{
+                        "DEFUSE", "DEFUSE", "DEFUSE", "DEFUSE", "DEFUSE", "DEFUSE"
+                },
+                "GEORGE WASHINGTON", new String[]{
+                        "DEFUSE", "DEFUSE", "DEFUSE", "DEFUSE", "DEFUSE", "DEFUSE"
+                }
+        ));
 
         return initialPlayerHands;
     }
@@ -39,7 +49,6 @@ public final class UIConstants {
     public static final int SCENE_HEIGHT = 832;
 
     public static final int CARD_BACK_ICON_WIDTH = 40;
-    public static final int SMALL_ICON_SIZE = 16;
 
     public static final int MIN_PERCENT = 0;
     public static final int MAX_PERCENT = 100;

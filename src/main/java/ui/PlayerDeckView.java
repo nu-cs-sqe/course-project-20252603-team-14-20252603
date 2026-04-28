@@ -2,7 +2,6 @@ package ui;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
@@ -18,6 +17,9 @@ public class PlayerDeckView {
     private final AssetManager assets;
 
     private StackPane root;
+    private HBox handCards;
+    private boolean isFaceUp = true;
+    private Button[] nameTags = new Button[UIConstants.PLAYER_NAMES.length];
 
     public PlayerDeckView(PlayerDeckController controller, AssetManager assets) {
         this.controller = controller;
@@ -27,6 +29,12 @@ public class PlayerDeckView {
 
     public Parent getRoot() {
         return root;
+    }
+
+    public void bindNameTags(java.util.function.BiConsumer<Button, Integer> handler) {
+        for (int i = 0; i < nameTags.length; i++) {
+            handler.accept(nameTags[i], i);
+        }
     }
 
     private void buildUI() {
@@ -86,9 +94,10 @@ public class PlayerDeckView {
         HBox playerNamesBar = new HBox();
         playerNamesBar.getStyleClass().add("player-names-bar");
 
-        for (String playerName : UIConstants.PLAYER_NAMES) {
-            Node nameTag = buildNameTag(playerName);
+        for (int i = 0; i < UIConstants.PLAYER_NAMES.length; i++) {
+            Button nameTag = buildNameTag(UIConstants.PLAYER_NAMES[i]);
             playerNamesBar.getChildren().add(nameTag);
+            nameTags[i] = nameTag;
         }
 
         return playerNamesBar;
@@ -255,27 +264,48 @@ public class PlayerDeckView {
         handScrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
         handScrollPane.getStyleClass().add("scroll-pane");
 
-        HBox handCards = buildHandCards();
-
+        buildHandCardsContainer();
         handScrollPane.setContent(handCards);
 
         return handScrollPane;
     }
 
-    private HBox buildHandCards() {
-        HBox handCards = new HBox();
+    private void buildHandCardsContainer() {
+        handCards = new HBox();
         handCards.setAlignment(Pos.CENTER);
         handCards.setMinWidth(UIConstants.SCENE_WIDTH);
-        handCards.getStyleClass().add("hand-cards");
+        handCards.getStyleClass().add("hand-cards-container");
 
-        for (String cardName : UIConstants.INITIAL_PLAYER_HANDS.get("STEVE")) {
-            VBox cardBack = buildCardBack();
-            cardBack.getStyleClass().add("card-enabled");
+        buildPlayerHandCards(UIConstants.PLAYER_NAMES[0]);
+    }
 
-            handCards.getChildren().add(cardBack);
+    private void buildPlayerHandCards(String player) {
+        for (String cardName : UIConstants.INITIAL_PLAYER_HANDS.get(player)) {
+            VBox handCard = buildHandCard(cardName);
+            handCards.getChildren().add(handCard);
+        }
+    }
+
+    private VBox buildHandCard(String card) {
+        VBox handCard;
+
+        if (isFaceUp) {
+            handCard = buildCardFront(card);
+        }
+        else {
+            handCard = buildCardBack();
         }
 
-        return handCards;
+        handCard.getStyleClass().add("card-enabled");
+
+        return handCard;
+    }
+
+    private VBox buildCardFront(String card) {
+        VBox cardFront = new VBox();
+        cardFront.getStyleClass().add("card-front");
+        cardFront.getChildren().add(new Text(card));
+        return cardFront;
     }
 
     private HBox buildTurnControlSection() {
@@ -326,6 +356,11 @@ public class PlayerDeckView {
         icon.getStyleClass().add(String.format("%s-icon", key));
 
         return icon;
+    }
+
+    public void renderPlayerHand(String player) {
+        handCards.getChildren().clear();
+        buildPlayerHandCards(player);
     }
 
 }

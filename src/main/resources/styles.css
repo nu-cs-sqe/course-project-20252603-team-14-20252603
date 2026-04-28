@@ -139,7 +139,7 @@
     -fx-opacity: 0;
 }
 
-.hand-cards {
+.hand-cards-container {
     -fx-spacing: 8px;
 }
 
@@ -147,6 +147,12 @@
     -fx-border-radius: 4;
     -fx-border-color: linear-gradient(to bottom, yellow-1, yellow-4);
     -fx-border-width: 2;
+}
+
+.card-front {
+    -fx-pref-width: 200px;
+    -fx-pref-height: 262px;
+    -fx-background-color: gray-0;
 }
 
 .turn-control-section {
