@@ -1,9 +1,5 @@
 package ui;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-
 public final class UIConstants {
 
     private UIConstants() {}
@@ -15,35 +11,6 @@ public final class UIConstants {
     public static final String SHOW_HAND_LABEL = "REVEAL";
     public static final String HAND_CAPTION = "SCROLL TO SEE ALL CARDS";
     public static final String START_GAME_LABEL = "START GAME";
-
-    public static final int INIT_NUM_CARDS_PER_HAND = 6;
-
-    // PLAYER_NAMES, INITIAL_PLAYER_HANDS, getInitialHands are temporary and will be eventually fetched from model
-    public static final String[] PLAYER_NAMES = {
-            "STEVE", "MONKEY", "JENNY", "ELI", "GEORGE WASHINGTON"
-    };
-    public static final HashMap<String, String[]> INITIAL_PLAYER_HANDS = getInitialHands(PLAYER_NAMES);
-    private static HashMap<String, String[]> getInitialHands(String[] playerNames) {
-        HashMap<String, String[]> initialPlayerHands = new HashMap<>(Map.of(
-                "STEVE", new String[]{
-                        "DEFUSE", "DEFUSE", "DEFUSE", "DEFUSE", "DEFUSE", "DEFUSE"
-                },
-                "MONKEY", new String[]{
-                        "ATTACK", "DEFUSE", "DEFUSE", "DEFUSE", "DEFUSE", "DEFUSE"
-                },
-                "JENNY", new String[]{
-                        "DEFUSE", "DEFUSE", "DEFUSE", "DEFUSE", "DEFUSE", "DEFUSE"
-                },
-                "ELI", new String[]{
-                        "DEFUSE", "DEFUSE", "DEFUSE", "DEFUSE", "DEFUSE", "DEFUSE"
-                },
-                "GEORGE WASHINGTON", new String[]{
-                        "DEFUSE", "DEFUSE", "DEFUSE", "DEFUSE", "DEFUSE", "DEFUSE"
-                }
-        ));
-
-        return initialPlayerHands;
-    }
 
     public static final int SCENE_WIDTH = 1280;
     public static final int SCENE_HEIGHT = 832;

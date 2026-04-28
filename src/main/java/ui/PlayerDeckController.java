@@ -1,43 +1,53 @@
 package ui;
 
-import javafx.scene.control.Button;
+import domain.GameConstants;
+
+import java.util.HashMap;
 
 public class PlayerDeckController {
 
     private final PlayerDeckView view;
-    private String[] players;
+    private String[] playerNames;
+    private HashMap<Integer, String[]> playerHands;
     private int currentPlayerIndex;
-    private boolean isFaceUp = false;
+    private boolean isFaceUp;
 
     public PlayerDeckController(AssetManager assets) {
         this.view = new PlayerDeckView(this, assets);
-        this.players = UIConstants.PLAYER_NAMES;
-        this.currentPlayerIndex = 0;
+        this.playerNames = GameConstants.PLAYER_NAMES;
+        this.playerHands = GameConstants.INITIAL_PLAYER_HANDS;
+        this.currentPlayerIndex = GameConstants.STARTING_PLAYER_INDEX;
+        this.isFaceUp = false;
+
+        initializeRender();
         initializeBindings();
-        view.renderPlayerHand(players[currentPlayerIndex], isFaceUp);
+    }
+
+    private void initializeRender() {
+        view.renderPlayerNameTags(playerNames);
+        view.renderPlayerHandCards(getCurrentPlayerCards(), isFaceUp);
     }
 
     private void initializeBindings() {
-        view.bindNameTags(this::bindNameTag);
+        view.bindNameTags(this::onNameTag);
         view.bindHandVisibilityToggle(this::onToggleHandVisibility);
         view.bindHandCardsContainer(this::onHandCardContainer);
     }
 
-    private void bindNameTag(Button nameTag, int playerIndex) {
-        nameTag.setOnMouseClicked(e -> {
-            if (currentPlayerIndex != playerIndex) {
-                currentPlayerIndex = playerIndex;
-                isFaceUp = false;
-                view.renderPlayerHand(players[currentPlayerIndex], isFaceUp);
+    private void onNameTag(int playerIndex) {
+        if (currentPlayerIndex != playerIndex) {
+            currentPlayerIndex = playerIndex;
+            isFaceUp = false;
 
-                System.out.println("NAME TAG CHANGED");
-            }
-        });
+            view.renderPlayerHandCards(getCurrentPlayerCards(), isFaceUp);
+            System.out.println("NAME TAG CHANGED");
+        }
     }
 
     private void onToggleHandVisibility() {
         isFaceUp = !isFaceUp;
-        view.renderPlayerHand(players[currentPlayerIndex], isFaceUp);
+
+        view.renderPlayerHandCards(getCurrentPlayerCards(), isFaceUp);
         System.out.println("HAND VISIBILITY CHANGED");
     }
 
@@ -46,6 +56,11 @@ public class PlayerDeckController {
             onToggleHandVisibility();
         }
     }
+
+    private String[] getCurrentPlayerCards() {
+        return playerHands.get(currentPlayerIndex);
+    }
+
 
     public PlayerDeckView getView() {
         return view;

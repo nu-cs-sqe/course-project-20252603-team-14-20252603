@@ -1,5 +1,6 @@
 package ui;
 
+import domain.GameConstants;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
@@ -11,14 +12,19 @@ import javafx.scene.layout.*;
 import javafx.scene.shape.SVGPath;
 import javafx.scene.text.Text;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Consumer;
+
 public class PlayerDeckView {
 
     private final PlayerDeckController controller;
     private final AssetManager assets;
 
-    private final Button[] nameTags;
+    private final List<Button> nameTags;
 
     private StackPane root;
+    private HBox playerNamesContainer;
     private HBox handCardsContainer;
     private Button handVisibilityToggle;
 
@@ -26,7 +32,7 @@ public class PlayerDeckView {
         this.controller = controller;
         this.assets = assets;
 
-        this.nameTags = new Button[UIConstants.PLAYER_NAMES.length];
+        this.nameTags = new ArrayList<>();
 
         buildUI();
     }
@@ -35,9 +41,32 @@ public class PlayerDeckView {
         return root;
     }
 
-    public void bindNameTags(java.util.function.BiConsumer<Button, Integer> handler) {
-        for (int i = 0; i < nameTags.length; i++) {
-            handler.accept(nameTags[i], i);
+    public void renderPlayerNameTags(String[] playerNames) {
+        playerNamesContainer.getChildren().clear();
+        nameTags.clear();
+
+        for (int i = 0; i < playerNames.length; i++) {
+            Button nameTag = buildNameTag(playerNames[i]);
+            nameTags.add(nameTag);
+            playerNamesContainer.getChildren().add(nameTag);
+        }
+    }
+
+    public void renderPlayerHandCards(String[] cardNames, boolean isFaceUp) {
+        handCardsContainer.getChildren().clear();
+
+        for (String cardName : cardNames) {
+            VBox handCard = buildHandCard(cardName, isFaceUp);
+            handCardsContainer.getChildren().add(handCard);
+        }
+    }
+
+    public void bindNameTags(Consumer<Integer> handler) {
+        for (int i = 0; i < nameTags.size(); i++) {
+            int index = i;
+            nameTags.get(i).setOnMouseClicked((e -> {
+                handler.accept(index);
+            }));
         }
     }
 
@@ -99,24 +128,16 @@ public class PlayerDeckView {
         playerHeaderSection.setSpacing(12);
         playerHeaderSection.setAlignment(Pos.CENTER);
 
-        HBox playerNamesBar = buildPlayerNamesBar();
+        buildPlayerNamesContainer();
         Text playerHeaderCaption = buildCaption(UIConstants.PLAYER_HEADER_CAPTION);
-        playerHeaderSection.getChildren().addAll(playerNamesBar, playerHeaderCaption);
+        playerHeaderSection.getChildren().addAll(playerNamesContainer, playerHeaderCaption);
 
         return playerHeaderSection;
     }
 
-    private HBox buildPlayerNamesBar() {
-        HBox playerNamesBar = new HBox();
-        playerNamesBar.getStyleClass().add("player-names-bar");
-
-        for (int i = 0; i < UIConstants.PLAYER_NAMES.length; i++) {
-            Button nameTag = buildNameTag(UIConstants.PLAYER_NAMES[i]);
-            playerNamesBar.getChildren().add(nameTag);
-            nameTags[i] = nameTag;
-        }
-
-        return playerNamesBar;
+    private void buildPlayerNamesContainer() {
+        playerNamesContainer = new HBox();
+        playerNamesContainer.getStyleClass().add("player-names-bar");
     }
 
     private Button buildNameTag(String playerName) {
@@ -291,18 +312,11 @@ public class PlayerDeckView {
         handCardsContainer.getStyleClass().add("hand-cards-container");
     }
 
-    private void buildPlayerHandCards(String player, boolean isFaceUp) {
-        for (String cardName : UIConstants.INITIAL_PLAYER_HANDS.get(player)) {
-            VBox handCard = buildHandCard(cardName, isFaceUp);
-            handCardsContainer.getChildren().add(handCard);
-        }
-    }
-
-    private VBox buildHandCard(String card, boolean isFaceUp) {
+    private VBox buildHandCard(String cardName, boolean isFaceUp) {
         VBox handCard;
 
         if (isFaceUp) {
-            handCard = buildCardFront(card);
+            handCard = buildCardFront(cardName);
         }
         else {
             handCard = buildCardBack();
@@ -313,10 +327,10 @@ public class PlayerDeckView {
         return handCard;
     }
 
-    private VBox buildCardFront(String card) {
+    private VBox buildCardFront(String cardName) {
         VBox cardFront = new VBox();
         cardFront.getStyleClass().add("card-front");
-        cardFront.getChildren().add(new Text(card));
+        cardFront.getChildren().add(new Text(cardName));
         return cardFront;
     }
 
@@ -368,11 +382,6 @@ public class PlayerDeckView {
         icon.getStyleClass().add(String.format("%s-icon", key));
 
         return icon;
-    }
-
-    public void renderPlayerHand(String player, boolean isFaceUp) {
-        handCardsContainer.getChildren().clear();
-        buildPlayerHandCards(player, isFaceUp);
     }
 
 }
