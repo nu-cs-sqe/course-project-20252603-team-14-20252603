@@ -36,23 +36,19 @@ public class StartView {
         content.setAlignment(Pos.CENTER);
         content.setSpacing(30);
 
-        Text title = buildTitle();
+        VBox titleBox = buildExplodingKittensText();
         ImageView explosionCat = buildExplosionImage();
         Button playButton = buildPlayButton();
 
-        content.getChildren().addAll(title,explosionCat,playButton);
+        content.getChildren().addAll(titleBox,explosionCat,playButton);
         startScreen.getChildren().add(content);
         return startScreen;
 
     }
-    private Text buildTitle() {
-        Text title = new Text("EXPLODING WILDKITTENS");
-        title.getStyleClass().add("title-text");
-        return title;
-    }
+
 
     private ImageView buildExplosionImage() {
-        Image image = assets.getImage("explosion-cat");
+        Image image = assets.getImage("placeholder");
         ImageView imageView = new ImageView(image);
 
         imageView.setFitWidth(500);
@@ -62,11 +58,50 @@ public class StartView {
     }
 
     private Button buildPlayButton() {
-        Button playButton = new Button("START");
-        playButton.getStyleClass().add("play-button");
+        Button startButton = new Button("");
 
-        playButton.setOnAction(e -> controller.startGame());
+        Text startButtonText = buildStartText();
+        startButton.setGraphic(startButtonText);
+        startButton.getStyleClass().add("name-tag");
 
-        return playButton;
+        return startButton;
     }
+
+
+    private Text buildStartText() {
+        Text startText = new Text("Play");
+        startText.setFill(UIGradients.GRADIENT_2);
+        startText.getStyleClass().add("h4");
+
+        return startText;
+    }
+
+    private VBox buildExplodingKittensText() {
+        VBox explodingKittensText = new VBox();
+        explodingKittensText.setAlignment(Pos.CENTER);
+
+        String title_words = UIConstants.TITLE;
+        Text explodingText = buildExplodingText(title_words);
+
+        explodingKittensText.getChildren().addAll(explodingText);
+
+        return explodingKittensText;
+    }
+
+    private Text buildExplodingText(String text) {
+        Text explodingText = new Text(text);
+        explodingText.setFill(UIGradients.GRADIENT_1);
+        explodingText.getStyleClass().add("h7");
+
+        return explodingText;
+    }
+
+    private Text buildKittensText(String text) {
+        Text kittensText = new Text(text);
+        kittensText.getStyleClass().addAll("kittens-text", "h3");
+
+        return kittensText;
+    }
+
+
 }
