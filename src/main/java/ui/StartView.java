@@ -30,7 +30,7 @@ public class StartView {
 
     private StackPane buildStartScreen() {
         StackPane startScreen = new StackPane();
-        root.getStyleClass().add("start-screen");
+        startScreen.getStyleClass().add("start-screen");
 
         VBox content = new VBox();
         content.setAlignment(Pos.CENTER);
