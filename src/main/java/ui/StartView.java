@@ -17,7 +17,7 @@ public class StartView {
     public StartView(StartController controller, AssetManager assets){
         this.controller = controller;
         this.assets = assets;
-        buildUI();
+
     }
 
     public Parent getRoot() { return root; }
@@ -39,4 +39,12 @@ public class StartView {
         return imageView;
     }
 
+    private Button buildPlayButton() {
+        Button playButton = new Button("START");
+        playButton.getStyleClass().add("play-button");
+
+        playButton.setOnAction(e -> controller.startGame());
+
+        return playButton;
+    }
 }
