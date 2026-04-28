@@ -17,6 +17,11 @@ public class SceneManager {
         this.stage = stage;
     }
 
+    public void showStartView() {
+        loadGlobalFiles();
+        StartController controller = new StartController(assets, this);
+        setScene(controller.getStartView().getRoot());
+    }
     //public void showPlayerDeckView() {
     //    loadGlobalFiles();
     //    PlayerDeckController controller = new PlayerDeckController(assets);

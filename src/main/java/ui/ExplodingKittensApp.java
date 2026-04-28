@@ -8,7 +8,8 @@ public class ExplodingKittensApp extends Application {
     @Override
     public void start(Stage stage) {
         SceneManager sceneManager = new SceneManager(stage);
-        sceneManager.showPlayerDeckView();
+        sceneManager.showStartView();
+        //sceneManager.showPlayerDeckView();
     }
 
     public static void main(String[] args) {
