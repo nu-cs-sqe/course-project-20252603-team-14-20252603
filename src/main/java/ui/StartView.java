@@ -22,8 +22,12 @@ public class StartView {
 
     public Parent getRoot() { return root; }
 
-    private void buildUI() {
 
+    private Text buildTitle() {
+        Text title = new Text("EXPLODING WILDKITTENS");
+        title.getStyleClass().add("title-text");
+        return title;
     }
+
 
 }
