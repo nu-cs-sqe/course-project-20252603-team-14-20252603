@@ -22,9 +22,12 @@ public class PlayerDeckController {
 
     private void bindNameTag(Button nameTag, int playerIndex) {
         nameTag.setOnMouseClicked(e -> {
-            currentPlayerIndex = playerIndex;
-            updateViewToCurrentPlayer();
-            System.out.println("NAME TAG CLICKED");
+            if (currentPlayerIndex != playerIndex) {
+                currentPlayerIndex = playerIndex;
+                updateViewToCurrentPlayer();
+                view.toggleHandVisibility();
+                System.out.println("NAME TAG CLICKED");
+            }
         });
     }
 
