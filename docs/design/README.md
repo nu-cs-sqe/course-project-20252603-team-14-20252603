@@ -1,3 +1,19 @@
+**Entry Point**
+- ExplodingKittensApp.java
+
+**Datasource**
+- interface FileLoader.java
+  - FontLoader.java
+  - ImageLoader.java
+  - PathLoader.java
+- interface PathLoader.java
+  - IconLoader.java
+
+**Additional UI Classes**
+- SceneManager.java
+- AssetManager.java
+- UIConstants.java
+
 **View Classes**
 - StartView.java
 - PlayerSetUpView.java
@@ -10,9 +26,9 @@
 
 **Model Classes**
 - Game.java
+- TurnManager.java
+- DeckBuilder.java
 - Player.java
-- Card.java (abstract)
 - DrawDeck.java
 - DiscardPile.java
-- DeckBuilder.java
-- TurnManager.java
+- Card.java (abstract)
