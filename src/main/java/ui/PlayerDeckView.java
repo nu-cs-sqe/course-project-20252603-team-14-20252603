@@ -127,8 +127,8 @@ public class PlayerDeckView {
 
     private VBox buildPlayerHeaderSection() {
         VBox playerHeaderSection = new VBox();
-        playerHeaderSection.setSpacing(12);
         playerHeaderSection.setAlignment(Pos.CENTER);
+        playerHeaderSection.getStyleClass().add("player-header-section");
 
         buildPlayerNamesContainer();
         Text playerHeaderCaption = buildCaption(UIConstants.PLAYER_HEADER_CAPTION);
@@ -200,11 +200,10 @@ public class PlayerDeckView {
     private VBox buildCardBack() {
         VBox drawPile = new VBox();
         drawPile.setAlignment(Pos.CENTER);
+        drawPile.getStyleClass().addAll("card", "back");
 
         ImageView cardBackIconView = buildCardBackIconView();
         VBox explodingKittensText = buildExplodingKittensText();
-
-        drawPile.getStyleClass().addAll("card", "back");
 
         drawPile.getChildren().addAll(cardBackIconView, explodingKittensText);
 
@@ -224,7 +223,7 @@ public class PlayerDeckView {
     private VBox buildExplodingKittensText() {
         VBox explodingKittensText = new VBox();
         explodingKittensText.setAlignment(Pos.CENTER);
-        explodingKittensText.setSpacing(-20);
+        explodingKittensText.getStyleClass().add("exploding-kittens-text");
 
         String[] title_words = UIConstants.TITLE.split(" ");
         Text explodingText = buildExplodingText(title_words[0]);
@@ -365,8 +364,8 @@ public class PlayerDeckView {
 
     private HBox buildCardHeader(String cardName) {
         HBox cardHeader = new HBox();
-        cardHeader.getStyleClass().add("card-header");
         cardHeader.setAlignment(Pos.CENTER_LEFT);
+        cardHeader.getStyleClass().add("card-header");
 
         StackPane cardCircle = buildCardCircle();
         VBox cardTitleSection = buildCardTitleSection(cardName);
@@ -459,7 +458,7 @@ public class PlayerDeckView {
     private Text buildCardDescription(String description) {
         Text cardDescription = new Text("Put your last drawn card back into the deck");
 
-        cardDescription.setWrappingWidth(100);
+        cardDescription.setWrappingWidth(UIConstants.CARD_DESCRIPTION_WRAPPING_WIDTH);
         cardDescription.getStyleClass().addAll("card-description", "b2");
 
         return cardDescription;

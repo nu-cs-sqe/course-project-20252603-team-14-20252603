@@ -85,6 +85,10 @@
     -fx-spacing: 64px;
 }
 
+.player-header-section {
+    -fx-spacing: 12px;
+}
+
 .player-names-container {
     -fx-padding: 4px;
     -fx-spacing: 8px;
@@ -119,10 +123,8 @@
 }
 
 .card {
-    -fx-min-width: 176px;
-    -fx-min-height: 230px;
-    -fx-max-width: 176px;
-    -fx-max-height: 230px;
+    -fx-pref-width: 176px;
+    -fx-pref-height: 230px;
     -fx-background-radius: 4;
     -fx-border-radius: 4;
 }
@@ -192,6 +194,10 @@
     -fx-fill: transparent;
     -fx-stroke: gray-0;
     -fx-stroke-width: 1.5;
+}
+
+.exploding-kittens-text {
+    -fx-spacing: -20px;
 }
 
 .exploding-text {
