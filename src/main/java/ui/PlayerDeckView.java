@@ -237,8 +237,7 @@ public class PlayerDeckView {
 
     private Text buildExplodingText(String text) {
         Text explodingText = new Text(text);
-        explodingText.setFill(UIGradients.GRADIENT_1);
-        explodingText.getStyleClass().add("h5");
+        explodingText.getStyleClass().addAll("exploding-text", "h5");
 
         return explodingText;
     }
