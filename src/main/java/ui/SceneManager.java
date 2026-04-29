@@ -12,10 +12,10 @@ public class SceneManager {
     private final GameState model;
     private final AssetManager assets;
 
-    public SceneManager(Stage stage) {
+    public SceneManager(Stage stage, GameState model, AssetManager assets) {
         this.stage = stage;
-        this.model = new GameState();
-        this.assets = new AssetManager();
+        this.model = model;
+        this.assets = assets;
     }
 
     public void showPlayerDeckView() {
