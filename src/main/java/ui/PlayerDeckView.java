@@ -42,10 +42,8 @@ public class PlayerDeckView {
 
     public void renderPlayerNameTags() {
         for (int i = 0; i < nameTagButtons.size(); i++) {
-            nameTagButtons.get(i).getStyleClass().setAll(
-                    "button",
-                    "name-tag",
-                    "h4",
+            nameTagButtons.get(i).getStyleClass().removeAll("selected", "enabled");
+            nameTagButtons.get(i).getStyleClass().add(
                     (i == model.getCurrentPlayerIndex()) ? "selected" : "enabled"
             );
         }
@@ -149,11 +147,12 @@ public class PlayerDeckView {
         for (int i = 0; i < model.getPlayerNames().size(); i++) {
             Button nameTag = buildNameTag(model.getPlayerNames().get(i));
 
-            nameTag.getStyleClass().addAll(
-                    "name-tag",
-                    "h4",
-                    (i == model.getCurrentPlayerIndex()) ? "selected" : "enabled"
-            );
+            if (i == model.getCurrentPlayerIndex()) {
+                nameTag.getStyleClass().add("selected");
+            }
+            else {
+                nameTag.getStyleClass().add("enabled");
+            }
 
             nameTagButtons.add(nameTag);
             playerNamesContainer.getChildren().add(nameTag);
@@ -162,6 +161,7 @@ public class PlayerDeckView {
 
     private Button buildNameTag(String playerName) {
         Button nameTag = new Button(playerName);
+        nameTag.getStyleClass().addAll("name-tag", "h4");
         return nameTag;
     }
 
