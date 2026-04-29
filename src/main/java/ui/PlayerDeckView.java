@@ -9,7 +9,6 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
 import javafx.scene.shape.SVGPath;
 import javafx.scene.text.Text;
 
@@ -49,6 +48,15 @@ public class PlayerDeckView {
                     "h4",
                     (i == model.getCurrentPlayerIndex()) ? "selected" : "enabled"
             );
+        }
+    }
+
+    public void renderHandVisibilityToggle() {
+        if (model.getIsFaceUp()) {
+            handVisibilityToggle.setText(UIConstants.HIDE_HAND_LABEL);
+        }
+        else {
+            handVisibilityToggle.setText(UIConstants.SHOW_HAND_LABEL);
         }
     }
 

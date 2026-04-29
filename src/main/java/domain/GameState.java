@@ -34,7 +34,7 @@ public class GameState {
         return isFaceUp;
     }
 
-    public void changeCurrentPlayerIndexAndFlipCardsDown(int playerIndex) {
+    public void changeCurrentPlayerIndexAndSetIsFaceUpToFalse(int playerIndex) {
         currentPlayerIndex = playerIndex;
         isFaceUp = false;
     }

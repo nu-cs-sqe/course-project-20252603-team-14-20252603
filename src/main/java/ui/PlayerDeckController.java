@@ -22,17 +22,19 @@ public class PlayerDeckController {
 
     private void onNameTag(int playerIndex) {
         if (model.getCurrentPlayerIndex() != playerIndex) {
-            model.changeCurrentPlayerIndexAndFlipCardsDown(playerIndex);
+            model.changeCurrentPlayerIndexAndSetIsFaceUpToFalse(playerIndex);
 
             view.renderPlayerNameTags();
+            view.renderHandVisibilityToggle();
             view.renderPlayerHandCards();
-            System.out.println("SWITCHED TO DIFFERENT PLAYER");
+            System.out.println("SWITCHED TO DIFFERENT PLAYER AND HID CARDS");
         }
     }
 
     private void onToggleHandVisibility() {
         model.setIsFaceUpToOpposite();
 
+        view.renderHandVisibilityToggle();
         view.renderPlayerHandCards();
         System.out.println("HAND VISIBILITY TOGGLE CLICKED");
     }
