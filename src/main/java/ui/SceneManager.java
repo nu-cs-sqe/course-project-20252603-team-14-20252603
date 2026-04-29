@@ -4,10 +4,7 @@ import datasource.*;
 import domain.GameState;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.text.Font;
 import javafx.stage.Stage;
-
-import java.io.InputStream;
 
 public class SceneManager {
 
