@@ -26,7 +26,7 @@ public class PlayerDeckController {
 
             view.renderPlayerNameTags();
             view.renderPlayerHandCards();
-            System.out.println("NAME TAG CHANGED");
+            System.out.println("SWITCHED TO DIFFERENT PLAYER");
         }
     }
 
@@ -34,7 +34,7 @@ public class PlayerDeckController {
         model.setIsFaceUpToOpposite();
 
         view.renderPlayerHandCards();
-        System.out.println("HAND VISIBILITY CHANGED");
+        System.out.println("HAND VISIBILITY TOGGLE CLICKED");
     }
 
     private void onHandCardContainer() {
