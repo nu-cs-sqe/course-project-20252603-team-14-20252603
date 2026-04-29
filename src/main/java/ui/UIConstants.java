@@ -22,15 +22,4 @@ public final class UIConstants {
     public static final int CARD_IMAGE_HEIGHT = 154;
     public static final double CARD_IMAGE_BOTTOM_PADDING = 10;
 
-    public static final int MIN_PERCENT = 0;
-    public static final int MAX_PERCENT = 100;
-
-    public static final String YELLOW_1 = "#F0EAD3";
-    public static final String YELLOW_3 = "#FFEC2B";
-    public static final String YELLOW_4 = "#F6D300";
-    public static final String ORANGE_3 = "#FD6738";
-    public static final String RED_3 = "#DF2126";
-    public static final String MAGENTA_3 = "#B3294C";
-    public static final String MAGENTA_4 = "#541931";
-
 }
