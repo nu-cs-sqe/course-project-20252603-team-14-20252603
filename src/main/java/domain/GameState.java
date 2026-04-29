@@ -46,19 +46,19 @@ public class GameState {
     private static HashMap<Integer, List<String>> getInitialHands() {
         return new HashMap<>(Map.of(
             0, List.of(
-                    "DEFUSE", "DEFUSE", "DEFUSE", "DEFUSE", "DEFUSE", "DEFUSE"
+                    "DEFUSE", "ATTACK", "CAT", "CAT", "CLONE", "DRAW FROM THE BOTTOM"
                 ),
             1, List.of(
-                    "ATTACK", "DEFUSE", "DEFUSE", "DEFUSE", "DEFUSE", "DEFUSE"
+                    "DEFUSE", "ATTACK", "CAT", "SWAP TOP AND BOTTOM", "CAT", "CAT"
                 ),
             2, List.of(
-                    "DEFUSE", "DEFUSE", "DEFUSE", "DEFUSE", "DEFUSE", "DEFUSE"
+                    "DEFUSE", "CAT", "CLONE", "RAISING HECK", "GODCAT", "CAT"
                 ),
             3, List.of(
-                    "DEFUSE", "DEFUSE", "DEFUSE", "DEFUSE", "DEFUSE", "DEFUSE"
+                    "DEFUSE", "CAT", "CAT", "CAT", "CAT", "CAT"
                 ),
             4, List.of(
-                    "DEFUSE", "DEFUSE", "DEFUSE", "DEFUSE", "DEFUSE", "DEFUSE"
+                    "DEFUSE", "FEED THE DEAD", "ATTACK", "ATTACK", "CAT", "CAT"
                 )
         ));
     }
