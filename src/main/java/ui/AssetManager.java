@@ -21,8 +21,8 @@ public class AssetManager {
         loadIcon("restart", "/icons/restart.txt");
         loadIcon("left-bracket", "/icons/left-bracket.txt");
 
-        loadFont("/fonts/Koulen-Regular.ttf");
-        loadFont("/fonts/NationalPark-VariableFont_wght.ttf");
+        loadFont("/fonts/koulen-regular.ttf");
+        loadFont("/fonts/national-park.ttf");
     }
 
     private void loadCSS() {
