@@ -9,6 +9,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.SVGPath;
 import javafx.scene.text.Text;
 
@@ -132,7 +133,7 @@ public class PlayerDeckView {
 
     private void buildPlayerNamesContainer() {
         playerNamesContainer = new HBox();
-        playerNamesContainer.getStyleClass().add("player-names-bar");
+        playerNamesContainer.getStyleClass().add("player-names-container");
         buildPlayerNameTags();
     }
 
@@ -195,7 +196,7 @@ public class PlayerDeckView {
         ImageView cardBackIconView = buildCardBackIconView();
         VBox explodingKittensText = buildExplodingKittensText();
 
-        drawPile.getStyleClass().add("card-back");
+        drawPile.getStyleClass().addAll("card", "back");
 
         drawPile.getChildren().addAll(cardBackIconView, explodingKittensText);
 
@@ -203,13 +204,13 @@ public class PlayerDeckView {
     }
 
     private ImageView buildCardBackIconView() {
-        Image card_back_icon = assets.getImage("placeholder");
-        ImageView card_back_icon_view = new ImageView(card_back_icon);
+        Image cardBackIcon = assets.getImage("placeholder");
+        ImageView cardBackIconView = new ImageView(cardBackIcon);
 
-        card_back_icon_view.setFitWidth(UIConstants.CARD_BACK_ICON_WIDTH);
-        card_back_icon_view.setPreserveRatio(true);
+        cardBackIconView.setFitWidth(UIConstants.CARD_BACK_ICON_WIDTH);
+        cardBackIconView.setPreserveRatio(true);
 
-        return card_back_icon_view;
+        return cardBackIconView;
     }
 
     private VBox buildExplodingKittensText() {
@@ -257,7 +258,7 @@ public class PlayerDeckView {
     private VBox buildDiscardPile() {
         VBox discardPile = new VBox();
         discardPile.setAlignment(Pos.CENTER);
-        discardPile.getStyleClass().add("empty-pile");
+        discardPile.getStyleClass().addAll("card", "empty");
 
         return discardPile;
     }
@@ -329,16 +330,132 @@ public class PlayerDeckView {
             handCard = buildCardBack();
         }
 
-        handCard.getStyleClass().add("card-enabled");
+        handCard.getStyleClass().add("enabled");
 
         return handCard;
     }
 
     private VBox buildCardFront(String cardName) {
         VBox cardFront = new VBox();
-        cardFront.getStyleClass().add("card-front");
-        cardFront.getChildren().add(new Text(cardName));
+        cardFront.getStyleClass().addAll("card", "front");
+
+        VBox cardFrontContent = buildCardFrontContent(cardName);
+
+        cardFront.getChildren().add(cardFrontContent);
         return cardFront;
+    }
+
+    private VBox buildCardFrontContent(String cardName) {
+        VBox cardFrontContent = new VBox();
+        cardFrontContent.getStyleClass().add("card-front-content");
+
+        HBox cardHeader = buildCardHeader(cardName);
+        StackPane cardVisualSection = buildCardVisualSection(cardName);
+
+        cardFrontContent.getChildren().addAll(cardHeader, cardVisualSection);
+        return cardFrontContent;
+    }
+
+    private HBox buildCardHeader(String cardName) {
+        HBox cardHeader = new HBox();
+        cardHeader.getStyleClass().add("card-header");
+        cardHeader.setAlignment(Pos.CENTER_LEFT);
+
+        StackPane cardCircle = buildCardCircle();
+        VBox cardTitleSection = buildCardTitleSection(cardName);
+
+        cardHeader.getChildren().addAll(cardCircle, cardTitleSection);
+        return cardHeader;
+    }
+
+    private StackPane buildCardCircle() {
+        StackPane cardCircle = new StackPane();
+        cardCircle.getStyleClass().add("card-circle");
+        return cardCircle;
+    }
+
+    private VBox buildCardTitleSection(String cardName) {
+        VBox cardTitleSection = new VBox();
+        cardTitleSection.getStyleClass().add("card-title-section");
+
+        Text cardTitle = buildCardTitle(cardName);
+        Text cardSubtitle = buildCardSubtitle(cardName);
+
+        cardTitleSection.getChildren().addAll(cardTitle, cardSubtitle);
+        return cardTitleSection;
+    }
+
+    private Text buildCardTitle(String title) {
+        Text cardTitle = new Text(title);
+        cardTitle.getStyleClass().addAll("card-title", "b1");
+
+        return cardTitle;
+    }
+
+    private Text buildCardSubtitle(String subtitle) {
+        Text cardSubtitle = new Text(subtitle);
+        cardSubtitle.getStyleClass().addAll("card-subtitle", "b2");
+
+        return cardSubtitle;
+    }
+
+    private StackPane buildCardVisualSection(String description) {
+        StackPane cardVisualSection = new StackPane();
+
+        ImageView cardImageView = buildCardImageView();
+        HBox cardDescriptionSection = buildCardDescriptionSection(description);
+
+        Insets inset = new Insets(0, 0, UIConstants.CARD_IMAGE_BOTTOM_PADDING, 0);
+        StackPane.setMargin(cardDescriptionSection, inset);
+
+        cardVisualSection.getChildren().addAll(cardImageView, cardDescriptionSection);
+        return cardVisualSection;
+    }
+
+    private ImageView buildCardImageView() {
+        Image cardImage = assets.getImage("placeholder");
+        ImageView cardImageView = new ImageView(cardImage);
+
+        cardImageView.setFitWidth(UIConstants.CARD_IMAGE_WIDTH);
+        cardImageView.setFitHeight(UIConstants.CARD_IMAGE_HEIGHT);
+
+        return cardImageView;
+    }
+
+    private HBox buildCardDescriptionSection(String description) {
+        HBox cardDescriptionSection = new HBox();
+        cardDescriptionSection.setAlignment(Pos.BOTTOM_CENTER);
+        cardDescriptionSection.getStyleClass().add("card-description-section");
+
+        SVGPath leftBracketIcon = buildLeftBracketIcon();
+        Text cardDescription = buildCardDescription(description);
+        SVGPath rightBracketIcon = buildRightBracketIcon();
+
+        cardDescriptionSection.getChildren().addAll(leftBracketIcon, cardDescription, rightBracketIcon);
+        return cardDescriptionSection;
+    }
+
+    private SVGPath buildLeftBracketIcon() {
+        SVGPath leftBracketIcon = buildIcon("left-bracket");
+        leftBracketIcon.getStyleClass().add("bracket-icon");
+
+        return leftBracketIcon;
+    }
+
+    private SVGPath buildRightBracketIcon() {
+        SVGPath rightBracketIcon = buildLeftBracketIcon();
+        rightBracketIcon.setScaleX(-1);
+
+        return rightBracketIcon;
+    }
+
+    private Text buildCardDescription(String description) {
+        Text cardDescription = new Text("Put your last drawn card back into the deck");
+
+        cardDescription.setWrappingWidth(100);
+        cardDescription.getStyleClass().addAll("card-description", "b2");
+
+        return cardDescription;
     }
 
     private HBox buildTurnControlSection() {

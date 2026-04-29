@@ -17,6 +17,10 @@ public final class UIConstants {
 
     public static final int CARD_BACK_ICON_WIDTH = 40;
 
+    public static final int CARD_IMAGE_WIDTH = 140;
+    public static final int CARD_IMAGE_HEIGHT = 154;
+    public static final double CARD_IMAGE_BOTTOM_PADDING = 10;
+
     public static final int MIN_PERCENT = 0;
     public static final int MAX_PERCENT = 100;
 

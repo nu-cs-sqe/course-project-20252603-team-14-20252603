@@ -41,7 +41,8 @@ public class SceneManager {
     private void loadGlobalFiles() {
         loadCSS();
         loadImages();
-        loadIcons("/icons/restart.txt");
+        loadIcon("restart", "/icons/restart.txt");
+        loadIcon("left-bracket", "/icons/left-bracket.txt");
 
         loadFont("/fonts/Koulen-Regular.ttf");
         loadFont("/fonts/NationalPark-VariableFont_wght.ttf");
@@ -61,11 +62,11 @@ public class SceneManager {
         assets.addImage("placeholder", imageUrl);
     }
 
-    private void loadIcons(String fileName) {
+    private void loadIcon(String key, String fileName) {
         IconLoader loader = new IconLoader();
         loader.open(fileName);
         String pathData = loader.getPathData();
-        assets.addSvg("restart", pathData);
+        assets.addSvg(key, pathData);
     }
 
     private void loadFont(String fileName) {
