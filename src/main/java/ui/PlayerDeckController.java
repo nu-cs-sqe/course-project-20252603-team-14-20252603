@@ -5,7 +5,7 @@ import domain.GameState;
 public class PlayerDeckController {
 
     private final PlayerDeckView view;
-    private GameState model;
+    private final GameState model;
 
     public PlayerDeckController(GameState model, AssetManager assets) {
         this.view = new PlayerDeckView(model, assets);
