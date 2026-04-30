@@ -11,6 +11,7 @@ public final class UIConstants {
     public static final String HIDE_HAND_LABEL = "HIDE";
     public static final String SHOW_HAND_LABEL = "REVEAL";
     public static final String HAND_CAPTION = "SCROLL TO SEE ALL CARDS";
+    public static final String PLAY_CARDS_LABEL = "PLAY CARD(S)";
     public static final String START_GAME_LABEL = "START GAME";
 
     public static final int SCENE_WIDTH = 1280;

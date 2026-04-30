@@ -153,8 +153,7 @@
     -fx-padding: 8px;
 }
 
-.card.back.enabled,
-.card.front.enabled {
+.card.enabled {
     -fx-border-color: linear-gradient(to bottom, yellow-1, yellow-4);
     -fx-border-width: 2;
 }
@@ -260,12 +259,20 @@
     -fx-spacing: 8;
 }
 
-.start-game-button {
+.turn-control-button {
     -fx-border-radius: 8;
-    -fx-background-color: linear-gradient(to bottom, yellow-1, yellow-4);
     -fx-padding: 0px 16px;
-    -fx-text-fill: magenta-6;
     -fx-effect: dropshadow(gaussian, magenta-5-tr, 2, 0, 0, 2);
+}
+
+.turn-control-button.enabled {
+    -fx-background-color: linear-gradient(to bottom, yellow-1, yellow-4);
+    -fx-text-fill: magenta-6;
+}
+
+.turn-control-button.disabled {
+    -fx-background-color: beige-2;
+    -fx-text-fill: beige-3;
 }
 
 .icon-button {

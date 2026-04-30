@@ -468,17 +468,21 @@ public class PlayerDeckView {
         turnControlSection.setAlignment(Pos.CENTER_RIGHT);
         turnControlSection.getStyleClass().add("turn-control-section");
 
-        Button startGameButton = buildStartGameButton();
+        Button playCardsButton = buildTurnControlButton(UIConstants.PLAY_CARDS_LABEL);
+        playCardsButton.getStyleClass().add("disabled");
 
-        turnControlSection.getChildren().add(startGameButton);
+        Button startGameButton = buildTurnControlButton(UIConstants.START_GAME_LABEL);
+        startGameButton.getStyleClass().add("enabled");
+
+        turnControlSection.getChildren().addAll(playCardsButton, startGameButton);
 
         return turnControlSection;
     }
 
-    private Button buildStartGameButton() {
-        Button startGameButton = new Button(UIConstants.START_GAME_LABEL);
-        startGameButton.getStyleClass().addAll("start-game-button", "h5");
-        return startGameButton;
+    private Button buildTurnControlButton(String label) {
+        Button turnControlButton = new Button(label);
+        turnControlButton.getStyleClass().addAll("turn-control-button", "h5");
+        return turnControlButton;
     }
 
     private StackPane buildOverlayLayer() {
