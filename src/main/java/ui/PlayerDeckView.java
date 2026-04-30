@@ -334,9 +334,8 @@ public class PlayerDeckView {
         }
         else {
             handCard = buildCardBack();
+            handCard.getStyleClass().add("enabled");
         }
-
-        handCard.getStyleClass().add("enabled");
 
         return handCard;
     }

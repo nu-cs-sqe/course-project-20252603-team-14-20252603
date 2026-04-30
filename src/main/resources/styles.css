@@ -1,7 +1,9 @@
 .root {
     gray-0: #EFEEF4;
+    gray-1: #E4E3E9;
     gray-2: #B7B4BE;
     gray-4: #4E4E4E;
+    gray-6-tr: #01010120;
     gray-6: #010101;
 
     beige-2: #D2C3AA;
@@ -21,16 +23,18 @@
 
     red-3: #DF2126;
     red-4: #B31F23;
-    red-5: #660B09;
+    red-5: #a51d20;
+    red-6: #660B09;
 
     magenta-3: #B3294C;
-    magenta-4-tr: #54193150;
-    magenta-4: #541931;
-    magenta-5: #3B081D;
-    magenta-6-tr: #14020850;
-    magenta-6: #140208;
+    magenta-4: #611F3A;
+    magenta-5-tr: #54193150;
+    magenta-5: #541931;
+    magenta-6: #3B081D;
+    magenta-7-tr: #14020850;
+    magenta-7: #140208;
 
-    -fx-background-color: magenta-5;
+    -fx-background-color: magenta-6;
 }
 
 .h3 {
@@ -95,7 +99,7 @@
 }
 
 .name-tag {
-    -fx-background-color: magenta-4;
+    -fx-background-color: magenta-5;
     -fx-text-fill: yellow-0-tr-2;
     -fx-border-width: 2;
     -fx-background-radius: 8;
@@ -107,6 +111,11 @@
 .name-tag.enabled {
     -fx-border-color: linear-gradient(to bottom, yellow-1, yellow-4);
     -fx-text-fill: linear-gradient(to bottom, yellow-1, yellow-4);
+}
+
+.name-tag.enabled:hover,
+.name-tag.selected:hover {
+    -fx-background-color: magenta-4;
 }
 
 .name-tag.selected {
@@ -148,6 +157,14 @@
 .card.front.enabled {
     -fx-border-color: linear-gradient(to bottom, yellow-1, yellow-4);
     -fx-border-width: 2;
+}
+
+.card.back.enabled:hover {
+    -fx-background-color: red-5;
+}
+
+.card.front.enabled:hover {
+    -fx-background-color: gray-1;
 }
 
 .card-front-content {
@@ -219,6 +236,10 @@
     -fx-padding: 4;
 }
 
+.hand-visibility-toggle:hover {
+    -fx-underline: true;
+}
+
 .scroll-pane {
     -fx-background-color: transparent;
 }
@@ -243,8 +264,8 @@
     -fx-border-radius: 8;
     -fx-background-color: linear-gradient(to bottom, yellow-1, yellow-4);
     -fx-padding: 0px 16px;
-    -fx-text-fill: magenta-5;
-    -fx-effect: dropshadow(gaussian, magenta-4-tr, 2, 0, 0, 2);
+    -fx-text-fill: magenta-6;
+    -fx-effect: dropshadow(gaussian, magenta-5-tr, 2, 0, 0, 2);
 }
 
 .icon-button {
