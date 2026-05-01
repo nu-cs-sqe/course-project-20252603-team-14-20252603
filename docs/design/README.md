@@ -3,11 +3,11 @@
 
 **Datasource**
 - interface FileLoader.java
-  - FontLoader.java
-  - ImageLoader.java
-  - PathLoader.java
+- FontLoader.java implements FileLoader
+- ImageLoader.java implements FileLoader
+- PathLoader.java implements FileLoader
 - interface PathLoader.java
-  - IconLoader.java
+- IconLoader.java implements PathLoader
 
 **Additional UI Classes**
 - SceneManager.java
