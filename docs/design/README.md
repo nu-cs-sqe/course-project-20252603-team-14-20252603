@@ -1,3 +1,5 @@
+**_Class Details_**: https://docs.google.com/document/d/1HCXGucTSq1peAxI6ct4DHDhMlGk4WQktcBtY_arrWGc/edit?tab=t.6hv1mk8szc0k
+
 **Entry Point**
 - ExplodingKittensApp.java
 
