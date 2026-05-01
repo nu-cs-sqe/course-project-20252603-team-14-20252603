@@ -10,6 +10,8 @@ import java.util.Map;
 
 public class AssetManager {
 
+    public AssetManager() {}
+
     private final Map<String, Image> images = new HashMap<>();
     private final Map<String, String> svgPaths = new HashMap<>();
 
