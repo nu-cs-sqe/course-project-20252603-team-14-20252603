@@ -29,6 +29,6 @@
 - TurnManager.java
 - DeckBuilder.java
 - Player.java
-- DrawDeck.java
-- DiscardPile.java
-- Card.java (abstract)
+- Deck.java
+- Card.java
+- CardType.java
