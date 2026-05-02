@@ -17,7 +17,7 @@ public class PlayerDeckController {
     private void bindUI() {
         view.bindNameTags(this::onNameTag);
         view.bindHandVisibilityToggle(this::onToggleHandVisibility);
-        view.bindHandCardsContainer(this::onHandCardContainer);
+        view.bindPlayerHandCards(this::onPlayerHandCard);
     }
 
     private void onNameTag(int playerIndex) {
@@ -26,20 +26,27 @@ public class PlayerDeckController {
 
             view.renderPlayerNameTags();
             view.renderHandVisibilityToggle();
-            view.renderPlayerHandCards();
+            renderAndBindPLayerHandCards();
+
             System.out.println("SWITCHED TO DIFFERENT PLAYER AND HID CARDS");
         }
+    }
+
+    private void renderAndBindPLayerHandCards() {
+        view.renderPlayerHandCards();
+        view.bindPlayerHandCards(this::onPlayerHandCard);
     }
 
     private void onToggleHandVisibility() {
         model.setIsFaceUpToOpposite();
 
         view.renderHandVisibilityToggle();
-        view.renderPlayerHandCards();
-        System.out.println("HAND VISIBILITY TOGGLE CLICKED");
+        renderAndBindPLayerHandCards();
+
+        System.out.println("HAND VISIBILITY CHANGED");
     }
 
-    private void onHandCardContainer() {
+    private void onPlayerHandCard(int playerIndex) {
         if (!model.getIsFaceUp()) {
             onToggleHandVisibility();
         }

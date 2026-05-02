@@ -1,8 +1,10 @@
 package ui;
 
 import domain.GameState;
+import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
@@ -78,10 +80,15 @@ public class PlayerDeckView {
         });
     }
 
-    public void bindHandCardsContainer(Runnable handler) {
-        handCardsContainer.setOnMouseClicked(e -> {
-            handler.run();
-        });
+    public void bindPlayerHandCards(Consumer<Integer> handler) {
+        ObservableList<Node> handCards = handCardsContainer.getChildren();
+
+        for (int i = 0; i < handCards.size(); i++) {
+            int index = i;
+            handCards.get(i).setOnMouseClicked((e -> {
+                handler.accept(index);
+            }));
+        }
     }
 
     private void buildUI() {
