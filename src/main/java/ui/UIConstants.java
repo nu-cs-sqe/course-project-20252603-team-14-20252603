@@ -13,6 +13,7 @@ public final class UIConstants {
     public static final String HAND_CAPTION = "SCROLL TO SEE ALL CARDS";
     public static final String PLAY_CARDS_LABEL = "PLAY CARD(S)";
     public static final String START_GAME_LABEL = "START GAME";
+    public static final String END_TURN_LABEL = "END TURN";
 
     public static final int SCENE_WIDTH = 1280;
     public static final int SCENE_HEIGHT = 832;

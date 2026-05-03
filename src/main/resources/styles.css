@@ -106,21 +106,27 @@
     -fx-border-radius: 8;
     -fx-padding: 0px 16px;
     -fx-pref-width: 236px;
-}
 
-.name-tag.enabled {
     -fx-border-color: linear-gradient(to bottom, yellow-1, yellow-4);
     -fx-text-fill: linear-gradient(to bottom, yellow-1, yellow-4);
 }
 
-.name-tag.enabled:hover,
-.name-tag.selected:hover {
+.name-tag:hover {
     -fx-background-color: magenta-4;
 }
 
-.name-tag.selected {
+.name-tag:selected,
+.name-tag:selected:disabled {
+    -fx-opacity: 1.0;
+    -fx-border-width: 2;
     -fx-border-color: linear-gradient(to bottom, yellow-3, orange-3, red-3);
     -fx-text-fill: linear-gradient(to bottom, yellow-3, orange-3, red-3);
+}
+
+.name-tag:disabled {
+    -fx-border-color: transparent;
+    -fx-border-width: 0;
+    -fx-text-fill: yellow-0;
 }
 
 .card-piles-section {

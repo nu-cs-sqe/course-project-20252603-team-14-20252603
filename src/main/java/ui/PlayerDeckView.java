@@ -8,6 +8,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.ToggleButton;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
@@ -22,18 +23,21 @@ public class PlayerDeckView {
     private final AssetManager assets;
     private final GameState model;
 
-    private final ArrayList<Button> nameTagButtons;
+    private final ArrayList<ToggleButton> nameTagToggleButtons;
 
     private StackPane root;
+    private VBox playerHeaderSection;
     private HBox playerNamesContainer;
     private HBox handCardsContainer;
     private Button handVisibilityToggle;
+    private Button startGameButton;
+    private HBox turnControlSection;
 
     public PlayerDeckView(GameState model, AssetManager assets) {
         this.assets = assets;
         this.model = model;
 
-        this.nameTagButtons = new ArrayList<>();
+        this.nameTagToggleButtons = new ArrayList<>();
 
         buildUI();
     }
@@ -42,12 +46,22 @@ public class PlayerDeckView {
         return root;
     }
 
+    public void renderPlayerHeaderSection() {
+        playerHeaderSection.getChildren().clear();
+
+        if (model.getIsGameOngoing()) {
+            playerHeaderSection.getChildren().add(playerNamesContainer);
+        }
+    }
+
     public void renderPlayerNameTags() {
-        for (int i = 0; i < nameTagButtons.size(); i++) {
-            nameTagButtons.get(i).getStyleClass().removeAll("selected", "enabled");
-            nameTagButtons.get(i).getStyleClass().add(
-                    (i == model.getCurrentPlayerIndex()) ? "selected" : "enabled"
-            );
+        for (int i = 0; i < nameTagToggleButtons.size(); i++) {
+            boolean isAtCurrentPlayerIndex = (i == model.getCurrentPlayerIndex());
+            nameTagToggleButtons.get(i).setSelected(isAtCurrentPlayerIndex);
+
+            if (model.getIsGameOngoing()) {
+                nameTagToggleButtons.get(i).setDisable(true);
+            }
         }
     }
 
@@ -65,10 +79,34 @@ public class PlayerDeckView {
         buildPlayerHandCards();
     }
 
+    public void renderTurnControlSection() {
+        turnControlSection.getChildren().clear();
+
+        Button playCardsButton = buildTurnControlButton(UIConstants.PLAY_CARDS_LABEL);
+
+        if (model.getIsValidPlay()) {
+            playCardsButton.getStyleClass().add("enabled");
+        }
+        else {
+            playCardsButton.getStyleClass().add("disabled");
+        }
+
+        Button endTurnButton = buildTurnControlButton(UIConstants.END_TURN_LABEL);
+
+        if (model.canEndTurn()) {
+            endTurnButton.getStyleClass().add("enabled");
+        }
+        else {
+            endTurnButton.getStyleClass().add("disabled");
+        }
+
+        turnControlSection.getChildren().addAll(playCardsButton, endTurnButton);
+    }
+
     public void bindNameTags(Consumer<Integer> handler) {
-        for (int i = 0; i < nameTagButtons.size(); i++) {
+        for (int i = 0; i < nameTagToggleButtons.size(); i++) {
             int index = i;
-            nameTagButtons.get(i).setOnMouseClicked((e -> {
+            nameTagToggleButtons.get(i).setOnMouseClicked((e -> {
                 handler.accept(index);
             }));
         }
@@ -89,6 +127,12 @@ public class PlayerDeckView {
                 handler.accept(index);
             }));
         }
+    }
+
+    public void bindStartGameButton(Runnable handler) {
+        startGameButton.setOnMouseClicked(e -> {
+            handler.run();
+        });
     }
 
     private void buildUI() {
@@ -115,6 +159,7 @@ public class PlayerDeckView {
         VBox gameBoardSection = buildGameBoardSection();
         VBox playerChoiceSection = buildPlayerChoiceSection();
 
+        VBox.setVgrow(gameBoardSection, Priority.ALWAYS);
         contentSection.getChildren().addAll(gameBoardSection, playerChoiceSection);
 
         return contentSection;
@@ -124,7 +169,7 @@ public class PlayerDeckView {
         VBox gameBoardSection = new VBox();
         gameBoardSection.getStyleClass().add("game-board-section");
 
-        VBox playerHeaderSection = buildPlayerHeaderSection();
+        buildPlayerHeaderSection();
         HBox cardPileSection = buildCardPilesSection();
 
         gameBoardSection.getChildren().addAll(playerHeaderSection, cardPileSection);
@@ -132,16 +177,17 @@ public class PlayerDeckView {
         return gameBoardSection;
     }
 
-    private VBox buildPlayerHeaderSection() {
-        VBox playerHeaderSection = new VBox();
+    private void buildPlayerHeaderSection() {
+        playerHeaderSection = new VBox();
         playerHeaderSection.setAlignment(Pos.CENTER);
         playerHeaderSection.getStyleClass().add("player-header-section");
 
         buildPlayerNamesContainer();
-        Text playerHeaderCaption = buildCaption(UIConstants.PLAYER_HEADER_CAPTION);
-        playerHeaderSection.getChildren().addAll(playerNamesContainer, playerHeaderCaption);
 
-        return playerHeaderSection;
+        playerHeaderSection.getChildren().add(playerNamesContainer);
+
+        Text playerHeaderCaption = buildCaption(UIConstants.PLAYER_HEADER_CAPTION);
+        playerHeaderSection.getChildren().add(playerHeaderCaption);
     }
 
     private void buildPlayerNamesContainer() {
@@ -152,22 +198,18 @@ public class PlayerDeckView {
 
     private void buildPlayerNameTags() {
         for (int i = 0; i < model.getPlayerNames().size(); i++) {
-            Button nameTag = buildNameTag(model.getPlayerNames().get(i));
+            ToggleButton nameTag = buildNameTag(model.getPlayerNames().get(i));
 
-            if (i == model.getCurrentPlayerIndex()) {
-                nameTag.getStyleClass().add("selected");
-            }
-            else {
-                nameTag.getStyleClass().add("enabled");
-            }
+            boolean isAtCurrentPlayerIndex = (i == model.getCurrentPlayerIndex());
+            nameTag.setSelected(isAtCurrentPlayerIndex);
 
-            nameTagButtons.add(nameTag);
+            nameTagToggleButtons.add(nameTag);
             playerNamesContainer.getChildren().add(nameTag);
         }
     }
 
-    private Button buildNameTag(String playerName) {
-        Button nameTag = new Button(playerName);
+    private ToggleButton buildNameTag(String playerName) {
+        ToggleButton nameTag = new ToggleButton(playerName);
         nameTag.getStyleClass().addAll("name-tag", "h4");
         return nameTag;
     }
@@ -280,7 +322,7 @@ public class PlayerDeckView {
         VBox playerChoiceSection = new VBox();
 
         VBox playerHandSection = buildPlayerHandSection();
-        HBox turnControlSection = buildTurnControlSection();
+        buildTurnControlSection();
 
         playerChoiceSection.getChildren().addAll(playerHandSection, turnControlSection);
 
@@ -470,20 +512,18 @@ public class PlayerDeckView {
         return cardDescription;
     }
 
-    private HBox buildTurnControlSection() {
-        HBox turnControlSection = new HBox();
+    private void buildTurnControlSection() {
+        turnControlSection = new HBox();
         turnControlSection.setAlignment(Pos.CENTER_RIGHT);
         turnControlSection.getStyleClass().add("turn-control-section");
 
         Button playCardsButton = buildTurnControlButton(UIConstants.PLAY_CARDS_LABEL);
         playCardsButton.getStyleClass().add("disabled");
 
-        Button startGameButton = buildTurnControlButton(UIConstants.START_GAME_LABEL);
+        startGameButton = buildTurnControlButton(UIConstants.START_GAME_LABEL);
         startGameButton.getStyleClass().add("enabled");
 
         turnControlSection.getChildren().addAll(playCardsButton, startGameButton);
-
-        return turnControlSection;
     }
 
     private Button buildTurnControlButton(String label) {

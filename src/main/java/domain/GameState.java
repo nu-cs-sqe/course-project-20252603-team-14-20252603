@@ -8,14 +8,20 @@ public class GameState {
 
     private final List<String> playerNames;
     private HashMap<Integer, List<String>> playerHands;
+    private int startingPlayerIndex;
     private int currentPlayerIndex;
     private boolean isFaceUp;
+    private boolean isGameOngoing;
+    private boolean isValidPlay;
+    private int currentDrawCount;
 
     public GameState() {
         playerNames = List.of("STEVE", "MONKEY", "JENNY", "ELI", "GEORGE WASHINGTON");
         playerHands = getInitialHands();
+        startingPlayerIndex = 0;
         currentPlayerIndex = 0;
         isFaceUp = false;
+        isGameOngoing = false;
     }
 
     public List<String> getPlayerNames() {
@@ -24,6 +30,10 @@ public class GameState {
 
     public int getCurrentPlayerIndex() {
         return currentPlayerIndex;
+    }
+
+    public int getStartingPlayerIndex() {
+        return startingPlayerIndex;
     }
 
     public List<String> getCurrentPlayerHand() {
@@ -41,6 +51,24 @@ public class GameState {
 
     public void setIsFaceUpToOpposite() {
         isFaceUp = !isFaceUp;
+    }
+
+    public boolean getIsGameOngoing() {
+        return isGameOngoing;
+    }
+
+    public boolean getIsValidPlay() {
+        return isValidPlay;
+    }
+
+    public boolean canEndTurn() {
+        return currentDrawCount == 0;
+    }
+
+    public void startGame() {
+        isGameOngoing = true;
+        isValidPlay = false;
+        currentDrawCount = 1;
     }
 
     private static HashMap<Integer, List<String>> getInitialHands() {
