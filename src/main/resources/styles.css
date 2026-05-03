@@ -124,9 +124,10 @@
 }
 
 .name-tag:disabled {
+    -fx-opacity: 1.0;
     -fx-border-color: transparent;
     -fx-border-width: 0;
-    -fx-text-fill: yellow-0;
+    -fx-text-fill: yellow-0-tr-2;
 }
 
 .card-piles-section {
