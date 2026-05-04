@@ -169,5 +169,26 @@ public class PlayerCreateView {
         }
     }
 
+    public void bindAddPlayerButton(Runnable handler) {
+        addPlayerButton.setOnAction(e -> {
+            addPlayerField();
+            handler.run();
+        });
+    }
 
+    public void bindConfirmButton(Consumer<List<String>> handler) {
+        confirmButton.setOnAction(e -> {
+            List<String> names = new ArrayList<>();
+            for (TextField field : playerFields) {
+                if (!field.getText().isBlank()) {
+                    names.add(field.getText());
+                }
+            }
+            handler.accept(names);
+        });
+    }
+
+    public void bindResetButton(Runnable handler) {
+        backButton.setOnAction(e -> handler.run());
+    }
 }
