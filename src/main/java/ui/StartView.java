@@ -82,7 +82,7 @@ public class StartView {
 
     private Text buildExplodingText(String text) {
         Text t = new Text(text);
-        t.getStyleClass().addAll("exploding-text", "h3");
+        t.getStyleClass().addAll("exploding-text", "h7");
 
         return t;
     }
