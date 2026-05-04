@@ -18,10 +18,18 @@ public class SceneManager {
         this.assets = assets;
     }
 
-    public void showPlayerDeckView() {
+    public void showPlayerCreateView() {
         assets.loadGlobalFiles();
-        PlayerDeckController controller = new PlayerDeckController(model, assets);
+        PlayerCreateController controller = new PlayerCreateController(assets, this);
         setScene(controller.getView().getRoot());
+    }
+
+    public void showStartView() {
+
+    }
+
+    public void showPlayerDeckView() {
+
     }
 
     private void setScene(Parent root) {

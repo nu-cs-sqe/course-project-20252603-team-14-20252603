@@ -12,7 +12,7 @@ public class ExplodingKittensApp extends Application {
         AssetManager assets = new AssetManager();
 
         SceneManager sceneManager = new SceneManager(stage, model, assets);
-        sceneManager.showPlayerDeckView();
+        sceneManager.showPlayerCreateView();
     }
 
     public static void main(String[] args) {
