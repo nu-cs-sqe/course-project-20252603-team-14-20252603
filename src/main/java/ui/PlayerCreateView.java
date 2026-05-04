@@ -45,6 +45,13 @@ public class PlayerCreateView {
         return box;
     }
 
+    private VBox buildFieldsContainer() {
+        VBox container = new VBox();
+        container.setAlignment(Pos.CENTER);
+        container.setSpacing(12);
+        return container;
+    }
+
     private Button buildAddPlayerButton() {
         Button button = new Button("+");
         button.getStyleClass().add("add-player-button");
@@ -89,5 +96,17 @@ public class PlayerCreateView {
 
 
 
+    private void updateAddButtonState() {
+        if (addPlayerButton == null) return;
+
+        boolean isFull = playerFields.size() >= MAX_PLAYERS;
+        addPlayerButton.setDisable(isFull);
+
+        if (isFull) {
+            addPlayerButton.getStyleClass().add("disabled");
+        } else {
+            addPlayerButton.getStyleClass().remove("disabled");
+        }
+    }
 
 }
