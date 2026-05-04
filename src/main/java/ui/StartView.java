@@ -10,8 +10,10 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
 public class StartView {
+
     private final StartController controller;
     private final AssetManager assets;
+
     private StackPane root;
 
     public StartView(StartController controller, AssetManager assets){
@@ -22,50 +24,73 @@ public class StartView {
 
     public Parent getRoot() { return root; }
 
-    private void buildUI(){
+    private void buildUI() {
+        root = new StackPane();
+        root.getStyleClass().add("root");
 
+        StackPane startScreen = buildStartScreen();
+        root.getChildren().add(startScreen);
     }
-
 
     private StackPane buildStartScreen() {
         StackPane startScreen = new StackPane();
-        root.getStyleClass().add("start-screen");
 
         VBox content = new VBox();
         content.setAlignment(Pos.CENTER);
-        content.setSpacing(30);
+        content.setSpacing(48);
+        content.getStyleClass().add("content-section");
 
-        Text title = buildTitle();
+        VBox titleBox = buildExplodingKittensText();
         ImageView explosionCat = buildExplosionImage();
         Button playButton = buildPlayButton();
 
-        content.getChildren().addAll(title,explosionCat,playButton);
+        content.getChildren().addAll(titleBox, explosionCat, playButton);
         startScreen.getChildren().add(content);
-        return startScreen;
 
-    }
-    private Text buildTitle() {
-        Text title = new Text("EXPLODING WILDKITTENS");
-        title.getStyleClass().add("title-text");
-        return title;
+        return startScreen;
     }
 
     private ImageView buildExplosionImage() {
-        Image image = assets.getImage("explosion-cat");
+        Image image = assets.getImage("placeholder");
         ImageView imageView = new ImageView(image);
 
-        imageView.setFitWidth(500);
+        imageView.setFitWidth(400);
         imageView.setPreserveRatio(true);
 
         return imageView;
     }
 
     private Button buildPlayButton() {
-        Button playButton = new Button("START");
-        playButton.getStyleClass().add("play-button");
+        Button button = new Button("Play");
+        button.getStyleClass().addAll("name-tag", "h4");
 
-        playButton.setOnAction(e -> controller.startGame());
+        button.setOnAction(e -> controller.startGame());
 
-        return playButton;
+        return button;
+    }
+
+    private VBox buildExplodingKittensText() {
+        VBox box = new VBox();
+        box.setAlignment(Pos.CENTER);
+        box.getStyleClass().add("exploding-kittens-text");
+
+        Text exploding = buildExplodingText(UIConstants.TITLE);
+
+        box.getChildren().addAll(exploding);
+        return box;
+    }
+
+    private Text buildExplodingText(String text) {
+        Text t = new Text(text);
+        t.getStyleClass().addAll("exploding-text", "h3");
+
+        return t;
+    }
+
+    private Text buildKittensText(String text) {
+        Text t = new Text(text);
+        t.getStyleClass().addAll("kittens-text", "h3");
+
+        return t;
     }
 }
