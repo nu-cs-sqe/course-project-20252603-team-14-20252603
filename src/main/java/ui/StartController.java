@@ -14,6 +14,6 @@ public class StartController {
         return view;
     }
     public void startGame() {
-        //sceneManager.showPlayerSetupScreen();
+        sceneManager.showPlayerSetupScreen();
     }
 }
