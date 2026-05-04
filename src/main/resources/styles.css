@@ -60,7 +60,7 @@
     -fx-font-weight: normal;
     -fx-font-size: 18px;
 }
-.h6 {
+.h7 {
     -fx-font-family: "Koulen";
     -fx-font-weight: normal;
     -fx-font-size: 50px;
@@ -101,6 +101,45 @@
 .player-names-container {
     -fx-padding: 4px;
     -fx-spacing: 8px;
+}
+
+.name-box {
+    -fx-background-color: yellow-1;
+    -fx-background-radius: 4;
+    -fx-border-radius: 4;
+    -fx-border-width: 0;
+
+    -fx-font-family: "Koulen";
+    -fx-font-size: 24px;
+    -fx-text-fill: magenta-6;
+    -fx-prompt-text-fill: gray-2;
+
+    -fx-pref-width: 400px;
+    -fx-pref-height: 60px;
+    -fx-padding: 0px 20px;
+
+    -fx-alignment: center;
+}
+
+.name-box:focused {
+    -fx-background-color: yellow-0;
+    -fx-border-color: orange-3;
+    -fx-border-width: 2;
+}
+
+
+.add-player-button {
+    -fx-background-color: rgba(255, 255, 255, 0.25);
+
+    -fx-text-fill: yellow-1;
+    -fx-background-radius: 4;
+    -fx-pref-width: 400px;
+    -fx-pref-height: 40px;
+
+    -fx-border-width: 0;
+}
+.add-player-button:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.4);
 }
 
 .name-tag {
