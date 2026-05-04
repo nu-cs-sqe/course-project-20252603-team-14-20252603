@@ -30,9 +30,9 @@
 14. [done] Jazlyn: AssetManager.java
 15. [done] Jazlyn: UIConstants.java
 16. [not started] Ejean: DeckBuilder.java
-17. [not started] DJ: Game.java
-18. [not started] DJ: TurnManager.java
-19. [not started] DJ: Player.java
+17. [30% Done] DJ: Game.java
+18. [30% Done] DJ: TurnManager.java
+19. [30% Done] DJ: Player.java
 20. [not started] Irene: Card.java
 21. [not started] Irene: DrawDeck.java
 22. [not started] Irene: DiscardPile.java
