@@ -45,6 +45,12 @@ public class PlayerCreateView {
         return box;
     }
 
+    private Button buildAddPlayerButton() {
+        Button button = new Button("+");
+        button.getStyleClass().add("add-player-button");
+        return button;
+    }
+
     private Button buildConfirmButton() {
         Button button = new Button("CONFIRM");
         button.getStyleClass().addAll("turn-control-button", "enabled", "h5");
