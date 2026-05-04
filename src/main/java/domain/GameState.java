@@ -62,7 +62,7 @@ public class GameState {
     }
 
     public boolean canEndTurn() {
-        return isGameOngoing && currentDrawCount == 0;
+        return isGameOngoing && currentDrawCount <= 0;
     }
 
     public void startGame() {
