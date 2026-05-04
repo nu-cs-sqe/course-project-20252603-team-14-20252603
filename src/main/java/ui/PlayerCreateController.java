@@ -20,7 +20,11 @@ public class PlayerCreateController {
     }
 
     private void bindUI() {
+        view.bindAddPlayerButton(() -> {});
 
+        view.bindConfirmButton(this::startGame);
+
+        view.bindResetButton(() -> sceneManager.showStartView());
     }
 
     private void startGame(List<String> names) {
