@@ -45,6 +45,12 @@ public class PlayerCreateView {
         return box;
     }
 
+    private Button buildConfirmButton() {
+        Button button = new Button("CONFIRM");
+        button.getStyleClass().addAll("turn-control-button", "enabled", "h5");
+        return button;
+    }
+
     private StackPane buildOverlayLayer() {
         StackPane overlayLayer = new StackPane();
         overlayLayer.setPickOnBounds(false);
