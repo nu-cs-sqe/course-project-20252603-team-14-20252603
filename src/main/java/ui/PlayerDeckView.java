@@ -69,6 +69,7 @@ public class PlayerDeckView {
 
     public void renderDrawPile() {
         drawPile.setDisable(!model.canDraw());
+        drawPile.setVisible(!model.isDrawPileEmpty());
     }
 
     public void renderHandVisibilityToggle() {
@@ -120,7 +121,7 @@ public class PlayerDeckView {
 
     public void bindDrawPile(Runnable handler) {
         drawPile.setOnMouseClicked(e ->
-                handler.run());
+            handler.run());
     }
 
     public void bindHandVisibilityToggle(Runnable handler) {
@@ -249,14 +250,33 @@ public class PlayerDeckView {
         drawPileSection.setAlignment(Pos.CENTER);
         drawPileSection.getStyleClass().add("card-pile-section");
 
-        drawPile = buildCardBack();
+        StackPane drawPileContainer = buildDrawPileContainer();
         drawPile.setDisable(!model.canDraw());
 
         Text drawPileCaption = buildCaption(UIConstants.DRAW_PILE_CAPTION);
 
-        drawPileSection.getChildren().addAll(drawPile, drawPileCaption);
+        drawPileSection.getChildren().addAll(drawPileContainer, drawPileCaption);
 
         return drawPileSection;
+    }
+
+    private StackPane buildDrawPileContainer() {
+        StackPane drawPileContainer = new StackPane();
+
+        VBox emptyCard = buildEmptyPile();
+        drawPile = buildCardBack();
+
+        drawPileContainer.getChildren().addAll(emptyCard, drawPile);
+
+        return drawPileContainer;
+    }
+
+    private VBox buildEmptyPile() {
+        VBox discardPile = new VBox();
+        discardPile.setAlignment(Pos.CENTER);
+        discardPile.getStyleClass().addAll("card", "empty");
+
+        return discardPile;
     }
 
     private VBox buildCardBack() {
@@ -315,20 +335,22 @@ public class PlayerDeckView {
         discardPileSection.setAlignment(Pos.CENTER);
         discardPileSection.getStyleClass().add("card-pile-section");
 
-        VBox discardPile = buildDiscardPile();
+        StackPane discardPileContainer = buildDiscardPileContainer();
         Text discardPileCaption = buildCaption(UIConstants.DISCARD_PILE_CAPTION);
 
-        discardPileSection.getChildren().addAll(discardPile, discardPileCaption);
+        discardPileSection.getChildren().addAll(discardPileContainer, discardPileCaption);
 
         return discardPileSection;
     }
 
-    private VBox buildDiscardPile() {
-        VBox discardPile = new VBox();
-        discardPile.setAlignment(Pos.CENTER);
-        discardPile.getStyleClass().addAll("card", "empty");
+    private StackPane buildDiscardPileContainer() {
+        StackPane discardPileContainer = new StackPane();
 
-        return discardPile;
+        VBox emptyCard = buildEmptyPile();
+
+        discardPileContainer.getChildren().addAll(emptyCard);
+
+        return discardPileContainer;
     }
 
     private VBox buildPlayerChoiceSection() {

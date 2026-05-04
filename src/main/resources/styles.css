@@ -142,12 +142,15 @@
     -fx-pref-height: 230px;
     -fx-background-radius: 4;
     -fx-border-radius: 4;
+    -fx-border-color: linear-gradient(to bottom, yellow-1, yellow-4);
+    -fx-border-width: 2;
 }
 
 .card.empty {
     -fx-border-color: yellow-0-tr-2;
     -fx-border-width: 2;
     -fx-border-style: dashed;
+    -fx-background-color: transparent;
 }
 
 .card.back {
@@ -157,11 +160,6 @@
 .card.front {
     -fx-background-color: gray-0;
     -fx-padding: 8px;
-}
-
-.card {
-    -fx-border-color: linear-gradient(to bottom, yellow-1, yellow-4);
-    -fx-border-width: 2;
 }
 
 .card:disabled {

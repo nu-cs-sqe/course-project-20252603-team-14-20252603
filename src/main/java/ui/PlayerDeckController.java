@@ -45,11 +45,8 @@ public class PlayerDeckController {
     private void onDrawPile() {
         model.drawFromPile();
 
-        if (model.canEndTurn()) {
-            view.renderDrawPile();
-        }
-
-        view.renderPlayerHandCards();
+        view.renderDrawPile();
+        renderAndBindPlayerHandCards();
         view.renderTurnControlSection();
 
         System.out.println("CARD DRAWN FROM PILE");

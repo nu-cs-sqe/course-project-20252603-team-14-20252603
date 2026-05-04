@@ -21,7 +21,6 @@ public class GameState {
         currentPlayerIndex = 0;
         isFaceUp = false;
         isGameOngoing = false;
-        isValidPlay = false;
         drawPile = new ArrayDeque<>(
                 List.of("ATTACK", "SEE THE FUTURE", "NOPE")
         );
@@ -87,6 +86,10 @@ public class GameState {
         addCardToCurrentPlayerHand(drawnCardName);
 
         currentDrawCount--;
+    }
+
+    public boolean isDrawPileEmpty() {
+        return drawPile.isEmpty();
     }
 
     private static Map<Integer, List<String>> getInitialHands() {
