@@ -34,5 +34,5 @@
 18. [30% Done] DJ: TurnManager.java
 19. [30% Done] DJ: Player.java
 20. [not started] Irene: Card.java
-21. [not started] Irene: DrawDeck.java
-22. [not started] Irene: DiscardPile.java
+21. [30% Done] Irene: Deck.java
+22. [not started] Irene: CardType.java.java
