@@ -107,16 +107,16 @@ public class PlayerDeckView {
     public void bindNameTags(Consumer<Integer> handler) {
         for (int i = 0; i < nameTagToggleButtons.size(); i++) {
             int index = i;
-            nameTagToggleButtons.get(i).setOnMouseClicked((e -> {
-                handler.accept(index);
-            }));
+            nameTagToggleButtons.get(i).setOnMouseClicked((e ->
+                handler.accept(index)
+            ));
         }
     }
 
     public void bindHandVisibilityToggle(Runnable handler) {
-        handVisibilityToggle.setOnMouseClicked(e -> {
-            handler.run();
-        });
+        handVisibilityToggle.setOnMouseClicked(e ->
+            handler.run()
+        );
     }
 
     public void bindPlayerHandCards(Consumer<Integer> handler) {
@@ -124,16 +124,16 @@ public class PlayerDeckView {
 
         for (int i = 0; i < handCards.size(); i++) {
             int index = i;
-            handCards.get(i).setOnMouseClicked((e -> {
-                handler.accept(index);
-            }));
+            handCards.get(i).setOnMouseClicked((e ->
+                handler.accept(index)
+            ));
         }
     }
 
     public void bindStartGameButton(Runnable handler) {
-        startGameButton.setOnMouseClicked(e -> {
-            handler.run();
-        });
+        startGameButton.setOnMouseClicked(e ->
+            handler.run()
+        );
     }
 
     private void buildUI() {
@@ -505,7 +505,7 @@ public class PlayerDeckView {
     }
 
     private Text buildCardDescription(String description) {
-        Text cardDescription = new Text("Put your last drawn card back into the deck");
+        Text cardDescription = new Text(description);
 
         cardDescription.setWrappingWidth(UIConstants.CARD_DESCRIPTION_WRAPPING_WIDTH);
         cardDescription.getStyleClass().addAll("card-description", "b2");
