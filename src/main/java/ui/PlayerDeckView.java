@@ -16,6 +16,7 @@ import javafx.scene.shape.SVGPath;
 import javafx.scene.text.Text;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.function.Consumer;
 
 public class PlayerDeckView {
@@ -23,7 +24,7 @@ public class PlayerDeckView {
     private final AssetManager assets;
     private final GameState model;
 
-    private final ArrayList<ToggleButton> nameTagToggleButtons;
+    private final List<ToggleButton> nameTagToggleButtons;
 
     private StackPane root;
     private VBox playerHeaderSection;

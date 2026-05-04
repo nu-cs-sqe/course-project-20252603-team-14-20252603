@@ -7,7 +7,7 @@ import java.util.Map;
 public class GameState {
 
     private final List<String> playerNames;
-    private HashMap<Integer, List<String>> playerHands;
+    private Map<Integer, List<String>> playerHands;
     private int startingPlayerIndex;
     private int currentPlayerIndex;
     private boolean isFaceUp;
@@ -71,7 +71,7 @@ public class GameState {
         currentDrawCount = 1;
     }
 
-    private static HashMap<Integer, List<String>> getInitialHands() {
+    private static Map<Integer, List<String>> getInitialHands() {
         return new HashMap<>(Map.of(
             0, List.of(
                     "DEFUSE", "ATTACK", "CAT", "CAT", "CLONE", "DRAW FROM THE BOTTOM"
