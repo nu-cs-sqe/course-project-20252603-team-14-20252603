@@ -16,6 +16,7 @@ public class PlayerDeckController {
 
     private void bindUI() {
         view.bindNameTags(this::onNameTag);
+        view.bindDrawPile(this::onDrawPile);
         view.bindHandVisibilityToggle(this::onToggleHandVisibility);
         view.bindPlayerHandCards(this::onPlayerHandCard);
         view.bindStartGameButton(this::onStartGameButton);
@@ -39,6 +40,19 @@ public class PlayerDeckController {
     private void renderAndBindPlayerHandCards() {
         view.renderPlayerHandCards();
         view.bindPlayerHandCards(this::onPlayerHandCard);
+    }
+
+    private void onDrawPile() {
+        model.drawFromPile();
+
+        if (model.canEndTurn()) {
+            view.renderDrawPile();
+        }
+
+        view.renderPlayerHandCards();
+        view.renderTurnControlSection();
+
+        System.out.println("CARD DRAWN FROM PILE");
     }
 
     private void onToggleHandVisibility() {
@@ -67,6 +81,7 @@ public class PlayerDeckController {
         handleChangeCurrentPlayer(model.getStartingPlayerIndex());
 
         view.renderPlayerHeaderSection();
+        view.renderDrawPile();
         view.renderTurnControlSection();
 
         System.out.println("START GAME BUTTON CLICKED");

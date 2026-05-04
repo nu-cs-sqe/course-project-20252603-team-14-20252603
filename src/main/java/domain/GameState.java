@@ -1,8 +1,6 @@
 package domain;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class GameState {
 
@@ -14,6 +12,7 @@ public class GameState {
     private boolean isGameOngoing;
     private boolean isValidPlay;
     private int currentDrawCount;
+    private Deque<String> drawPile;
 
     public GameState() {
         playerNames = List.of("STEVE", "MONKEY", "JENNY", "ELI", "GEORGE WASHINGTON");
@@ -22,6 +21,10 @@ public class GameState {
         currentPlayerIndex = 0;
         isFaceUp = false;
         isGameOngoing = false;
+        isValidPlay = false;
+        drawPile = new ArrayDeque<>(
+                List.of("ATTACK", "SEE THE FUTURE", "NOPE")
+        );
     }
 
     public List<String> getPlayerNames() {
@@ -62,7 +65,7 @@ public class GameState {
     }
 
     public boolean canEndTurn() {
-        return currentDrawCount == 0;
+        return isGameOngoing && currentDrawCount <= 0;
     }
 
     public void startGame() {
@@ -71,23 +74,38 @@ public class GameState {
         currentDrawCount = 1;
     }
 
+    public boolean canDraw() {
+        return isGameOngoing && currentDrawCount > 0;
+    }
+
+    private void addCardToCurrentPlayerHand(String cardName) {
+        getCurrentPlayerHand().add(cardName);
+    }
+
+    public void drawFromPile() {
+        String drawnCardName = drawPile.pollFirst();
+        addCardToCurrentPlayerHand(drawnCardName);
+
+        currentDrawCount--;
+    }
+
     private static Map<Integer, List<String>> getInitialHands() {
         return new HashMap<>(Map.of(
-            0, List.of(
+            0, new ArrayList<>(List.of(
                     "DEFUSE", "ATTACK", "CAT", "CAT", "CLONE", "DRAW FROM THE BOTTOM"
-                ),
-            1, List.of(
+                )),
+            1, new ArrayList<>(List.of(
                     "DEFUSE", "ATTACK", "CAT", "SWAP TOP AND BOTTOM", "CAT", "CAT"
-                ),
-            2, List.of(
+                )),
+            2, new ArrayList<>(List.of(
                     "DEFUSE", "CAT", "CLONE", "RAISING HECK", "GODCAT", "CAT"
-                ),
-            3, List.of(
+                )),
+            3, new ArrayList<>(List.of(
                     "DEFUSE", "CAT", "CAT", "CAT", "CAT", "CAT"
-                ),
-            4, List.of(
+                )),
+            4, new ArrayList<>(List.of(
                     "DEFUSE", "FEED THE DEAD", "ATTACK", "ATTACK", "CAT", "CAT"
-                )
+                ))
         ));
     }
 

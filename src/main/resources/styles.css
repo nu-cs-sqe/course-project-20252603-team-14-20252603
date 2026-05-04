@@ -159,16 +159,21 @@
     -fx-padding: 8px;
 }
 
-.card.enabled {
+.card {
     -fx-border-color: linear-gradient(to bottom, yellow-1, yellow-4);
     -fx-border-width: 2;
 }
 
-.card.back.enabled:hover {
+.card:disabled {
+    -fx-border-color: transparent;
+    -fx-border-width: 0;
+}
+
+.card.back:hover {
     -fx-background-color: red-5;
 }
 
-.card.front.enabled:hover {
+.card.front:hover {
     -fx-background-color: gray-1;
 }
 

@@ -29,6 +29,7 @@ public class PlayerDeckView {
     private StackPane root;
     private VBox playerHeaderSection;
     private HBox playerNamesContainer;
+    private VBox drawPile;
     private HBox handCardsContainer;
     private Button handVisibilityToggle;
     private Button startGameButton;
@@ -64,6 +65,10 @@ public class PlayerDeckView {
                 nameTagToggleButtons.get(i).setDisable(true);
             }
         }
+    }
+
+    public void renderDrawPile() {
+        drawPile.setDisable(!model.canDraw());
     }
 
     public void renderHandVisibilityToggle() {
@@ -111,6 +116,11 @@ public class PlayerDeckView {
                 handler.accept(index)
             ));
         }
+    }
+
+    public void bindDrawPile(Runnable handler) {
+        drawPile.setOnMouseClicked(e ->
+                handler.run());
     }
 
     public void bindHandVisibilityToggle(Runnable handler) {
@@ -239,7 +249,9 @@ public class PlayerDeckView {
         drawPileSection.setAlignment(Pos.CENTER);
         drawPileSection.getStyleClass().add("card-pile-section");
 
-        VBox drawPile = buildCardBack();
+        drawPile = buildCardBack();
+        drawPile.setDisable(!model.canDraw());
+
         Text drawPileCaption = buildCaption(UIConstants.DRAW_PILE_CAPTION);
 
         drawPileSection.getChildren().addAll(drawPile, drawPileCaption);
@@ -381,10 +393,10 @@ public class PlayerDeckView {
 
         if (model.getIsFaceUp()) {
             handCard = buildCardFront(cardName);
+            handCard.setDisable(true);
         }
         else {
             handCard = buildCardBack();
-            handCard.getStyleClass().add("enabled");
         }
 
         return handCard;
