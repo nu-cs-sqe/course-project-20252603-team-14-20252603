@@ -16,8 +16,8 @@
 **Planning and Progress Tracking**:
 1. [done] Luke: StartView.java
 2. [done] Luke: StartController.java
-3. [not started] Luke: PlayerSetUpView.java
-4. [not started] Luke: PlayerSetUpController.java
+3. [80% Done] Luke: PlayerSetUpView.java
+4. [80% Done] Luke: PlayerSetUpController.java
 5. [done] Jazlyn: PlayerDecksView.java
 6. [done] Jazlyn: PlayerDecksController.java
 7. [done] Jazlyn: FileLoader.java interface
@@ -34,5 +34,5 @@
 18. [30% Done] DJ: TurnManager.java
 19. [30% Done] DJ: Player.java
 20. [not started] Irene: Card.java
-21. [not started] Irene: DrawDeck.java
-22. [not started] Irene: DiscardPile.java
+21. [30% Done] Irene: Deck.java
+22. [not started] Irene: CardTypes.java
