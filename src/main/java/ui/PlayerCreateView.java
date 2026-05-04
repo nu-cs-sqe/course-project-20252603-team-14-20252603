@@ -13,7 +13,7 @@ import javafx.scene.text.Text;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import java.util.function.Consumer;
 
 public class PlayerCreateView {
 
@@ -30,12 +30,58 @@ public class PlayerCreateView {
 
     public PlayerCreateView(AssetManager assets) {
         this.assets = assets;
+        buildUI();
     }
 
     public Parent getRoot() {
         return root;
     }
 
+    private void buildUI() {
+        root = new StackPane();
+        root.getStyleClass().add("root");
+
+        ImageView backgroundImage = buildBackgroundImage();
+        StackPane createScreen = buildCreateScreen();
+        StackPane overlayLayer = buildOverlayLayer();
+
+        root.getChildren().addAll(backgroundImage, createScreen, overlayLayer);
+    }
+
+    private ImageView buildBackgroundImage() {
+        Image image = assets.getImage("placeholder");
+        ImageView imageView = new ImageView(image);
+
+        imageView.setPreserveRatio(true);
+        imageView.setOpacity(0.3);
+
+        imageView.fitWidthProperty().bind(root.widthProperty());
+        imageView.fitHeightProperty().bind(root.heightProperty());
+
+        return imageView;
+    }
+
+    private StackPane buildCreateScreen() {
+        StackPane createScreen = new StackPane();
+
+        VBox content = new VBox();
+        content.setAlignment(Pos.CENTER);
+        content.setSpacing(32);
+        content.getStyleClass().add("content-section");
+
+        VBox titleBox = buildTitleSection();
+        playerFieldsContainer = buildFieldsContainer();
+        addPlayerButton = buildAddPlayerButton();
+        confirmButton = buildConfirmButton();
+
+        addPlayerField();
+        addPlayerField();
+
+        content.getChildren().addAll(titleBox, playerFieldsContainer, addPlayerButton, confirmButton);
+        createScreen.getChildren().add(content);
+
+        return createScreen;
+    }
 
     private VBox buildTitleSection() {
         VBox box = new VBox();
@@ -122,5 +168,6 @@ public class PlayerCreateView {
             addPlayerButton.getStyleClass().remove("disabled");
         }
     }
+
 
 }
