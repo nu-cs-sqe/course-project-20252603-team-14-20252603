@@ -18,8 +18,8 @@ public class SceneManager {
         this.assets = assets;
     }
 
-    public void showPlayerSetupScreen() {
-
+    public void showPlayerCreateView() {
+        // TODO
     }
 
     public void showStartView() {
@@ -29,7 +29,7 @@ public class SceneManager {
     }
 
     public void showPlayerDeckView() {
-
+        // TODO
     }
 
     private void setScene(Parent root) {
