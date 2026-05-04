@@ -45,6 +45,18 @@ public class PlayerCreateView {
         return box;
     }
 
+    private StackPane buildOverlayLayer() {
+        StackPane overlayLayer = new StackPane();
+        overlayLayer.setPickOnBounds(false);
+
+        backButton = buildBackButton();
+        overlayLayer.getChildren().add(backButton);
+
+        StackPane.setAlignment(backButton, Pos.TOP_LEFT);
+        StackPane.setMargin(backButton, new Insets(8));
+
+        return overlayLayer;
+    }
 
     private Button buildBackButton() {
         Button button = new Button();
