@@ -1,5 +1,7 @@
 plugins {
     id("java")
+    id("application")
+    id("org.openjfx.javafxplugin") version "0.0.14"
 }
 
 group = "nu.csse.sqe"
@@ -14,10 +16,19 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter")
 }
 
+javafx {
+    version = "17.0.10"
+    modules("javafx.controls", "javafx.fxml")
+}
+
 java {
     toolchain {
         languageVersion = JavaLanguageVersion.of(11)
     }
+}
+
+application {
+    mainClass.set("ui.ExplodingKittensApp")
 }
 
 tasks.compileJava {
