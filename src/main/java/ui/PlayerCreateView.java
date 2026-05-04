@@ -11,6 +11,9 @@ import javafx.scene.layout.*;
 import javafx.scene.shape.SVGPath;
 import javafx.scene.text.Text;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class PlayerCreateView {
 
@@ -22,7 +25,7 @@ public class PlayerCreateView {
     private Button confirmButton;
     private Button backButton;
 
-
+    private final List<TextField> playerFields = new ArrayList<>();
     private static final int MAX_PLAYERS = 5;
 
     public PlayerCreateView(AssetManager assets) {
@@ -94,7 +97,18 @@ public class PlayerCreateView {
         return icon;
     }
 
+    private void addPlayerField() {
+        if (playerFields.size() >= MAX_PLAYERS) return;
 
+        TextField field = new TextField();
+        field.setPromptText("PLAYER " + (playerFields.size() + 1));
+        field.getStyleClass().add("name-box");
+
+        playerFields.add(field);
+        playerFieldsContainer.getChildren().add(field);
+
+        updateAddButtonState();
+    }
 
     private void updateAddButtonState() {
         if (addPlayerButton == null) return;
