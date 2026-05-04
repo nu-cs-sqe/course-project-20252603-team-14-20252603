@@ -17,16 +17,17 @@ public class SceneManager {
         this.stage = stage;
     }
 
+    public void showPlayerSetupScreen() {
+
+    }
     public void showStartView() {
         loadGlobalFiles();
         StartController controller = new StartController(assets, this);
         setScene(controller.getStartView().getRoot());
     }
-    //public void showPlayerDeckView() {
-    //    loadGlobalFiles();
-    //    PlayerDeckController controller = new PlayerDeckController(assets);
-    //    setScene(controller.getView().getRoot());
-    //}
+    public void showPlayerDeckView() {
+
+    }
 
     private void setScene(Parent root) {
         Scene scene = new Scene(root, UIConstants.SCENE_WIDTH, UIConstants.SCENE_HEIGHT);
