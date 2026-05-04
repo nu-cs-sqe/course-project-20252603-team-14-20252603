@@ -46,4 +46,24 @@ public class PlayerCreateView {
     }
 
 
+    private Button buildBackButton() {
+        Button button = new Button();
+        button.getStyleClass().add("icon-button");
+
+        SVGPath backIcon = buildIcon("restart");
+        button.setGraphic(backIcon);
+
+        return button;
+    }
+
+    private SVGPath buildIcon(String key) {
+        SVGPath icon = new SVGPath();
+        icon.setContent(assets.getSvg(key));
+        icon.getStyleClass().add(key + "-icon");
+        return icon;
+    }
+
+
+
+
 }
