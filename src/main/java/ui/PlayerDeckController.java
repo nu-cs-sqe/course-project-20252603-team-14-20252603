@@ -61,16 +61,34 @@ public class PlayerDeckController {
         System.out.println("HAND VISIBILITY TOGGLE CLICKED");
     }
 
-    private void onPlayerHandCardButton(int playerIndex) {
+    private void onPlayerHandCardButton(int handCardIndex) {
         if (!model.getIsFaceUp()) {
-            onHandVisibilityButton();
-
-            System.out.println("FACE DOWN HAND CARD BUTTON CLICKED");
+            onFaceDownPlayerHandCardButton();
         }
         else {
+            onFaceUpPlayerHandCardButton(handCardIndex);
+            view.renderTurnControlSection();
+        }
+    }
 
+    private void onFaceDownPlayerHandCardButton() {
+        onHandVisibilityButton();
 
-            System.out.println("FACE UP HAND CARD BUTTON CLICKED");
+        System.out.println("FACE DOWN HAND CARD BUTTON CLICKED");
+    }
+
+    private void onFaceUpPlayerHandCardButton(int handCardIndex) {
+        String selectedCard = model.getCurrentPlayerHand().get(handCardIndex);
+
+        if (view.isSelectedHandCard(handCardIndex)) {
+            model.addToSelectedHandCards(selectedCard);
+
+            System.out.println(selectedCard + " IN HAND SELECTED");
+        }
+        else {
+            model.removeFromSelectedHandCards(selectedCard);
+
+            System.out.println(selectedCard + " IN HAND DESELECTED");
         }
     }
 

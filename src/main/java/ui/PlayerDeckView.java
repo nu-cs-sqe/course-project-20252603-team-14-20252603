@@ -133,6 +133,13 @@ public class PlayerDeckView {
         );
     }
 
+    public boolean isSelectedHandCard(int handCardIndex) {
+        ObservableList<Node> handCardButtons = handCardsContainer.getChildren();
+        ToggleButton handCardButton = (ToggleButton) handCardButtons.get(handCardIndex);
+
+        return handCardButton.isSelected();
+    }
+
     private void buildUI() {
         root = new StackPane();
 

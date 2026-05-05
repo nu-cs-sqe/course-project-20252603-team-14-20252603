@@ -15,7 +15,7 @@ public class GameState {
     private Deque<String> drawPile;
 
     // initialized after game starts
-    private List<String> selectedCardsToPlay;
+    private List<String> selectedHandCards;
     private int currentDrawCount;
 
     public GameState() {
@@ -69,7 +69,7 @@ public class GameState {
     }
 
     public boolean isValidPlay() {
-        return !selectedCardsToPlay.isEmpty() && (
+        return !selectedHandCards.isEmpty() && (
                 isOneOfAKind() ||
                 isNOfAKind(2) ||
                 isNOfAKind(3)
@@ -77,9 +77,9 @@ public class GameState {
     }
 
     private boolean isOneOfAKind() {
-        String cardName = selectedCardsToPlay.get(0);
+        String cardName = selectedHandCards.get(0);
 
-        boolean isOneCard = selectedCardsToPlay.size() == 1;
+        boolean isOneCard = selectedHandCards.size() == 1;
         boolean isCatCard = Objects.equals(cardName, "CAT");
         boolean isDefuseCard = Objects.equals(cardName, "DEFUSE");
 
@@ -87,8 +87,8 @@ public class GameState {
     }
 
     private boolean isNOfAKind(int n) {
-        boolean isNCards = selectedCardsToPlay.size() == n;
-        return isNCards && isAllSameCards(selectedCardsToPlay);
+        boolean isNCards = selectedHandCards.size() == n;
+        return isNCards && isAllSameCards(selectedHandCards);
     }
 
     private boolean isAllSameCards(List<String> cards) {
@@ -101,7 +101,7 @@ public class GameState {
 
     public void startGame() {
         isGameOngoing = true;
-        selectedCardsToPlay = new ArrayList<>();
+        selectedHandCards = new ArrayList<>();
         currentDrawCount = 1;
         canPlayCards = true;
     }
@@ -114,9 +114,14 @@ public class GameState {
         getCurrentPlayerHand().add(cardName);
     }
 
-    public void addToSelectedCardsToPlay(String cardName) {
-        selectedCardsToPlay.add(cardName);
+    public void addToSelectedHandCards(String cardName) {
+        selectedHandCards.add(cardName);
     }
+
+    public void removeFromSelectedHandCards(String cardName) {
+        selectedHandCards.remove(cardName);
+    }
+
 
     public void drawFromPile() {
         String drawnCardName = drawPile.pollFirst();
