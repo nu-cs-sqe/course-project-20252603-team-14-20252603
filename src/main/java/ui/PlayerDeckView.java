@@ -244,7 +244,7 @@ public class PlayerDeckView {
         drawPileSection.getStyleClass().add("card-pile-section");
 
         StackPane drawPileContainer = buildDrawPileContainer();
-        drawPileButton.setDisable(!model.canDraw());
+        drawPileButton.setDisable(true);
 
         Text drawPileCaption = buildCaption(UIConstants.DRAW_PILE_CAPTION);
 
