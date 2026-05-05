@@ -19,7 +19,7 @@ public class GameState {
     private int currentDrawCount;
 
     public GameState() {
-        playerNames = List.of("STEVE", "MONKEY", "JENNY", "ELI", "GEORGE WASHINGTON");
+        playerNames = List.of("STEVE", "MONKEY", "JENNY", "ELI");
         playerHands = getInitialHands();
         startingPlayerIndex = 0;
         currentPlayerIndex = 0;
@@ -149,9 +149,6 @@ public class GameState {
                 )),
             3, new ArrayList<>(List.of(
                     "DEFUSE", "CAT", "CAT", "CAT", "CAT", "CAT"
-                )),
-            4, new ArrayList<>(List.of(
-                    "DEFUSE", "FEED THE DEAD", "ATTACK", "ATTACK", "CAT", "CAT"
                 ))
         ));
     }
