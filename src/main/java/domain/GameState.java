@@ -69,7 +69,8 @@ public class GameState {
     }
 
     public boolean isValidPlay() {
-        return !selectedHandCards.isEmpty() && (
+        return canPlayCards &&
+                !selectedHandCards.isEmpty() && (
                 isOneOfAKind() ||
                 isNOfAKind(2) ||
                 isNOfAKind(3)
