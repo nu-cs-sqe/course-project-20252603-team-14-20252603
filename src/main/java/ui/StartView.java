@@ -5,7 +5,6 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.Priority;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
@@ -53,13 +52,6 @@ public class StartView {
         return contentSection;
     }
 
-    private Text buildTitleText() {
-        Text titleText = new Text(UIConstants.TITLE);
-        titleText.getStyleClass().addAll("h1", "title");
-
-        return titleText;
-    }
-
     private ImageView buildExplosionImage() {
         Image image = assets.getImage("placeholder");
         ImageView imageView = new ImageView(image);
@@ -68,6 +60,13 @@ public class StartView {
         imageView.setPreserveRatio(true);
 
         return imageView;
+    }
+
+    private Text buildTitleText() {
+        Text titleText = new Text(UIConstants.TITLE);
+        titleText.getStyleClass().addAll("h1", "title");
+
+        return titleText;
     }
 
     private Button buildPlayButton() {
