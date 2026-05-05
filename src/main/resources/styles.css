@@ -37,6 +37,18 @@
     -fx-background-color: magenta-6;
 }
 
+.h1 {
+    -fx-font-family: "Koulen";
+    -fx-font-weight: normal;
+    -fx-font-size: 96px;
+}
+
+.h2 {
+    -fx-font-family: "Koulen";
+    -fx-font-weight: normal;
+    -fx-font-size: 38px;
+}
+
 .h3 {
     -fx-font-family: "Koulen";
     -fx-font-weight: normal;
@@ -60,11 +72,6 @@
     -fx-font-weight: normal;
     -fx-font-size: 18px;
 }
-.h7 {
-    -fx-font-family: "Koulen";
-    -fx-font-weight: normal;
-    -fx-font-size: 50px;
-}
 
 .b1 {
     -fx-font-family: "Koulen";
@@ -85,6 +92,25 @@
     -fx-fill: yellow-0-tr-2;
 }
 
+.start-content-section {
+    -fx-padding: 64px;
+    -fx-spacing: 500px;
+}
+
+.play-button {
+    -fx-background-color: linear-gradient(to bottom, magenta-3, magenta-5);
+    -fx-background-radius: 16;
+    -fx-text-fill: linear-gradient(to bottom, yellow-1, yellow-4);
+    -fx-border-width: 4;
+    -fx-border-color: linear-gradient(to bottom, yellow-1, yellow-4);
+    -fx-border-radius: 16;
+    -fx-padding: 0px 128px;
+}
+
+.title {
+    -fx-fill: linear-gradient(to bottom, yellow-3, orange-3, red-3);
+}
+
 .content-section {
     -fx-padding: 16px;
     -fx-spacing: 24px;
@@ -103,48 +129,8 @@
     -fx-spacing: 8px;
 }
 
-.name-box {
-    -fx-background-color: yellow-1;
-    -fx-background-radius: 4;
-    -fx-border-radius: 4;
-    -fx-border-width: 0;
-
-    -fx-font-family: "Koulen";
-    -fx-font-size: 24px;
-    -fx-text-fill: magenta-6;
-    -fx-prompt-text-fill: gray-2;
-
-    -fx-pref-width: 400px;
-    -fx-pref-height: 60px;
-    -fx-padding: 0px 20px;
-
-    -fx-alignment: center;
-}
-
-.name-box:focused {
-    -fx-background-color: yellow-0;
-    -fx-border-color: orange-3;
-    -fx-border-width: 2;
-}
-
-
-.add-player-button {
-    -fx-background-color: rgba(255, 255, 255, 0.25);
-
-    -fx-text-fill: yellow-1;
-    -fx-background-radius: 4;
-    -fx-pref-width: 400px;
-    -fx-pref-height: 40px;
-
-    -fx-border-width: 0;
-}
-.add-player-button:hover {
-    -fx-background-color: rgba(255, 255, 255, 0.4);
-}
-
 .name-tag {
     -fx-background-color: magenta-5;
-    -fx-text-fill: yellow-0-tr-2;
     -fx-border-width: 2;
     -fx-background-radius: 8;
     -fx-border-radius: 8;
@@ -187,12 +173,15 @@
     -fx-pref-height: 230px;
     -fx-background-radius: 4;
     -fx-border-radius: 4;
+    -fx-border-color: linear-gradient(to bottom, yellow-1, yellow-4);
+    -fx-border-width: 2;
 }
 
 .card.empty {
     -fx-border-color: yellow-0-tr-2;
     -fx-border-width: 2;
     -fx-border-style: dashed;
+    -fx-background-color: transparent;
 }
 
 .card.back {
@@ -204,16 +193,16 @@
     -fx-padding: 8px;
 }
 
-.card.enabled {
-    -fx-border-color: linear-gradient(to bottom, yellow-1, yellow-4);
-    -fx-border-width: 2;
+.card:disabled {
+    -fx-border-color: transparent;
+    -fx-border-width: 0;
 }
 
-.card.back.enabled:hover {
+.card.back:hover {
     -fx-background-color: red-5;
 }
 
-.card.front.enabled:hover {
+.card.front:hover {
     -fx-background-color: gray-1;
 }
 
