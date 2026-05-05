@@ -164,7 +164,7 @@
 
 .card:disabled {
     -fx-border-color: transparent;
-    -fx-opacity: 1;
+    -fx-opacity: 0.9;
     -fx-border-width: 0;
 }
 
