@@ -274,12 +274,13 @@
     -fx-effect: dropshadow(gaussian, magenta-5-tr, 2, 0, 0, 2);
 }
 
-.turn-control-button.enabled {
+.turn-control-button {
     -fx-background-color: linear-gradient(to bottom, yellow-1, yellow-4);
     -fx-text-fill: magenta-6;
 }
 
-.turn-control-button.disabled {
+.turn-control-button:disabled {
+    -fx-opacity: 1;
     -fx-background-color: beige-2;
     -fx-text-fill: beige-3;
 }

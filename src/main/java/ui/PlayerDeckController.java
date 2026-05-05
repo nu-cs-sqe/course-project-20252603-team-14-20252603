@@ -68,6 +68,7 @@ public class PlayerDeckController {
             System.out.println("FACE DOWN HAND CARD CLICKED");
         }
         else {
+
             System.out.println("FACE UP HAND CARD CLICKED");
         }
     }

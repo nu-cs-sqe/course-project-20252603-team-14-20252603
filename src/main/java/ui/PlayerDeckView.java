@@ -91,20 +91,20 @@ public class PlayerDeckView {
 
         Button playCardsButton = buildTurnControlButton(UIConstants.PLAY_CARDS_LABEL);
 
-        if (model.getIsValidPlay()) {
-            playCardsButton.getStyleClass().add("enabled");
+        if (model.isValidPlay()) {
+            playCardsButton.setDisable(false);
         }
         else {
-            playCardsButton.getStyleClass().add("disabled");
+            playCardsButton.setDisable(true);
         }
 
         Button endTurnButton = buildTurnControlButton(UIConstants.END_TURN_LABEL);
 
         if (model.canEndTurn()) {
-            endTurnButton.getStyleClass().add("enabled");
+            endTurnButton.setDisable(false);
         }
         else {
-            endTurnButton.getStyleClass().add("disabled");
+            endTurnButton.setDisable(true);
         }
 
         turnControlSection.getChildren().addAll(playCardsButton, endTurnButton);
@@ -553,10 +553,9 @@ public class PlayerDeckView {
         turnControlSection.getStyleClass().add("turn-control-section");
 
         Button playCardsButton = buildTurnControlButton(UIConstants.PLAY_CARDS_LABEL);
-        playCardsButton.getStyleClass().add("disabled");
+        playCardsButton.setDisable(true);
 
         startGameButton = buildTurnControlButton(UIConstants.START_GAME_LABEL);
-        startGameButton.getStyleClass().add("enabled");
 
         turnControlSection.getChildren().addAll(playCardsButton, startGameButton);
     }

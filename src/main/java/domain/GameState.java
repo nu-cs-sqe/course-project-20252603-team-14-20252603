@@ -1,11 +1,6 @@
 package domain;
 
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.Deque;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class GameState {
 
@@ -15,7 +10,7 @@ public class GameState {
     private int currentPlayerIndex;
     private boolean isFaceUp;
     private boolean isGameOngoing;
-    private boolean isValidPlay;
+    private List<String> selectedCardsToPlay;
     private int currentDrawCount;
     private Deque<String> drawPile;
 
@@ -64,8 +59,31 @@ public class GameState {
         return isGameOngoing;
     }
 
-    public boolean getIsValidPlay() {
-        return isValidPlay;
+    public boolean isValidPlay() {
+        return !selectedCardsToPlay.isEmpty() && (
+                isOneOfAKind() ||
+                isNOfAKind(2) ||
+                isNOfAKind(3)
+        );
+    }
+
+    private boolean isOneOfAKind() {
+        String cardName = selectedCardsToPlay.get(0);
+
+        boolean isOneCard = selectedCardsToPlay.size() == 1;
+        boolean isCatCard = Objects.equals(cardName, "CAT");
+        boolean isDefuseCard = Objects.equals(cardName, "DEFUSE");
+
+        return isOneCard && !isCatCard && !isDefuseCard;
+    }
+
+    private boolean isNOfAKind(int n) {
+        boolean isNCards = selectedCardsToPlay.size() == n;
+        return isNCards && isAllSameCards(selectedCardsToPlay);
+    }
+
+    private boolean isAllSameCards(List<String> cards) {
+        return new HashSet<>(cards).size() <= 1;
     }
 
     public boolean canEndTurn() {
@@ -74,7 +92,7 @@ public class GameState {
 
     public void startGame() {
         isGameOngoing = true;
-        isValidPlay = false;
+        selectedCardsToPlay = new ArrayList<>();
         currentDrawCount = 1;
     }
 
