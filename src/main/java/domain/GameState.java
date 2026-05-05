@@ -7,12 +7,12 @@ public class GameState {
     // initialized before game starts
     private final List<String> playerNames;
     private Map<Integer, List<String>> playerHands;
-    private int startingPlayerIndex;
+    private final int startingPlayerIndex;
     private int currentPlayerIndex;
     private boolean isFaceUp;
     private boolean canPlayCards;
     private boolean isGameOngoing;
-    private Deque<String> drawPile;
+    private final Deque<String> drawPile;
 
     // initialized after game starts
     private List<String> selectedHandCards;
