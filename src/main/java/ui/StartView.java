@@ -10,13 +10,12 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
 public class StartView {
-    private final StartController controller;
     private final AssetManager assets;
     private StackPane root;
 
-    public StartView(StartController controller, AssetManager assets){
-        this.controller = controller;
+    public StartView(AssetManager assets){
         this.assets = assets;
+
         buildUI();
     }
 
@@ -24,6 +23,7 @@ public class StartView {
 
     private void buildUI() {
         root = new StackPane();
+
         StackPane startScreen = buildStartScreen();
         root.getChildren().add(startScreen);
     }

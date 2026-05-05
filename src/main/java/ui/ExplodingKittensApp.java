@@ -7,12 +7,14 @@ public class ExplodingKittensApp extends Application {
 
     @Override
     public void start(Stage stage) {
-        SceneManager sceneManager = new SceneManager(stage);
+        AssetManager assets = new AssetManager();
+
+        SceneManager sceneManager = new SceneManager(stage, assets);
         sceneManager.showStartView();
-        //sceneManager.showPlayerDeckView();
     }
 
     public static void main(String[] args) {
         launch();
     }
+
 }
