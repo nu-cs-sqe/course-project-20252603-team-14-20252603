@@ -4,15 +4,19 @@ import java.util.*;
 
 public class GameState {
 
+    // initialized before game starts
     private final List<String> playerNames;
     private Map<Integer, List<String>> playerHands;
     private int startingPlayerIndex;
     private int currentPlayerIndex;
     private boolean isFaceUp;
+    private boolean canPlayCards;
     private boolean isGameOngoing;
+    private Deque<String> drawPile;
+
+    // initialized after game starts
     private List<String> selectedCardsToPlay;
     private int currentDrawCount;
-    private Deque<String> drawPile;
 
     public GameState() {
         playerNames = List.of("STEVE", "MONKEY", "JENNY", "ELI", "GEORGE WASHINGTON");
@@ -20,6 +24,7 @@ public class GameState {
         startingPlayerIndex = 0;
         currentPlayerIndex = 0;
         isFaceUp = false;
+        canPlayCards = false;
         isGameOngoing = false;
         drawPile = new ArrayDeque<>(
                 List.of("ATTACK", "SEE THE FUTURE", "NOPE")
@@ -44,6 +49,10 @@ public class GameState {
 
     public boolean getIsFaceUp() {
         return isFaceUp;
+    }
+
+    public boolean getCanPlayCards() {
+        return canPlayCards;
     }
 
     public void changeCurrentPlayerIndexAndSetIsFaceUpToFalse(int playerIndex) {
@@ -94,6 +103,7 @@ public class GameState {
         isGameOngoing = true;
         selectedCardsToPlay = new ArrayList<>();
         currentDrawCount = 1;
+        canPlayCards = true;
     }
 
     public boolean canDraw() {
@@ -104,11 +114,16 @@ public class GameState {
         getCurrentPlayerHand().add(cardName);
     }
 
+    public void addToSelectedCardsToPlay(String cardName) {
+        selectedCardsToPlay.add(cardName);
+    }
+
     public void drawFromPile() {
         String drawnCardName = drawPile.pollFirst();
         addCardToCurrentPlayerHand(drawnCardName);
 
         currentDrawCount--;
+        canPlayCards = false;
     }
 
     public boolean isDrawPileEmpty() {

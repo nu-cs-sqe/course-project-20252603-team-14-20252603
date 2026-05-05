@@ -17,8 +17,8 @@ public class PlayerDeckController {
     private void bindUI() {
         view.bindNameTags(this::onNameTag);
         view.bindDrawPile(this::onDrawPile);
-        view.bindHandVisibilityToggle(this::onToggleHandVisibility);
-        view.bindPlayerHandCards(this::onPlayerHandCard);
+        view.bindHandVisibilityButton(this::onHandVisibilityButton);
+        view.bindPlayerHandCardButtons(this::onPlayerHandCardButton);
         view.bindStartGameButton(this::onStartGameButton);
     }
 
@@ -33,13 +33,13 @@ public class PlayerDeckController {
         model.changeCurrentPlayerIndexAndSetIsFaceUpToFalse(playerIndex);
 
         view.renderPlayerNameTags();
-        view.renderHandVisibilityToggle();
+        view.renderHandVisibilityButton();
         renderAndBindPlayerHandCards();
     }
 
     private void renderAndBindPlayerHandCards() {
         view.renderPlayerHandCards();
-        view.bindPlayerHandCards(this::onPlayerHandCard);
+        view.bindPlayerHandCardButtons(this::onPlayerHandCardButton);
     }
 
     private void onDrawPile() {
@@ -52,24 +52,25 @@ public class PlayerDeckController {
         System.out.println("CARD DRAWN FROM PILE");
     }
 
-    private void onToggleHandVisibility() {
+    private void onHandVisibilityButton() {
         model.setIsFaceUpToOpposite();
 
-        view.renderHandVisibilityToggle();
+        view.renderHandVisibilityButton();
         renderAndBindPlayerHandCards();
 
         System.out.println("HAND VISIBILITY TOGGLE CLICKED");
     }
 
-    private void onPlayerHandCard(int playerIndex) {
+    private void onPlayerHandCardButton(int playerIndex) {
         if (!model.getIsFaceUp()) {
-            onToggleHandVisibility();
+            onHandVisibilityButton();
 
-            System.out.println("FACE DOWN HAND CARD CLICKED");
+            System.out.println("FACE DOWN HAND CARD BUTTON CLICKED");
         }
         else {
 
-            System.out.println("FACE UP HAND CARD CLICKED");
+
+            System.out.println("FACE UP HAND CARD BUTTON CLICKED");
         }
     }
 

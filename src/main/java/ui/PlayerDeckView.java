@@ -6,9 +6,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
-import javafx.scene.control.Button;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.control.ToggleButton;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
@@ -24,14 +22,14 @@ public class PlayerDeckView {
     private final AssetManager assets;
     private final GameState model;
 
-    private final List<ToggleButton> nameTagToggleButtons;
+    private final List<ToggleButton> nameTagButtons;
 
     private StackPane root;
     private VBox playerHeaderSection;
     private HBox playerNamesContainer;
-    private VBox drawPile;
+    private Button drawPileButton;
     private HBox handCardsContainer;
-    private Button handVisibilityToggle;
+    private Button handVisibilityButton;
     private Button startGameButton;
     private HBox turnControlSection;
 
@@ -39,7 +37,7 @@ public class PlayerDeckView {
         this.assets = assets;
         this.model = model;
 
-        this.nameTagToggleButtons = new ArrayList<>();
+        this.nameTagButtons = new ArrayList<>();
 
         buildUI();
     }
@@ -57,27 +55,27 @@ public class PlayerDeckView {
     }
 
     public void renderPlayerNameTags() {
-        for (int i = 0; i < nameTagToggleButtons.size(); i++) {
+        for (int i = 0; i < nameTagButtons.size(); i++) {
             boolean isAtCurrentPlayerIndex = (i == model.getCurrentPlayerIndex());
-            nameTagToggleButtons.get(i).setSelected(isAtCurrentPlayerIndex);
+            nameTagButtons.get(i).setSelected(isAtCurrentPlayerIndex);
 
             if (model.getIsGameOngoing()) {
-                nameTagToggleButtons.get(i).setDisable(true);
+                nameTagButtons.get(i).setDisable(true);
             }
         }
     }
 
     public void renderDrawPile() {
-        drawPile.setDisable(!model.canDraw());
-        drawPile.setVisible(!model.isDrawPileEmpty());
+        drawPileButton.setDisable(!model.canDraw());
+        drawPileButton.setVisible(!model.isDrawPileEmpty());
     }
 
-    public void renderHandVisibilityToggle() {
+    public void renderHandVisibilityButton() {
         if (model.getIsFaceUp()) {
-            handVisibilityToggle.setText(UIConstants.HIDE_HAND_LABEL);
+            handVisibilityButton.setText(UIConstants.HIDE_HAND_LABEL);
         }
         else {
-            handVisibilityToggle.setText(UIConstants.SHOW_HAND_LABEL);
+            handVisibilityButton.setText(UIConstants.SHOW_HAND_LABEL);
         }
     }
 
@@ -90,47 +88,35 @@ public class PlayerDeckView {
         turnControlSection.getChildren().clear();
 
         Button playCardsButton = buildTurnControlButton(UIConstants.PLAY_CARDS_LABEL);
-
-        if (model.isValidPlay()) {
-            playCardsButton.setDisable(false);
-        }
-        else {
-            playCardsButton.setDisable(true);
-        }
+        playCardsButton.setDisable(!model.isValidPlay());
 
         Button endTurnButton = buildTurnControlButton(UIConstants.END_TURN_LABEL);
-
-        if (model.canEndTurn()) {
-            endTurnButton.setDisable(false);
-        }
-        else {
-            endTurnButton.setDisable(true);
-        }
+        endTurnButton.setDisable(!model.canEndTurn());
 
         turnControlSection.getChildren().addAll(playCardsButton, endTurnButton);
     }
 
     public void bindNameTags(Consumer<Integer> handler) {
-        for (int i = 0; i < nameTagToggleButtons.size(); i++) {
+        for (int i = 0; i < nameTagButtons.size(); i++) {
             int index = i;
-            nameTagToggleButtons.get(i).setOnMouseClicked((e ->
+            nameTagButtons.get(i).setOnMouseClicked((e ->
                 handler.accept(index)
             ));
         }
     }
 
     public void bindDrawPile(Runnable handler) {
-        drawPile.setOnMouseClicked(e ->
+        drawPileButton.setOnMouseClicked(e ->
             handler.run());
     }
 
-    public void bindHandVisibilityToggle(Runnable handler) {
-        handVisibilityToggle.setOnMouseClicked(e ->
+    public void bindHandVisibilityButton(Runnable handler) {
+        handVisibilityButton.setOnMouseClicked(e ->
             handler.run()
         );
     }
 
-    public void bindPlayerHandCards(Consumer<Integer> handler) {
+    public void bindPlayerHandCardButtons(Consumer<Integer> handler) {
         ObservableList<Node> handCards = handCardsContainer.getChildren();
 
         for (int i = 0; i < handCards.size(); i++) {
@@ -215,7 +201,7 @@ public class PlayerDeckView {
             boolean isAtCurrentPlayerIndex = (i == model.getCurrentPlayerIndex());
             nameTag.setSelected(isAtCurrentPlayerIndex);
 
-            nameTagToggleButtons.add(nameTag);
+            nameTagButtons.add(nameTag);
             playerNamesContainer.getChildren().add(nameTag);
         }
     }
@@ -251,7 +237,7 @@ public class PlayerDeckView {
         drawPileSection.getStyleClass().add("card-pile-section");
 
         StackPane drawPileContainer = buildDrawPileContainer();
-        drawPile.setDisable(!model.canDraw());
+        drawPileButton.setDisable(!model.canDraw());
 
         Text drawPileCaption = buildCaption(UIConstants.DRAW_PILE_CAPTION);
 
@@ -264,11 +250,24 @@ public class PlayerDeckView {
         StackPane drawPileContainer = new StackPane();
 
         VBox emptyCard = buildEmptyPile();
-        drawPile = buildCardBack();
+        drawPileButton = buildDrawPileButton();
 
-        drawPileContainer.getChildren().addAll(emptyCard, drawPile);
+        drawPileContainer.getChildren().addAll(emptyCard, drawPileButton);
 
         return drawPileContainer;
+    }
+
+    private Button buildDrawPileButton() {
+        Button drawPileButton = new Button();
+        drawPileButton.getStyleClass().add("card");
+
+        VBox drawPile = buildCardBack();
+        drawPileButton.getStyleClass().add("back");
+
+        drawPileButton.setGraphic(drawPile);
+        drawPileButton.setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
+
+        return drawPileButton;
     }
 
     private VBox buildEmptyPile() {
@@ -282,7 +281,6 @@ public class PlayerDeckView {
     private VBox buildCardBack() {
         VBox drawPile = new VBox();
         drawPile.setAlignment(Pos.CENTER);
-        drawPile.getStyleClass().addAll("card", "back");
 
         ImageView cardBackIconView = buildCardBackIconView();
         VBox explodingKittensText = buildExplodingKittensText();
@@ -372,14 +370,14 @@ public class PlayerDeckView {
         ScrollPane handScrollPane = buildHandScrollPane();
         Text handCaption = buildCaption(UIConstants.HAND_CAPTION);
 
-        playerHandSection.getChildren().addAll(handVisibilityToggle, handScrollPane, handCaption);
+        playerHandSection.getChildren().addAll(handVisibilityButton, handScrollPane, handCaption);
 
         return playerHandSection;
     }
 
     private void buildHandVisibilityToggle() {
-        handVisibilityToggle = new Button(UIConstants.SHOW_HAND_LABEL);
-        handVisibilityToggle.getStyleClass().addAll("hand-visibility-toggle", "h6");
+        handVisibilityButton = new Button(UIConstants.SHOW_HAND_LABEL);
+        handVisibilityButton.getStyleClass().addAll("hand-visibility-toggle", "h6");
     }
 
     private ScrollPane buildHandScrollPane() {
@@ -405,28 +403,38 @@ public class PlayerDeckView {
 
     private void buildPlayerHandCards() {
         for (String cardName : model.getCurrentPlayerHand()) {
-            VBox handCard = buildHandCard(cardName);
-            handCardsContainer.getChildren().add(handCard);
+            ToggleButton handCardButton = buildHandCardButton(cardName);
+            handCardsContainer.getChildren().add(handCardButton);
         }
     }
 
-    private VBox buildHandCard(String cardName) {
+    private ToggleButton buildHandCardButton(String cardName) {
+        ToggleButton handCardButton = new ToggleButton();
+        handCardButton.getStyleClass().add("card");
+
         VBox handCard;
 
         if (model.getIsFaceUp()) {
             handCard = buildCardFront(cardName);
-            handCard.setDisable(true);
+
+            handCardButton.setDisable(
+                    !(model.getCanPlayCards())
+            );
+            handCardButton.getStyleClass().add("front");
         }
         else {
             handCard = buildCardBack();
+
+            handCardButton.getStyleClass().add("back");
         }
 
-        return handCard;
+        handCardButton.setGraphic(handCard);
+        handCardButton.setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
+        return handCardButton;
     }
 
     private VBox buildCardFront(String cardName) {
         VBox cardFront = new VBox();
-        cardFront.getStyleClass().addAll("card", "front");
 
         VBox cardFrontContent = buildCardFrontContent(cardName);
 

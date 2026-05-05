@@ -140,7 +140,7 @@
 .card {
     -fx-pref-width: 176px;
     -fx-pref-height: 230px;
-    -fx-background-radius: 4;
+    -fx-background-radius: 8;
     -fx-border-radius: 4;
     -fx-border-color: linear-gradient(to bottom, yellow-1, yellow-4);
     -fx-border-width: 2;
@@ -164,7 +164,13 @@
 
 .card:disabled {
     -fx-border-color: transparent;
+    -fx-opacity: 1;
     -fx-border-width: 0;
+}
+
+.card:selected {
+    -fx-border-width: 4;
+    -fx-border-color: linear-gradient(to bottom, yellow-3, orange-3, red-3);
 }
 
 .card.back:hover {
@@ -176,11 +182,11 @@
 }
 
 .card-front-content {
-    -fx-padding: 2px 6px 12px 6px;
+    -fx-padding: 2px 6px 16px 6px;
     -fx-border-radius: 4;
     -fx-border-color: green-4;
     -fx-border-width: 2;
-    -fx-spacing: 2px;
+    -fx-spacing: 4px;
 }
 
 .card-header {
