@@ -70,9 +70,13 @@ public class GameState {
         return gamePhase == GamePhase.ONGOING;
     }
 
+    public boolean getCanPlayCards() {
+        return canPlayCards;
+    }
+
     public boolean canPlaySelected() {
         return canAct() &&
-                (!canPlayCards) &&
+                canPlayCards &&
                 isValidHand(selectedHandCards);
     }
 
@@ -110,7 +114,7 @@ public class GameState {
         gamePhase = GamePhase.ONGOING;
         selectedHandCards = new ArrayList<>();
         currentDrawCount = 1;
-        canPlayCards = false;
+        canPlayCards = true;
     }
 
     public boolean canDraw() {
@@ -136,7 +140,7 @@ public class GameState {
         addCardToCurrentPlayerHand(drawnCardName);
 
         currentDrawCount--;
-        canPlayCards = true;
+        canPlayCards = false;
     }
 
     public boolean isDrawPileEmpty() {
