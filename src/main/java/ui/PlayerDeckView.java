@@ -49,7 +49,7 @@ public class PlayerDeckView {
     public void renderPlayerHeaderSection() {
         playerHeaderSection.getChildren().clear();
 
-        if (model.getIsGameOngoing()) {
+        if (model.canAct()) {
             playerHeaderSection.getChildren().add(playerNamesContainer);
         }
     }
@@ -59,7 +59,7 @@ public class PlayerDeckView {
             boolean isAtCurrentPlayerIndex = (i == model.getCurrentPlayerIndex());
             nameTagButtons.get(i).setSelected(isAtCurrentPlayerIndex);
 
-            if (model.getIsGameOngoing()) {
+            if (model.canAct()) {
                 nameTagButtons.get(i).setDisable(true);
             }
         }
@@ -88,7 +88,7 @@ public class PlayerDeckView {
         turnControlSection.getChildren().clear();
 
         Button playCardsButton = buildTurnControlButton(UIConstants.PLAY_CARDS_LABEL);
-        playCardsButton.setDisable(!model.isValidPlay());
+        playCardsButton.setDisable(!model.canPlaySelected());
 
         Button endTurnButton = buildTurnControlButton(UIConstants.END_TURN_LABEL);
         endTurnButton.setDisable(!model.canEndTurn());
@@ -425,7 +425,7 @@ public class PlayerDeckView {
             handCard = buildCardFront(cardName);
 
             handCardButton.setDisable(
-                    !(model.getCanPlayCards())
+                    !(model.canPlayCards())
             );
             handCardButton.getStyleClass().add("front");
         }

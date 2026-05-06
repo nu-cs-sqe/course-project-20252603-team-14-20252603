@@ -10,11 +10,18 @@ public class GameState {
     private final int startingPlayerIndex;
     private int currentPlayerIndex;
     private boolean isFaceUp;
-    private boolean canPlayCards;
-    private boolean isGameOngoing;
+
+    enum GamePhase {
+        NOT_STARTED,
+        ONGOING,
+        FINISHED
+    }
+
+    private GamePhase gamePhase;
     private final Deque<String> drawPile;
 
     // initialized after game starts
+    private boolean canPlayCards;
     private List<String> selectedHandCards;
     private int currentDrawCount;
 
@@ -24,8 +31,7 @@ public class GameState {
         startingPlayerIndex = 0;
         currentPlayerIndex = 0;
         isFaceUp = false;
-        canPlayCards = false;
-        isGameOngoing = false;
+        gamePhase = GamePhase.NOT_STARTED;
         drawPile = new ArrayDeque<>(
                 List.of("ATTACK", "SEE THE FUTURE", "NOPE")
         );
@@ -51,8 +57,8 @@ public class GameState {
         return isFaceUp;
     }
 
-    public boolean getCanPlayCards() {
-        return canPlayCards;
+    public boolean canPlayCards() {
+        return canAct() && !canPlayCards;
     }
 
     public void changeCurrentPlayerIndexAndSetIsFaceUpToFalse(int playerIndex) {
@@ -64,17 +70,21 @@ public class GameState {
         isFaceUp = !isFaceUp;
     }
 
-    public boolean getIsGameOngoing() {
-        return isGameOngoing;
+    public boolean canAct() {
+        return gamePhase == GamePhase.ONGOING;
     }
 
-    public boolean isValidPlay() {
-        return canPlayCards &&
-                !selectedHandCards.isEmpty() && (
+    public boolean canPlaySelected() {
+        return canAct() &&
+                (!canPlayCards) &&
+                isValidHand(selectedHandCards);
+    }
+
+    private boolean isValidHand(List<String> selectedHandCards) {
+        return !selectedHandCards.isEmpty() && (
                 isOneOfAKind() ||
                 isNOfAKind(2) ||
-                isNOfAKind(3)
-        );
+                isNOfAKind(3));
     }
 
     private boolean isOneOfAKind() {
@@ -97,18 +107,19 @@ public class GameState {
     }
 
     public boolean canEndTurn() {
-        return isGameOngoing && currentDrawCount <= 0;
+        return canAct() && (currentDrawCount <= 0);
     }
 
     public void startGame() {
-        isGameOngoing = true;
+        gamePhase = GamePhase.ONGOING;
         selectedHandCards = new ArrayList<>();
         currentDrawCount = 1;
-        canPlayCards = true;
+        canPlayCards = false;
     }
 
     public boolean canDraw() {
-        return isGameOngoing && currentDrawCount > 0;
+        return canAct() &&
+                (currentDrawCount > 0);
     }
 
     private void addCardToCurrentPlayerHand(String cardName) {
@@ -129,7 +140,7 @@ public class GameState {
         addCardToCurrentPlayerHand(drawnCardName);
 
         currentDrawCount--;
-        canPlayCards = false;
+        canPlayCards = true;
     }
 
     public boolean isDrawPileEmpty() {
