@@ -425,7 +425,7 @@ public class PlayerDeckView {
             handCard = buildCardFront(cardName);
 
             handCardButton.setDisable(
-                    !(model.getCanPlayCards())
+                    !(model.getCanPlay())
             );
             handCardButton.getStyleClass().add("front");
         }
