@@ -21,7 +21,7 @@ public class GameState {
     private final Deque<String> drawPile;
 
     // initialized after game starts
-    private boolean canPlay;
+    private boolean isBeforeDraw;
     private List<String> selectedHandCards;
     private int currentDrawCount;
 
@@ -70,13 +70,13 @@ public class GameState {
         return gamePhase == GamePhase.ONGOING;
     }
 
-    public boolean getCanPlay() {
-        return canPlay;
+    public boolean getIsBeforeDraw() {
+        return isBeforeDraw;
     }
 
     public boolean canPlaySelected() {
         return canAct() &&
-                canPlay &&
+                isBeforeDraw &&
                 isValidHand(selectedHandCards);
     }
 
@@ -114,7 +114,7 @@ public class GameState {
         gamePhase = GamePhase.ONGOING;
         selectedHandCards = new ArrayList<>();
         currentDrawCount = 1;
-        canPlay = true;
+        isBeforeDraw = true;
     }
 
     public boolean canDraw() {
@@ -140,7 +140,7 @@ public class GameState {
         addCardToCurrentPlayerHand(drawnCardName);
 
         currentDrawCount--;
-        canPlay = false;
+        isBeforeDraw = false;
     }
 
     public boolean isDrawPileEmpty() {
