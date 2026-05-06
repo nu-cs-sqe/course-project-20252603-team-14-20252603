@@ -57,10 +57,6 @@ public class GameState {
         return isFaceUp;
     }
 
-    public boolean canPlayCards() {
-        return canAct() && !canPlayCards;
-    }
-
     public void changeCurrentPlayerIndexAndSetIsFaceUpToFalse(int playerIndex) {
         currentPlayerIndex = playerIndex;
         isFaceUp = false;
