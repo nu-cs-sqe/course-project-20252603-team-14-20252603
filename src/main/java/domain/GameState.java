@@ -66,7 +66,7 @@ public class GameState {
         isFaceUp = !isFaceUp;
     }
 
-    public boolean canAct() {
+    public boolean isGameOngoing() {
         return gamePhase == GamePhase.ONGOING;
     }
 
@@ -75,7 +75,7 @@ public class GameState {
     }
 
     public boolean canPlaySelected() {
-        return canAct() &&
+        return isGameOngoing() &&
                 isBeforeDraw &&
                 isValidHand(selectedHandCards);
     }
@@ -107,7 +107,7 @@ public class GameState {
     }
 
     public boolean canEndTurn() {
-        return canAct() && (currentDrawCount <= 0);
+        return isGameOngoing() && (currentDrawCount <= 0);
     }
 
     public void startGame() {
@@ -118,7 +118,7 @@ public class GameState {
     }
 
     public boolean canDraw() {
-        return canAct() && (currentDrawCount > 0);
+        return isGameOngoing() && (currentDrawCount > 0);
     }
 
     private void addCardToCurrentPlayerHand(String cardName) {

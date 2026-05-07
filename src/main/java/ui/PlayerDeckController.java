@@ -1,6 +1,10 @@
 package ui;
 
 import domain.GameState;
+import javafx.collections.ObservableList;
+import javafx.scene.Node;
+
+import java.util.function.Consumer;
 
 public class PlayerDeckController {
 
@@ -8,18 +12,64 @@ public class PlayerDeckController {
     private final GameState model;
 
     public PlayerDeckController(GameState model, AssetManager assets) {
-        this.view = new PlayerDeckView(model, assets);
         this.model = model;
+        this.view = new PlayerDeckView(assets);
+        view.buildAndAddPlayerHandCards(model.getCurrentPlayerHand(), model.getIsFaceUp(), model.getIsBeforeDraw());
+        buildAndRenderPlayerNameTags();
 
         bindUI();
     }
 
     private void bindUI() {
-        view.bindNameTags(this::onNameTag);
-        view.bindDrawPile(this::onDrawPile);
-        view.bindHandVisibilityButton(this::onHandVisibilityButton);
-        view.bindPlayerHandCardButtons(this::onPlayerHandCardButton);
-        view.bindStartGameButton(this::onStartGameButton);
+        bindNameTags(this::onNameTag);
+        bindDrawPile(this::onDrawPile);
+        bindHandVisibilityButton(this::onHandVisibilityButton);
+        bindPlayerHandCardButtons(this::onPlayerHandCardButton);
+        bindStartGameButton(this::onStartGameButton);
+    }
+
+    public void bindNameTags(Consumer<Integer> handler) {
+        ObservableList<Node> nameTagButtons = view.playerNamesContainer.getChildren();
+
+        for (int i = 0; i < nameTagButtons.size(); i++) {
+            int index = i;
+            nameTagButtons.get(i).setOnMouseClicked((e ->
+                    handler.accept(index)
+            ));
+        }
+    }
+
+    public void bindDrawPile(Runnable handler) {
+        view.drawPileButton.setOnMouseClicked(e ->
+                handler.run());
+    }
+
+    public void bindHandVisibilityButton(Runnable handler) {
+        view.handVisibilityButton.setOnMouseClicked(e ->
+                handler.run()
+        );
+    }
+
+    public void bindPlayerHandCardButtons(Consumer<Integer> handler) {
+        ObservableList<Node> handCards = view.handCardsContainer.getChildren();
+
+        for (int i = 0; i < handCards.size(); i++) {
+            int index = i;
+            handCards.get(i).setOnMouseClicked((e ->
+                    handler.accept(index)
+            ));
+        }
+    }
+
+    public void bindStartGameButton(Runnable handler) {
+        view.startGameButton.setOnMouseClicked(e ->
+                handler.run()
+        );
+    }
+
+    private void buildAndRenderPlayerNameTags() {
+        view.buildPlayerNameTags(model.getPlayerNames());
+        view.renderPlayerNameTags(model.getCurrentPlayerIndex(), model.isGameOngoing());
     }
 
     private void onNameTag(int playerIndex) {
@@ -32,22 +82,22 @@ public class PlayerDeckController {
     private void handleChangeCurrentPlayer(int playerIndex) {
         model.changeCurrentPlayerIndexAndSetIsFaceUpToFalse(playerIndex);
 
-        view.renderPlayerNameTags();
-        view.renderHandVisibilityButton();
-        renderAndBindPlayerHandCards();
+        view.renderPlayerNameTags(model.getCurrentPlayerIndex(), model.isGameOngoing());
+        view.renderHandVisibilityButton(model.getIsFaceUp());
+        buildAddBindPlayerHandCards();
     }
 
-    private void renderAndBindPlayerHandCards() {
-        view.renderPlayerHandCards();
-        view.bindPlayerHandCardButtons(this::onPlayerHandCardButton);
+    private void buildAddBindPlayerHandCards() {
+        view.buildAndAddPlayerHandCards(model.getCurrentPlayerHand(), model.getIsFaceUp(), model.getIsBeforeDraw());
+        bindPlayerHandCardButtons(this::onPlayerHandCardButton);
     }
 
     private void onDrawPile() {
         model.drawFromPile();
 
-        view.renderDrawPile();
-        renderAndBindPlayerHandCards();
-        view.renderTurnControlSection();
+        view.renderDrawPile(model.canDraw(), model.isDrawPileEmpty());
+        buildAddBindPlayerHandCards();
+        view.renderTurnControlSection(model.canPlaySelected(), model.canEndTurn());
 
         System.out.println("CARD DRAWN FROM PILE");
     }
@@ -55,8 +105,8 @@ public class PlayerDeckController {
     private void onHandVisibilityButton() {
         model.setIsFaceUpToOpposite();
 
-        view.renderHandVisibilityButton();
-        renderAndBindPlayerHandCards();
+        view.renderHandVisibilityButton(model.getIsFaceUp());
+        buildAddBindPlayerHandCards();
 
         System.out.println("HAND VISIBILITY TOGGLE CLICKED");
     }
@@ -67,7 +117,7 @@ public class PlayerDeckController {
         }
         else {
             onFaceUpPlayerHandCardButton(handCardIndex);
-            view.renderTurnControlSection();
+            view.renderTurnControlSection(model.canPlaySelected(), model.canEndTurn());
         }
     }
 
@@ -97,11 +147,15 @@ public class PlayerDeckController {
 
         handleChangeCurrentPlayer(model.getStartingPlayerIndex());
 
-        view.renderPlayerHeaderSection();
-        view.renderDrawPile();
-        view.renderTurnControlSection();
+        view.renderDrawPile(model.canDraw(), model.isDrawPileEmpty());
+        buildAndRenderTurnControlSection();
 
         System.out.println("START GAME BUTTON CLICKED");
+    }
+
+    private void buildAndRenderTurnControlSection() {
+        view.buildTurnControlSection(model.isGameOngoing());
+        view.renderTurnControlSection(model.canPlaySelected(), model.canEndTurn());
     }
 
     public PlayerDeckView getView() {
