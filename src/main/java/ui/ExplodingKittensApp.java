@@ -11,7 +11,11 @@ public class ExplodingKittensApp extends Application {
         GameState model = new GameState();
         AssetManager assets = new AssetManager();
 
-        SceneManager sceneManager = new SceneManager(stage, model, assets);
+        SceneManager sceneManager = new SceneManager(
+                stage,
+                model,
+                assets
+        );
         sceneManager.showPlayerDeckView();
     }
 

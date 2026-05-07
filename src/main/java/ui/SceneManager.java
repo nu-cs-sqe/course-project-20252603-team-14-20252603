@@ -20,12 +20,19 @@ public class SceneManager {
 
     public void showPlayerDeckView() {
         assets.loadGlobalFiles();
-        PlayerDeckController controller = new PlayerDeckController(model, assets);
+        PlayerDeckController controller = new PlayerDeckController(
+                model,
+                assets
+        );
         setScene(controller.getView().getRoot());
     }
 
     private void setScene(Parent root) {
-        Scene scene = new Scene(root, UIConstants.SCENE_WIDTH, UIConstants.SCENE_HEIGHT);
+        Scene scene = new Scene(
+                root,
+                UIConstants.SCENE_WIDTH,
+                UIConstants.SCENE_HEIGHT
+        );
 
         String cssUrl = assets.getStylesheet();
         scene.getStylesheets().add(cssUrl);

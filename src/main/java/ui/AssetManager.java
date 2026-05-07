@@ -20,8 +20,12 @@ public class AssetManager {
     public void loadGlobalFiles() {
         loadCSS();
         loadImages();
-        loadIcon("restart", "/icons/restart.txt");
-        loadIcon("left-bracket", "/icons/left-bracket.txt");
+        loadIcon("restart",
+                "/icons/restart.txt"
+        );
+        loadIcon("left-bracket",
+                "/icons/left-bracket.txt"
+        );
 
         loadFont("/fonts/koulen-regular.ttf");
         loadFont("/fonts/national-park.ttf");
