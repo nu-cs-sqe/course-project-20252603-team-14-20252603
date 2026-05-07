@@ -49,7 +49,7 @@ public class PlayerDeckView {
         return root;
     }
 
-    public void buildPlayerNameTags(List<String> playerNames) {
+    public void buildAndAddPlayerNameTags(List<String> playerNames) {
         for (String playerName : playerNames) {
             ToggleButton nameTag = buildNameTag(playerName);
 

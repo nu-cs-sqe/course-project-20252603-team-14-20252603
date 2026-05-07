@@ -68,7 +68,7 @@ public class PlayerDeckController {
     }
 
     private void buildAndRenderPlayerNameTags() {
-        view.buildPlayerNameTags(model.getPlayerNames());
+        view.buildAndAddPlayerNameTags(model.getPlayerNames());
         view.renderPlayerNameTags(model.getCurrentPlayerIndex(), model.isGameOngoing());
     }
 
