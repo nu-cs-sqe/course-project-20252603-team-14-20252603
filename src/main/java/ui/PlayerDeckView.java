@@ -93,7 +93,11 @@ public class PlayerDeckView {
         handCardsContainer.getChildren().clear();
 
         for (String cardName : currentPlayerHand) {
-            ToggleButton handCardButton = buildHandCardButton(cardName, isFaceUp, isBeforeDraw);
+            ToggleButton handCardButton = buildHandCardButton(
+                    cardName,
+                    isFaceUp,
+                    isBeforeDraw
+            );
             handCardsContainer.getChildren().add(handCardButton);
         }
     }
@@ -139,7 +143,10 @@ public class PlayerDeckView {
 
         VBox contentSection = buildContentSection();
         StackPane overlayLayer = buildOverlayLayer();
-        gameScreen.getChildren().addAll(contentSection, overlayLayer);
+
+        gameScreen.getChildren().addAll(
+                contentSection,
+                overlayLayer);
 
         return gameScreen;
     }
@@ -152,7 +159,10 @@ public class PlayerDeckView {
         VBox playerChoiceSection = buildPlayerChoiceSection();
 
         VBox.setVgrow(gameBoardSection, Priority.ALWAYS);
-        contentSection.getChildren().addAll(gameBoardSection, playerChoiceSection);
+        contentSection.getChildren().addAll(
+                gameBoardSection,
+                playerChoiceSection
+        );
 
         return contentSection;
     }
@@ -164,7 +174,10 @@ public class PlayerDeckView {
         VBox playerHeaderSection = buildPlayerHeaderSection();
         HBox cardPileSection = buildCardPilesSection();
 
-        gameBoardSection.getChildren().addAll(playerHeaderSection, cardPileSection);
+        gameBoardSection.getChildren().addAll(
+                playerHeaderSection,
+                cardPileSection
+        );
 
         return gameBoardSection;
     }
@@ -177,7 +190,10 @@ public class PlayerDeckView {
         renderPlayerNamesContainer();
         Text playerHeaderCaption = buildCaption(UIConstants.PLAYER_HEADER_CAPTION);
 
-        playerHeaderSection.getChildren().addAll(playerNamesContainer, playerHeaderCaption);
+        playerHeaderSection.getChildren().addAll(
+                playerNamesContainer,
+                playerHeaderCaption
+        );
 
         return playerHeaderSection;
     }
@@ -188,7 +204,10 @@ public class PlayerDeckView {
 
     private ToggleButton buildNameTag(String playerName) {
         ToggleButton nameTag = new ToggleButton(playerName);
-        nameTag.getStyleClass().addAll("name-tag", "h4");
+        nameTag.getStyleClass().addAll(
+                "name-tag",
+                "h4"
+        );
         return nameTag;
     }
 
@@ -206,7 +225,10 @@ public class PlayerDeckView {
 
         VBox drawPileSection = buildDrawPileSection();
         VBox discardPileSection = buildDiscardPileSection();
-        cardPileSection.getChildren().addAll(drawPileSection, discardPileSection);
+        cardPileSection.getChildren().addAll(
+                drawPileSection,
+                discardPileSection
+        );
 
         return cardPileSection;
     }
@@ -221,7 +243,10 @@ public class PlayerDeckView {
 
         Text drawPileCaption = buildCaption(UIConstants.DRAW_PILE_CAPTION);
 
-        drawPileSection.getChildren().addAll(drawPileContainer, drawPileCaption);
+        drawPileSection.getChildren().addAll(
+                drawPileContainer,
+                drawPileCaption
+        );
 
         return drawPileSection;
     }
@@ -232,7 +257,10 @@ public class PlayerDeckView {
         VBox emptyCard = buildEmptyPile();
         buildDrawPileButton();
 
-        drawPileContainer.getChildren().addAll(emptyCard, drawPileButton);
+        drawPileContainer.getChildren().addAll(
+                emptyCard,
+                drawPileButton
+        );
 
         return drawPileContainer;
     }
@@ -250,7 +278,10 @@ public class PlayerDeckView {
     private VBox buildEmptyPile() {
         VBox discardPile = new VBox();
         discardPile.setAlignment(Pos.CENTER);
-        discardPile.getStyleClass().addAll("card", "empty");
+        discardPile.getStyleClass().addAll(
+                "card",
+                "empty"
+        );
 
         return discardPile;
     }
@@ -262,7 +293,10 @@ public class PlayerDeckView {
         ImageView cardBackIconView = buildCardBackIconView();
         VBox explodingKittensText = buildExplodingKittensText();
 
-        drawPile.getChildren().addAll(cardBackIconView, explodingKittensText);
+        drawPile.getChildren().addAll(
+                cardBackIconView,
+                explodingKittensText
+        );
 
         return drawPile;
     }
@@ -286,21 +320,30 @@ public class PlayerDeckView {
         Text explodingText = buildExplodingText(title_words[0]);
         Text kittensText = buildKittensText(title_words[1]);
 
-        explodingKittensText.getChildren().addAll(explodingText, kittensText);
+        explodingKittensText.getChildren().addAll(
+                explodingText,
+                kittensText
+        );
 
         return explodingKittensText;
     }
 
     private Text buildExplodingText(String text) {
         Text explodingText = new Text(text);
-        explodingText.getStyleClass().addAll("exploding-text", "h5");
+        explodingText.getStyleClass().addAll(
+                "exploding-text",
+                "h5"
+        );
 
         return explodingText;
     }
 
     private Text buildKittensText(String text) {
         Text kittensText = new Text(text);
-        kittensText.getStyleClass().addAll("kittens-text", "h3");
+        kittensText.getStyleClass().addAll(
+                "kittens-text",
+                "h3"
+        );
 
         return kittensText;
     }
@@ -313,7 +356,10 @@ public class PlayerDeckView {
         StackPane discardPileContainer = buildDiscardPileContainer();
         Text discardPileCaption = buildCaption(UIConstants.DISCARD_PILE_CAPTION);
 
-        discardPileSection.getChildren().addAll(discardPileContainer, discardPileCaption);
+        discardPileSection.getChildren().addAll(
+                discardPileContainer,
+                discardPileCaption
+        );
 
         return discardPileSection;
     }
@@ -323,7 +369,7 @@ public class PlayerDeckView {
 
         VBox emptyCard = buildEmptyPile();
 
-        discardPileContainer.getChildren().addAll(emptyCard);
+        discardPileContainer.getChildren().add(emptyCard);
 
         return discardPileContainer;
     }
@@ -334,7 +380,10 @@ public class PlayerDeckView {
         VBox playerHandSection = buildPlayerHandSection();
         buildTurnControlSection(false);
 
-        playerChoiceSection.getChildren().addAll(playerHandSection, turnControlSection);
+        playerChoiceSection.getChildren().addAll(
+                playerHandSection,
+                turnControlSection
+        );
 
         return playerChoiceSection;
     }
@@ -347,14 +396,21 @@ public class PlayerDeckView {
         ScrollPane handScrollPane = buildHandScrollPane();
         Text handCaption = buildCaption(UIConstants.HAND_CAPTION);
 
-        playerHandSection.getChildren().addAll(handVisibilityButton, handScrollPane, handCaption);
+        playerHandSection.getChildren().addAll(
+                handVisibilityButton,
+                handScrollPane,
+                handCaption
+        );
 
         return playerHandSection;
     }
 
     private void renderHandVisibilityToggle() {
         handVisibilityButton.setText(UIConstants.SHOW_HAND_LABEL);
-        handVisibilityButton.getStyleClass().addAll("hand-visibility-toggle", "h6");
+        handVisibilityButton.getStyleClass().addAll(
+                "hand-visibility-toggle",
+                "h6"
+        );
     }
 
     private ScrollPane buildHandScrollPane() {
@@ -414,7 +470,10 @@ public class PlayerDeckView {
         HBox cardHeader = buildCardHeader(cardName);
         StackPane cardVisualSection = buildCardVisualSection(cardName);
 
-        cardFrontContent.getChildren().addAll(cardHeader, cardVisualSection);
+        cardFrontContent.getChildren().addAll(
+                cardHeader,
+                cardVisualSection
+        );
         return cardFrontContent;
     }
 
@@ -426,7 +485,10 @@ public class PlayerDeckView {
         StackPane cardCircle = buildCardCircle();
         VBox cardTitleSection = buildCardTitleSection(cardName);
 
-        cardHeader.getChildren().addAll(cardCircle, cardTitleSection);
+        cardHeader.getChildren().addAll(
+                cardCircle,
+                cardTitleSection
+        );
         return cardHeader;
     }
 
@@ -443,20 +505,29 @@ public class PlayerDeckView {
         Text cardTitle = buildCardTitle(cardName);
         Text cardSubtitle = buildCardSubtitle(cardName);
 
-        cardTitleSection.getChildren().addAll(cardTitle, cardSubtitle);
+        cardTitleSection.getChildren().addAll(
+                cardTitle,
+                cardSubtitle
+        );
         return cardTitleSection;
     }
 
     private Text buildCardTitle(String title) {
         Text cardTitle = new Text(title);
-        cardTitle.getStyleClass().addAll("card-title", "b1");
+        cardTitle.getStyleClass().addAll(
+                "card-title",
+                "b1"
+        );
 
         return cardTitle;
     }
 
     private Text buildCardSubtitle(String subtitle) {
         Text cardSubtitle = new Text(subtitle);
-        cardSubtitle.getStyleClass().addAll("card-subtitle", "b2");
+        cardSubtitle.getStyleClass().addAll(
+                "card-subtitle",
+                "b2"
+        );
 
         return cardSubtitle;
     }
@@ -470,7 +541,10 @@ public class PlayerDeckView {
         Insets inset = new Insets(0, 0, UIConstants.CARD_IMAGE_BOTTOM_PADDING, 0);
         StackPane.setMargin(cardDescriptionSection, inset);
 
-        cardVisualSection.getChildren().addAll(cardImageView, cardDescriptionSection);
+        cardVisualSection.getChildren().addAll(
+                cardImageView,
+                cardDescriptionSection
+        );
         return cardVisualSection;
     }
 
@@ -493,7 +567,11 @@ public class PlayerDeckView {
         Text cardDescription = buildCardDescription(description);
         SVGPath rightBracketIcon = buildRightBracketIcon();
 
-        cardDescriptionSection.getChildren().addAll(leftBracketIcon, cardDescription, rightBracketIcon);
+        cardDescriptionSection.getChildren().addAll(
+                leftBracketIcon,
+                cardDescription,
+                rightBracketIcon
+        );
         return cardDescriptionSection;
     }
 
@@ -515,7 +593,10 @@ public class PlayerDeckView {
         Text cardDescription = new Text(description);
 
         cardDescription.setWrappingWidth(UIConstants.CARD_DESCRIPTION_WRAPPING_WIDTH);
-        cardDescription.getStyleClass().addAll("card-description", "b2");
+        cardDescription.getStyleClass().addAll(
+                "card-description",
+                "b2"
+        );
 
         return cardDescription;
     }
@@ -524,7 +605,10 @@ public class PlayerDeckView {
         renderTurnControlButton(playCardsButton, UIConstants.PLAY_CARDS_LABEL);
         renderTurnControlButton(endTurnButton, UIConstants.END_TURN_LABEL);
 
-        turnControlSection.getChildren().addAll(playCardsButton, endTurnButton);
+        turnControlSection.getChildren().addAll(
+                playCardsButton,
+                endTurnButton
+        );
     }
 
     private void buildAndAddTurnControlButtonsBeforeGameStart() {
@@ -535,7 +619,10 @@ public class PlayerDeckView {
 
     private void renderTurnControlButton(Button turnControlButton, String label) {
         turnControlButton.setText(label);
-        turnControlButton.getStyleClass().addAll("turn-control-button", "h5");
+        turnControlButton.getStyleClass().addAll(
+                "turn-control-button",
+                "h5"
+        );
     }
 
     private StackPane buildOverlayLayer() {
