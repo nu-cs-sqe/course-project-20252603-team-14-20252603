@@ -118,8 +118,7 @@ public class GameState {
     }
 
     public boolean canDraw() {
-        return canAct() &&
-                (currentDrawCount > 0);
+        return canAct() && (currentDrawCount > 0);
     }
 
     private void addCardToCurrentPlayerHand(String cardName) {
