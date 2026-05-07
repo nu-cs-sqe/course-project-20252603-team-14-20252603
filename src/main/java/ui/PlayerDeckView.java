@@ -49,6 +49,11 @@ public class PlayerDeckView {
         return root;
     }
 
+    public void buildAddRenderPlayerNameTags(List<String> playerNames, int currentPlayerIndex, boolean isGameOngoing) {
+        buildAndAddPlayerNameTags(playerNames);
+        renderPlayerNameTags(currentPlayerIndex, isGameOngoing);
+    }
+
     public void buildAndAddPlayerNameTags(List<String> playerNames) {
         for (String playerName : playerNames) {
             ToggleButton nameTag = buildNameTag(playerName);
@@ -91,6 +96,11 @@ public class PlayerDeckView {
             ToggleButton handCardButton = buildHandCardButton(cardName, isFaceUp, isBeforeDraw);
             handCardsContainer.getChildren().add(handCardButton);
         }
+    }
+
+    public void buildAndRenderTurnControlSection(boolean isGameOngoing, boolean canPlaySelected, boolean canEndTurn) {
+        buildTurnControlSection(isGameOngoing);
+        renderTurnControlSection(canPlaySelected, canEndTurn);
     }
 
     public void buildTurnControlSection(boolean isGameOngoing) {

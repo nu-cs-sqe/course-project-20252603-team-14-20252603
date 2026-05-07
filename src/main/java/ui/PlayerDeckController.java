@@ -15,7 +15,7 @@ public class PlayerDeckController {
         this.model = model;
         this.view = new PlayerDeckView(assets);
         view.buildAndAddPlayerHandCards(model.getCurrentPlayerHand(), model.getIsFaceUp(), model.getIsBeforeDraw());
-        buildAndRenderPlayerNameTags();
+        view.buildAddRenderPlayerNameTags(model.getPlayerNames(), model.getCurrentPlayerIndex(), model.isGameOngoing());
 
         bindUI();
     }
@@ -28,7 +28,7 @@ public class PlayerDeckController {
         bindStartGameButton(this::onStartGameButton);
     }
 
-    public void bindNameTags(Consumer<Integer> handler) {
+    private void bindNameTags(Consumer<Integer> handler) {
         ObservableList<Node> nameTagButtons = view.playerNamesContainer.getChildren();
 
         for (int i = 0; i < nameTagButtons.size(); i++) {
@@ -39,18 +39,18 @@ public class PlayerDeckController {
         }
     }
 
-    public void bindDrawPile(Runnable handler) {
+    private void bindDrawPile(Runnable handler) {
         view.drawPileButton.setOnMouseClicked(e ->
                 handler.run());
     }
 
-    public void bindHandVisibilityButton(Runnable handler) {
+    private void bindHandVisibilityButton(Runnable handler) {
         view.handVisibilityButton.setOnMouseClicked(e ->
                 handler.run()
         );
     }
 
-    public void bindPlayerHandCardButtons(Consumer<Integer> handler) {
+    private void bindPlayerHandCardButtons(Consumer<Integer> handler) {
         ObservableList<Node> handCards = view.handCardsContainer.getChildren();
 
         for (int i = 0; i < handCards.size(); i++) {
@@ -61,15 +61,10 @@ public class PlayerDeckController {
         }
     }
 
-    public void bindStartGameButton(Runnable handler) {
+    private void bindStartGameButton(Runnable handler) {
         view.startGameButton.setOnMouseClicked(e ->
                 handler.run()
         );
-    }
-
-    private void buildAndRenderPlayerNameTags() {
-        view.buildAndAddPlayerNameTags(model.getPlayerNames());
-        view.renderPlayerNameTags(model.getCurrentPlayerIndex(), model.isGameOngoing());
     }
 
     private void onNameTag(int playerIndex) {
@@ -148,14 +143,9 @@ public class PlayerDeckController {
         handleChangeCurrentPlayer(model.getStartingPlayerIndex());
 
         view.renderDrawPile(model.canDraw(), model.isDrawPileEmpty());
-        buildAndRenderTurnControlSection();
+        view.buildAndRenderTurnControlSection(model.isGameOngoing(), model.canPlaySelected(), model.canEndTurn());
 
         System.out.println("START GAME BUTTON CLICKED");
-    }
-
-    private void buildAndRenderTurnControlSection() {
-        view.buildTurnControlSection(model.isGameOngoing());
-        view.renderTurnControlSection(model.canPlaySelected(), model.canEndTurn());
     }
 
     public PlayerDeckView getView() {
