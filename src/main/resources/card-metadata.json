@@ -253,8 +253,20 @@
   },
   "CATOMICBOMB_1": {
     "title": "CATOMIC BOMB",
-    "subtitle": "",
+    "subtitle": "THIS IS A CAUSE FOR ALARM",
     "description": "REMOVE THE EXPLODING KITTENS FROM THE DECK. SHUFFLE THE DECK. PUT ALL THOSE KITTENS FACE DOWN ON TOP. YOUR TURN ENDS AFTER PLAYING THIS CARD.",
     "imageUrl": "catomic_bomb.png"
+  },
+  "RAISINGHECK_1": {
+    "title": "RAISING HECK",
+    "subtitle": "RAISE A DEMON",
+    "description": "DRAW THE BOTTOM CARD FROM THE DRAW PILE. LOOK AT IT, AND EITHER KEEP IT OR PUT IT ON THE TOP OF THE DRAW PILE. THIS ENDS YOUR TURN.",
+    "imageUrl": "raising_heck_1.png"
+  },
+  "RAISINGHECK_2": {
+    "title": "RAISING HECK",
+    "subtitle": "RAISE THAT FLUSHED GOLDFISH FROM LONG AGO",
+    "description": "DRAW THE BOTTOM CARD FROM THE DRAW PILE. LOOK AT IT, AND EITHER KEEP IT OR PUT IT ON THE TOP OF THE DRAW PILE. THIS ENDS YOUR TURN.",
+    "imageUrl": "raising_heck_2.png"
   }
 }
