@@ -16,5 +16,35 @@
     "subtitle": "",
     "description": "SHOW THIS CARD IMMEDIATELY",
     "imageUrl": "exploding_kitten_3.png"
+  },
+  "DEFUSE_1": {
+    "title": "DEFUSE",
+    "subtitle": "VIA CATNIP SANDWICHES",
+    "description": "PUT YOUR LAST DRAWN CARD BACK INTO THE DECK",
+    "imageUrl": "defuse_1.png"
+  },
+  "DEFUSE_2": {
+    "title": "DEFUSE",
+    "subtitle": "VIA CRATE",
+    "description": "PUT YOUR LAST DRAWN CARD BACK INTO THE DECK",
+    "imageUrl": "defuse_2.png"
+  },
+  "DEFUSE_3": {
+    "title": "DEFUSE",
+    "subtitle": "VIA LASER POINTER",
+    "description": "PUT YOUR LAST DRAWN CARD BACK INTO THE DECK",
+    "imageUrl": "defuse_3.png"
+  },
+  "DEFUSE_4": {
+    "title": "DEFUSE",
+    "subtitle": "VIA MAULING A BABY",
+    "description": "PUT YOUR LAST DRAWN CARD BACK INTO THE DECK",
+    "imageUrl": "defuse_4.png"
+  },
+  "DEFUSE_5": {
+    "title": "DEFUSE",
+    "subtitle": "VIA SPAY/NEUTER",
+    "description": "PUT YOUR LAST DRAWN CARD BACK INTO THE DECK",
+    "imageUrl": "defuse_5.png"
   }
 }
