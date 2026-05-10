@@ -106,5 +106,29 @@
     "subtitle": "ENGAGE THE HYPERGOAT",
     "description": "END YOUR TURN WITHOUT DRAWING A CARD.",
     "imageUrl": "skip_3.png"
+  },
+  "SEE_THE_FUTURE_1": {
+    "title": "SEE THE FUTURE",
+    "subtitle": "ASK THE ALL-SEEING GOAT WIZARD",
+    "description": "PRIVATELY VIEW THE TOP THREE CARDS OF THE DECK.",
+    "imageUrl": "see_the_future_1.png"
+  },
+  "SEE_THE_FUTURE_2": {
+    "title": "SEE THE FUTURE",
+    "subtitle": "DEPLOY THE SPECIAL-OPS BUNNIES",
+    "description": "PRIVATELY VIEW THE TOP THREE CARDS OF THE DECK.",
+    "imageUrl": "see_the_future_2.png"
+  },
+  "SEE_THE_FUTURE_3": {
+    "title": "SEE THE FUTURE",
+    "subtitle": "FEAST UPON A UNICORN ENCHILADA AND GAIN ITS ENCHILADA POWERS",
+    "description": "PRIVATELY VIEW THE TOP THREE CARDS OF THE DECK.",
+    "imageUrl": "see_the_future_3.png"
+  },
+  "SEE_THE_FUTURE_4": {
+    "title": "SEE THE FUTURE",
+    "subtitle": "RUB THE BELLY OF A PIG-A-CORN",
+    "description": "PRIVATELY VIEW THE TOP THREE CARDS OF THE DECK.",
+    "imageUrl": "see_the_future_4.png"
   }
 }
