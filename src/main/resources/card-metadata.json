@@ -1,17 +1,17 @@
 {
-  "EXPLODING_KITTEN_1": {
+  "EXPLODINGKITTEN_1": {
     "title": "EXPLODING KITTEN",
     "subtitle": "",
     "description": "SHOW THIS CARD IMMEDIATELY.",
     "imageUrl": "exploding_kitten_1.png"
   },
-  "EXPLODING_KITTEN_2": {
+  "EXPLODINGKITTEN_2": {
     "title": "EXPLODING KITTEN",
     "subtitle": "",
     "description": "SHOW THIS CARD IMMEDIATELY.",
     "imageUrl": "exploding_kitten_2.png"
   },
-  "EXPLODING_KITTEN_3": {
+  "EXPLODINGKITTEN_3": {
     "title": "EXPLODING KITTEN",
     "subtitle": "",
     "description": "SHOW THIS CARD IMMEDIATELY.",
@@ -107,25 +107,25 @@
     "description": "END YOUR TURN WITHOUT DRAWING A CARD.",
     "imageUrl": "skip_3.png"
   },
-  "SEE_THE_FUTURE_1": {
+  "SEETHEFUTURE_1": {
     "title": "SEE THE FUTURE",
     "subtitle": "ASK THE ALL-SEEING GOAT WIZARD",
     "description": "PRIVATELY VIEW THE TOP THREE CARDS OF THE DECK.",
     "imageUrl": "see_the_future_1.png"
   },
-  "SEE_THE_FUTURE_2": {
+  "SEETHEFUTURE_2": {
     "title": "SEE THE FUTURE",
     "subtitle": "DEPLOY THE SPECIAL-OPS BUNNIES",
     "description": "PRIVATELY VIEW THE TOP THREE CARDS OF THE DECK.",
     "imageUrl": "see_the_future_2.png"
   },
-  "SEE_THE_FUTURE_3": {
+  "SEETHEFUTURE_3": {
     "title": "SEE THE FUTURE",
     "subtitle": "FEAST UPON A UNICORN ENCHILADA AND GAIN ITS ENCHILADA POWERS",
     "description": "PRIVATELY VIEW THE TOP THREE CARDS OF THE DECK.",
     "imageUrl": "see_the_future_3.png"
   },
-  "SEE_THE_FUTURE_4": {
+  "SEETHEFUTURE_4": {
     "title": "SEE THE FUTURE",
     "subtitle": "RUB THE BELLY OF A PIG-A-CORN",
     "description": "PRIVATELY VIEW THE TOP THREE CARDS OF THE DECK.",
@@ -155,100 +155,106 @@
     "description": "STOP THE ACTION OF ANOTHER PLAYER. YOU CAN PLAY THIS ANY TIME.",
     "imageUrl": "nope_4.png"
   },
-  "CAT_CARD_11": {
+  "CATCARD_11": {
     "title": "HAIRY POTATO CAT",
     "subtitle": "",
     "description": "THIS IS A CAT CARD AND IS POWERLESS ON ITS OWN.",
     "imageUrl": "cat_card_1.png"
   },
-  "CAT_CARD_12": {
+  "CATCARD_12": {
     "title": "HAIRY POTATO CAT",
     "subtitle": "",
     "description": "THIS IS A CAT CARD AND IS POWERLESS ON ITS OWN.",
     "imageUrl": "cat_card_1.png"
   },
-  "CAT_CARD_13": {
+  "CATCARD_13": {
     "title": "HAIRY POTATO CAT",
     "subtitle": "",
     "description": "THIS IS A CAT CARD AND IS POWERLESS ON ITS OWN.",
     "imageUrl": "cat_card_1.png"
   },
-  "CAT_CARD_14": {
+  "CATCARD_14": {
     "title": "HAIRY POTATO CAT",
     "subtitle": "",
     "description": "THIS IS A CAT CARD AND IS POWERLESS ON ITS OWN.",
     "imageUrl": "cat_card_1.png"
   },
-  "CAT_CARD_21": {
+  "CATCARD_21": {
     "title": "KIT-TEA-CAT",
     "subtitle": "",
     "description": "THIS IS A CAT CARD AND IS POWERLESS ON ITS OWN.",
     "imageUrl": "cat_card_2.png"
   },
-  "CAT_CARD_22": {
+  "CATCARD_22": {
     "title": "KIT-TEA-CAT",
     "subtitle": "",
     "description": "THIS IS A CAT CARD AND IS POWERLESS ON ITS OWN.",
     "imageUrl": "cat_card_2.png"
   },
-  "CAT_CARD_23": {
+  "CATCARD_23": {
     "title": "KIT-TEA-CAT",
     "subtitle": "",
     "description": "THIS IS A CAT CARD AND IS POWERLESS ON ITS OWN.",
     "imageUrl": "cat_card_2.png"
   },
-  "CAT_CARD_24": {
+  "CATCARD_24": {
     "title": "KIT-TEA-CAT",
     "subtitle": "",
     "description": "THIS IS A CAT CARD AND IS POWERLESS ON ITS OWN.",
     "imageUrl": "cat_card_2.png"
   },
-  "CAT_CARD_31": {
+  "CATCARD_31": {
     "title": "RAINBOW-RALPHING CAT",
     "subtitle": "",
     "description": "THIS IS A CAT CARD AND IS POWERLESS ON ITS OWN.",
     "imageUrl": "cat_card_3.png"
   },
-  "CAT_CARD_32": {
+  "CATCARD_32": {
     "title": "RAINBOW-RALPHING CAT",
     "subtitle": "",
     "description": "THIS IS A CAT CARD AND IS POWERLESS ON ITS OWN.",
     "imageUrl": "cat_card_3.png"
   },
-  "CAT_CARD_33": {
+  "CATCARD_33": {
     "title": "RAINBOW-RALPHING CAT",
     "subtitle": "",
     "description": "THIS IS A CAT CARD AND IS POWERLESS ON ITS OWN.",
     "imageUrl": "cat_card_3.png"
   },
-  "CAT_CARD_34": {
+  "CATCARD_34": {
     "title": "RAINBOW-RALPHING CAT",
     "subtitle": "",
     "description": "THIS IS A CAT CARD AND IS POWERLESS ON ITS OWN.",
     "imageUrl": "cat_card_3.png"
   },
-  "CAT_CARD_41": {
+  "CATCARD_41": {
     "title": "TROLL CAT",
     "subtitle": "",
     "description": "THIS IS A CAT CARD AND IS POWERLESS ON ITS OWN.",
     "imageUrl": "cat_card_4.png"
   },
-  "CAT_CARD_42": {
+  "CATCARD_42": {
     "title": "TROLL CAT",
     "subtitle": "",
     "description": "THIS IS A CAT CARD AND IS POWERLESS ON ITS OWN.",
     "imageUrl": "cat_card_4.png"
   },
-  "CAT_CARD_43": {
+  "CATCARD_43": {
     "title": "TROLL CAT",
     "subtitle": "",
     "description": "THIS IS A CAT CARD AND IS POWERLESS ON ITS OWN.",
     "imageUrl": "cat_card_4.png"
   },
-  "CAT_CARD_44": {
+  "CATCARD_44": {
     "title": "TROLL CAT",
     "subtitle": "",
     "description": "THIS IS A CAT CARD AND IS POWERLESS ON ITS OWN.",
     "imageUrl": "cat_card_4.png"
+  },
+  "CATOMICBOMB_1": {
+    "title": "TROLL CAT",
+    "subtitle": "",
+    "description": "THIS IS A CAT CARD AND IS POWERLESS ON ITS OWN.",
+    "imageUrl": "catomic_bomb.png"
   }
 }
