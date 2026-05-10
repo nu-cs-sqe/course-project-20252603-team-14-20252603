@@ -154,5 +154,101 @@
     "subtitle": "A NOPE NINJA DELIVERS A WICKED DRAGON KICK",
     "description": "STOP THE ACTION OF ANOTHER PLAYER. YOU CAN PLAY THIS ANY TIME.",
     "imageUrl": "nope_4.png"
+  },
+  "CAT_CARD_11": {
+    "title": "HAIRY POTATO CAT",
+    "subtitle": "",
+    "description": "THIS IS A CAT CARD AND IS POWERLESS ON ITS OWN.",
+    "imageUrl": "cat_card_1.png"
+  },
+  "CAT_CARD_12": {
+    "title": "HAIRY POTATO CAT",
+    "subtitle": "",
+    "description": "THIS IS A CAT CARD AND IS POWERLESS ON ITS OWN.",
+    "imageUrl": "cat_card_1.png"
+  },
+  "CAT_CARD_13": {
+    "title": "HAIRY POTATO CAT",
+    "subtitle": "",
+    "description": "THIS IS A CAT CARD AND IS POWERLESS ON ITS OWN.",
+    "imageUrl": "cat_card_1.png"
+  },
+  "CAT_CARD_14": {
+    "title": "HAIRY POTATO CAT",
+    "subtitle": "",
+    "description": "THIS IS A CAT CARD AND IS POWERLESS ON ITS OWN.",
+    "imageUrl": "cat_card_1.png"
+  },
+  "CAT_CARD_21": {
+    "title": "KIT-TEA-CAT",
+    "subtitle": "",
+    "description": "THIS IS A CAT CARD AND IS POWERLESS ON ITS OWN.",
+    "imageUrl": "cat_card_2.png"
+  },
+  "CAT_CARD_22": {
+    "title": "KIT-TEA-CAT",
+    "subtitle": "",
+    "description": "THIS IS A CAT CARD AND IS POWERLESS ON ITS OWN.",
+    "imageUrl": "cat_card_2.png"
+  },
+  "CAT_CARD_23": {
+    "title": "KIT-TEA-CAT",
+    "subtitle": "",
+    "description": "THIS IS A CAT CARD AND IS POWERLESS ON ITS OWN.",
+    "imageUrl": "cat_card_2.png"
+  },
+  "CAT_CARD_24": {
+    "title": "KIT-TEA-CAT",
+    "subtitle": "",
+    "description": "THIS IS A CAT CARD AND IS POWERLESS ON ITS OWN.",
+    "imageUrl": "cat_card_2.png"
+  },
+  "CAT_CARD_31": {
+    "title": "RAINBOW-RALPHING CAT",
+    "subtitle": "",
+    "description": "THIS IS A CAT CARD AND IS POWERLESS ON ITS OWN.",
+    "imageUrl": "cat_card_3.png"
+  },
+  "CAT_CARD_32": {
+    "title": "RAINBOW-RALPHING CAT",
+    "subtitle": "",
+    "description": "THIS IS A CAT CARD AND IS POWERLESS ON ITS OWN.",
+    "imageUrl": "cat_card_3.png"
+  },
+  "CAT_CARD_33": {
+    "title": "RAINBOW-RALPHING CAT",
+    "subtitle": "",
+    "description": "THIS IS A CAT CARD AND IS POWERLESS ON ITS OWN.",
+    "imageUrl": "cat_card_3.png"
+  },
+  "CAT_CARD_34": {
+    "title": "RAINBOW-RALPHING CAT",
+    "subtitle": "",
+    "description": "THIS IS A CAT CARD AND IS POWERLESS ON ITS OWN.",
+    "imageUrl": "cat_card_3.png"
+  },
+  "CAT_CARD_41": {
+    "title": "TROLL CAT",
+    "subtitle": "",
+    "description": "THIS IS A CAT CARD AND IS POWERLESS ON ITS OWN.",
+    "imageUrl": "cat_card_4.png"
+  },
+  "CAT_CARD_42": {
+    "title": "TROLL CAT",
+    "subtitle": "",
+    "description": "THIS IS A CAT CARD AND IS POWERLESS ON ITS OWN.",
+    "imageUrl": "cat_card_4.png"
+  },
+  "CAT_CARD_43": {
+    "title": "TROLL CAT",
+    "subtitle": "",
+    "description": "THIS IS A CAT CARD AND IS POWERLESS ON ITS OWN.",
+    "imageUrl": "cat_card_4.png"
+  },
+  "CAT_CARD_44": {
+    "title": "TROLL CAT",
+    "subtitle": "",
+    "description": "THIS IS A CAT CARD AND IS POWERLESS ON ITS OWN.",
+    "imageUrl": "cat_card_4.png"
   }
 }
