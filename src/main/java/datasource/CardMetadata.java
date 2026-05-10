@@ -1,5 +1,8 @@
 package datasource;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class CardMetadata {
 
 	private final String title;
@@ -7,8 +10,12 @@ public class CardMetadata {
 	private final String description;
 	private final String imageUrl;
 
+	@JsonCreator
 	public CardMetadata(
-			String title, String subtitle, String description, String imageUrl
+			@JsonProperty("title") String title,
+			@JsonProperty("subtitle") String subtitle,
+			@JsonProperty("description") String description,
+			@JsonProperty("imageUrl") String imageUrl
 	) {
 		this.title = title;
 		this.subtitle = subtitle;
