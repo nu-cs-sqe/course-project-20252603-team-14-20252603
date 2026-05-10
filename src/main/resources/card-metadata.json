@@ -2,49 +2,67 @@
   "EXPLODING_KITTEN_1": {
     "title": "EXPLODING KITTEN",
     "subtitle": "",
-    "description": "SHOW THIS CARD IMMEDIATELY",
+    "description": "SHOW THIS CARD IMMEDIATELY.",
     "imageUrl": "exploding_kitten_1.png"
   },
   "EXPLODING_KITTEN_2": {
     "title": "EXPLODING KITTEN",
     "subtitle": "",
-    "description": "SHOW THIS CARD IMMEDIATELY",
+    "description": "SHOW THIS CARD IMMEDIATELY.",
     "imageUrl": "exploding_kitten_2.png"
   },
   "EXPLODING_KITTEN_3": {
     "title": "EXPLODING KITTEN",
     "subtitle": "",
-    "description": "SHOW THIS CARD IMMEDIATELY",
+    "description": "SHOW THIS CARD IMMEDIATELY.",
     "imageUrl": "exploding_kitten_3.png"
   },
   "DEFUSE_1": {
     "title": "DEFUSE",
     "subtitle": "VIA CATNIP SANDWICHES",
-    "description": "PUT YOUR LAST DRAWN CARD BACK INTO THE DECK",
+    "description": "PUT YOUR LAST DRAWN CARD BACK INTO THE DECK.",
     "imageUrl": "defuse_1.png"
   },
   "DEFUSE_2": {
     "title": "DEFUSE",
     "subtitle": "VIA CRATE",
-    "description": "PUT YOUR LAST DRAWN CARD BACK INTO THE DECK",
+    "description": "PUT YOUR LAST DRAWN CARD BACK INTO THE DECK.",
     "imageUrl": "defuse_2.png"
   },
   "DEFUSE_3": {
     "title": "DEFUSE",
     "subtitle": "VIA LASER POINTER",
-    "description": "PUT YOUR LAST DRAWN CARD BACK INTO THE DECK",
+    "description": "PUT YOUR LAST DRAWN CARD BACK INTO THE DECK.",
     "imageUrl": "defuse_3.png"
   },
   "DEFUSE_4": {
     "title": "DEFUSE",
     "subtitle": "VIA MAULING A BABY",
-    "description": "PUT YOUR LAST DRAWN CARD BACK INTO THE DECK",
+    "description": "PUT YOUR LAST DRAWN CARD BACK INTO THE DECK.",
     "imageUrl": "defuse_4.png"
   },
   "DEFUSE_5": {
     "title": "DEFUSE",
     "subtitle": "VIA SPAY/NEUTER",
-    "description": "PUT YOUR LAST DRAWN CARD BACK INTO THE DECK",
+    "description": "PUT YOUR LAST DRAWN CARD BACK INTO THE DECK.",
     "imageUrl": "defuse_5.png"
+  },
+  "ATTACK_1": {
+    "title": "ATTACK",
+    "subtitle": "WHIP OUT YOUR RUBBER DUCK COLLECTION",
+    "description": "END YOUR TURN WITHOUT DRAWING A CARD. FORCE THE NEXT PLAYER TO TAKE TWO TURNS.",
+    "imageUrl": "attack_1.png"
+  },
+  "ATTACK_2": {
+    "title": "ATTACK",
+    "subtitle": "UNLEASH SOME ADORABLE PENGUIN DIARRHEA",
+    "description": "END YOUR TURN WITHOUT DRAWING A CARD. FORCE THE NEXT PLAYER TO TAKE TWO TURNS.",
+    "imageUrl": "attack_2.png"
+  },
+  "ATTACK_3": {
+    "title": "ATTACK",
+    "subtitle": "RELEASE THE TORTURE BUNNIES",
+    "description": "END YOUR TURN WITHOUT DRAWING A CARD. FORCE THE NEXT PLAYER TO TAKE TWO TURNS.",
+    "imageUrl": "attack_3.png"
   }
 }
