@@ -88,5 +88,23 @@
     "subtitle": "DISCOVER YOU HAVE A TOILET WEREWOLF",
     "description": "SHUFFLE THE DRAW PILE.",
     "imageUrl": "shuffle_4.png"
+  },
+  "SKIP_1": {
+  "title": "SKIP",
+  "subtitle": "COMMANDEER A BUNNYRAPTOR",
+  "description": "END YOUR TURN WITHOUT DRAWING A CARD.",
+  "imageUrl": "skip_1.png"
+  },
+  "SKIP_2": {
+    "title": "SKIP",
+    "subtitle": "CRAB WALK WITH SOME CRABS",
+    "description": "END YOUR TURN WITHOUT DRAWING A CARD.",
+    "imageUrl": "skip_2.png"
+  },
+  "SKIP_3": {
+    "title": "SKIP",
+    "subtitle": "ENGAGE THE HYPERGOAT",
+    "description": "END YOUR TURN WITHOUT DRAWING A CARD.",
+    "imageUrl": "skip_3.png"
   }
 }
