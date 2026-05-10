@@ -252,9 +252,9 @@
     "imageUrl": "cat_card_4.png"
   },
   "CATOMICBOMB_1": {
-    "title": "TROLL CAT",
+    "title": "CATOMIC BOMB",
     "subtitle": "",
-    "description": "THIS IS A CAT CARD AND IS POWERLESS ON ITS OWN.",
+    "description": "REMOVE THE EXPLODING KITTENS FROM THE DECK. SHUFFLE THE DECK. PUT ALL THOSE KITTENS FACE DOWN ON TOP. YOUR TURN ENDS AFTER PLAYING THIS CARD.",
     "imageUrl": "catomic_bomb.png"
   }
 }
