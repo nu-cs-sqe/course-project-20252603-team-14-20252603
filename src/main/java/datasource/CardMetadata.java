@@ -7,8 +7,9 @@ public class CardMetadata {
 	private final String description;
 	private final String imageUrl;
 
-	public CardMetadata(String title, String subtitle,
-	                    String description, String imageUrl) {
+	public CardMetadata(
+			String title, String subtitle, String description, String imageUrl
+	) {
 		this.title = title;
 		this.subtitle = subtitle;
 		this.description = description;

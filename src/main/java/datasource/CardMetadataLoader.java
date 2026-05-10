@@ -25,7 +25,9 @@ public class CardMetadataLoader implements FileLoader {
 		checkFileExistence(file);
 
 		if (!fileName.endsWith(".json")) {
-			throw new IllegalArgumentException("The requested file is not a .json file");
+			throw new IllegalArgumentException(
+					"The requested file is not a .json file"
+			);
 		}
 
 		return file;
@@ -43,7 +45,7 @@ public class CardMetadataLoader implements FileLoader {
 	private Map<String, CardMetadata> loadJson(URL file) {
 		try (InputStream is = file.openStream()) {
 			ObjectMapper mapper = new ObjectMapper();
-			return mapper.readValue(is, new TypeReference<>() {});
+			return mapper.readValue(is, new TypeReference<>() { });
 		}
 		catch (Exception e) {
 			throw new IllegalStateException("Failed to load card metadata JSON", e);
@@ -52,10 +54,10 @@ public class CardMetadataLoader implements FileLoader {
 
 	@Override
 	public URL getFileUrl() {
-		return this.jsonFile;
+		return jsonFile;
 	}
 
 	public Map<String, CardMetadata> getMetadata() {
-		return this.metadata;
+		return Map.copyOf(metadata);
 	}
 }
