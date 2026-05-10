@@ -64,5 +64,29 @@
     "subtitle": "RELEASE THE TORTURE BUNNIES",
     "description": "END YOUR TURN WITHOUT DRAWING A CARD. FORCE THE NEXT PLAYER TO TAKE TWO TURNS.",
     "imageUrl": "attack_3.png"
+  },
+  "SHUFFLE_1": {
+    "title": "SHUFFLE",
+    "subtitle": "A KRAKEN EMERGES AND HE'S SUPER UPSET",
+    "description": "SHUFFLE THE DRAW PILE.",
+    "imageUrl": "shuffle_1.png"
+  },
+  "SHUFFLE_2": {
+    "title": "SHUFFLE",
+    "subtitle": "A TRANSDIMENSIONAL LITTER BOX MATERIALIZES",
+    "description": "SHUFFLE THE DRAW PILE.",
+    "imageUrl": "shuffle_2.png"
+  },
+  "SHUFFLE_3": {
+    "title": "SHUFFLE",
+    "subtitle": "AN ELECTROMAGNETIC POMERANIAN STORM ROLLS IN FROM THE EAST",
+    "description": "SHUFFLE THE DRAW PILE.",
+    "imageUrl": "shuffle_3.png"
+  },
+  "SHUFFLE_4": {
+    "title": "SHUFFLE",
+    "subtitle": "DISCOVER YOU HAVE A TOILET WEREWOLF",
+    "description": "SHUFFLE THE DRAW PILE.",
+    "imageUrl": "shuffle_4.png"
   }
 }
