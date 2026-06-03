@@ -643,7 +643,7 @@
     - advance the turn (currentPlayerIndex = 0),
     - then set drawCount = 2
 
-- **TC98: Minimum players** ( :x: )
+- **TC98: Minimum players** ( :white_check_mark: )
   - **Name of the test**: applyAttack_minPlayers_advancesAndSetsTwo
   - **State of the system**:
     - numPlayers = 2
