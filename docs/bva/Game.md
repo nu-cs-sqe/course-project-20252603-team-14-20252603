@@ -633,14 +633,14 @@
     - advance the turn, 
     - then set drawCount = 6
 
-- **TC97: Standard attack, player turn index wraps around** ( :x: )
-  - **Name of the test**: applyAttack_lastPlayer_indexWrapsAndDrawCountIsTwo
+- **TC97: Last player index advancement** ( :white_check_mark: )
+  - **Name of the test**: applyAttack_lastPlayer_successfullyAdvancesTurn
   - **State of the system**: 
     - currentPlayerIndex = numPlayers - 1
     - drawCount = 1
   - **Expected output**:
     - reset drawCount = 0,
-    - advance the turn,
+    - advance the turn (currentPlayerIndex = 0),
     - then set drawCount = 2
 
 - **TC98: Minimum players** ( :x: )
