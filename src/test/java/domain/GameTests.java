@@ -1237,7 +1237,8 @@ public class GameTests {
 			"2, 4",
 			"4, 6"
 	})
-	public void applyAttack_stackingLogic_calculatesCorrectDrawCount(int initialDrawCount, int expectedDrawCount) {
+	public void applyAttack_stackingLogic_calculatesCorrectDrawCount(
+			int initialDrawCount, int expectedDrawCount) {
 		Player mockPlayer = EasyMock.createMock(Player.class);
 		TurnManager mockTurnManager = EasyMock.createMock(TurnManager.class);
 
