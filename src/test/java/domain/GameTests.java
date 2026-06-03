@@ -11,6 +11,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Objects;
 import java.util.function.Consumer;
 import java.util.stream.Stream;
@@ -1320,6 +1321,44 @@ public class GameTests {
 		EasyMock.replay(mockPlayer, mockTurnManager);
 
 		Game game = new Game(List.of(mockPlayer, mockPlayer, mockPlayer, mockPlayer),
+				EasyMock.createMock(Deck.class),
+				EasyMock.createMock(Deck.class),
+				mockTurnManager);
+		game.setIsGameOngoing(true);
+		game.applyAttack();
+
+		EasyMock.verify(mockTurnManager);
+	}
+
+	@ParameterizedTest
+	@CsvSource({
+			"2",
+			"4"
+	})
+	public void applyAttack_boundaryPlayers_advancesAndSetsTwo(int numPlayers) {
+		List<Player> players = new ArrayList<>();
+		for (int i = 0; i < numPlayers; i++) {
+			players.add(EasyMock.createMock(Player.class));
+		}
+		TurnManager mockTurnManager = EasyMock.createMock(TurnManager.class);
+
+		EasyMock.expect(mockTurnManager.getDrawCount()).andReturn(ONE_CARD);
+		mockTurnManager.setDrawCount(0);
+		EasyMock.expectLastCall();
+		EasyMock.expect(mockTurnManager.getDrawCount()).andReturn(0);
+
+		EasyMock.expect(mockTurnManager.getCurrentPlayerIndex()).andReturn(0);
+		players.get(0).deselectHandCards();
+		EasyMock.expectLastCall();
+		mockTurnManager.incrementTurn();
+		EasyMock.expectLastCall();
+
+		mockTurnManager.setDrawCount(TWO_CARDS);
+		EasyMock.expectLastCall();
+
+		EasyMock.replay(players.get(0), mockTurnManager);
+
+		Game game = new Game(players,
 				EasyMock.createMock(Deck.class),
 				EasyMock.createMock(Deck.class),
 				mockTurnManager);

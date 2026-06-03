@@ -610,7 +610,7 @@
     - currentPlayerIndex = 0
   - **Expected output**: 
     - reset drawCount = 0,
-    - advance the turn,
+    - advance the turn (currentPlayerIndex = 1),
     - then set drawCount = 2
 
 - **TC95: One-time stacked attack, player turn index does not wrap around** ( :white_check_mark: )
@@ -620,7 +620,7 @@
     - currentPlayerIndex = 0
   - **Expected output**: 
     - reset drawCount = 0, 
-    - advance the turn, 
+    - advance the turn (currentPlayerIndex = 1), 
     - then set drawCount = 4
 
 - **TC96: Two-time stacked attack, player turn index does not wrap around** ( :white_check_mark: )
@@ -630,7 +630,7 @@
     - currentPlayerIndex = 0
   - **Expected output**: 
     - reset drawCount = 0,
-    - advance the turn, 
+    - advance the turn (currentPlayerIndex = 1), 
     - then set drawCount = 6
 
 - **TC97: Last player index advancement** ( :white_check_mark: )
@@ -644,21 +644,23 @@
     - then set drawCount = 2
 
 - **TC98: Minimum players** ( :white_check_mark: )
-  - **Name of the test**: applyAttack_minPlayers_advancesAndSetsTwo
+  - **Name of the test**: applyAttack_boundaryPlayers_advancesAndSetsTwo
   - **State of the system**:
     - numPlayers = 2
+    - currentPlayerIndex = 0
     - drawCount = 1
   - **Expected output**:
     - reset drawCount = 0,
-    - advance the turn,
+    - advance the turn (currentPlayerIndex = 1),
     - then set drawCount = 2
 
 - **TC99: Maximum players** ( :x: )
-  - **Name of the test**: applyAttack_maxPlayers_advancesAndSetsTwo
+  - **Name of the test**: applyAttack_boundaryPlayers_advancesAndSetsTwo
   - **State of the system**:
     - numPlayers = 4
+    - currentPlayerIndex = 0
     - drawCount = 1
   - **Expected output**:
     - reset drawCount = 0,
-    - advance the turn,
+    - advance the turn (currentPlayerIndex = 1),
     - then set drawCount = 2
