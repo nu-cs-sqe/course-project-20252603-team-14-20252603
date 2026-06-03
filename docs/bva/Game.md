@@ -603,8 +603,8 @@
 
 
 ## Method under test: `applyAttack()`
-- **TC94: Non-stacked standard attack, player turn index does not wrap around** ( :x: )
-  - **Name of the test**: applyAttack_drawCountOne_advancesAndIncreasesDrawCountToTwo
+- **TC94: Non-stacked standard attack, player turn index does not wrap around** ( :white_check_mark: )
+  - **Name of the test**: applyAttack_stackingLogic_calculatesCorrectDrawCount
   - **State of the system**: 
     - drawCount = 1
     - currentPlayerIndex = 0
@@ -613,8 +613,8 @@
     - advance the turn,
     - then set drawCount = 2
 
-- **TC95: One-time stacked attack, player turn index does not wrap around** ( :x: )
-  - **Name of the test**: applyAttack_drawCountTwo_advancesAndIncreasesDrawCountToFour
+- **TC95: One-time stacked attack, player turn index does not wrap around** ( :white_check_mark: )
+  - **Name of the test**: applyAttack_stackingLogic_calculatesCorrectDrawCount
   - **State of the system**: 
     - drawCount = 2
     - currentPlayerIndex = 0
@@ -623,8 +623,8 @@
     - advance the turn, 
     - then set drawCount = 4
 
-- **TC96: Two-time stacked attack, player turn index does not wrap around** ( :x: )
-  - **Name of the test**: applyAttack_drawCountFour_advancesAndIncreasesDrawCountToSix
+- **TC96: Two-time stacked attack, player turn index does not wrap around** ( :white_check_mark: )
+  - **Name of the test**: applyAttack_stackingLogic_calculatesCorrectDrawCount
   - **State of the system**: 
     - drawCount = 4
     - currentPlayerIndex = 0
@@ -653,7 +653,7 @@
     - advance the turn,
     - then set drawCount = 2
 
-- **TC98: Maximum players** ( :x: )
+- **TC99: Maximum players** ( :x: )
   - **Name of the test**: applyAttack_maxPlayers_advancesAndSetsTwo
   - **State of the system**:
     - numPlayers = 4
